@@ -18,9 +18,12 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- costum css -->
+    <link href="<?= base_url('assets/') ?>css/costum.css" rel="stylesheet">
+
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-secondary">
 
     <div class="container">
 
@@ -40,15 +43,18 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900">SIM-MR</h1>
+                                        <h1 class="h4 text-utama text-tebal judul">SIMAKO</h1>
                                         <p class="mb-4">Sistem Informasi Manajemen Resiko</p>
                                     </div>
-                                    <form class="user">
+                                    <form method="POST" action="" class="user">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" autofocus>
+                                            <?= form_error('email', '<p class="text-danger text-center small">', '</p'); ?>
+
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password">
+                                            <?= form_error('password', '<p class="text-danger text-center small">', '</p'); ?>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -57,11 +63,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-
-
+                                        <button type="submit" class="btn btn-block btn-user bg-kedua text-white">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">

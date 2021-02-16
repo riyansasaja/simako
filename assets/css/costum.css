@@ -1,0 +1,22 @@
+.text-utama {
+  color: #ff6814;
+}
+
+.text-kedua {
+  color: #3f3d56;
+}
+
+.judul {
+  font-weight: bold;
+  font-size: 64px;
+  margin: 0px;
+  padding: 0;
+}
+
+.bg-utama {
+  background-color: #ff6814;
+}
+
+.bg-kedua {
+  background-color: #3f3d56;
+}
