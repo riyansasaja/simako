@@ -18,8 +18,8 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
             'valid_email' => 'Must be Valid Email!'
         ]);
-        $this->form_validation->set_rules('password', 'password', 'required|trim|min_length[8]', [
-            'min_length' => 'Min Pass 8 Characters'
+        $this->form_validation->set_rules('password', 'password', 'required|trim|min_length[3]', [
+            'min_length' => 'Min Pass 3 Characters'
         ]);
 
 
@@ -37,7 +37,7 @@ class Auth extends CI_Controller
         $email = $this->input->post('email', true);
         $password = $this->input->post('password', true);
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
-        
+
         //jika ada usernya
         if ($user) {
             # cek usernya aktif atau tidak
@@ -51,22 +51,29 @@ class Auth extends CI_Controller
                     ];
                     #buat session
                     $this->session->set_userdata($data);
-                    if ($user['role_id'] ==1) {
+                    if ($user['role_id'] == 1) {
                         # redirect ka Asda
-                        redirect('asda');
-                    } if ($user['role_id'])==2 {
+                        // redirect('asda');
+                        echo "ini user asda";
+                        die;
+                    }
+                    if ($user['role_id'] == 2) {
                         # redirect ka kpd
-                        redirect('kpd');
+                        // redirect('kpd');
+                        echo 'ini user kpd';
+                        die;
                     } else {
                         # redirect
-                        redirect('bidang');
+                        // redirect('bidang');
+                        echo 'ini user bidang';
+                        die;
                     }
-                }else {
+                } else {
                     # jia password salah
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
                     redirect('auth');
                 }
-            }else {
+            } else {
                 # jika email tidak aktif
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
                 redirect('auth');
@@ -76,6 +83,5 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
             redirect('auth');
         }
-
     }
 }
