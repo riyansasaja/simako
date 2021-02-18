@@ -48,12 +48,12 @@
                                     </div>
                                     <form method="POST" action="" class="user">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" autofocus>
+                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" required autofocus>
                                             <?= form_error('email', '<p class="text-danger text-center small">', '</p'); ?>
 
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password">
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" required>
                                             <?= form_error('password', '<p class="text-danger text-center small">', '</p'); ?>
                                         </div>
                                         <div class="form-group">
