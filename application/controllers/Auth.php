@@ -46,27 +46,24 @@ class Auth extends CI_Controller
                 if (password_verify($password, $user['password'])) {
                     # ambil data untuk disimpan di session
                     $data = [
+                        'id' => $user['id'],
+                        'name' => $user['name'],
                         'email' => $user['email'],
+                        'id_atasan' => $user['id_atasan'],
                         'role_id' => $user['role_id']
                     ];
                     #buat session
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == 1) {
                         # redirect ka Asda
-                        // redirect('asda');
-                        echo "ini user asda";
-                        die;
+                        redirect('asda');
                     }
                     if ($user['role_id'] == 2) {
                         # redirect ka kpd
-                        // redirect('kpd');
-                        echo 'ini user kpd';
-                        die;
+                        redirect('kpd');
                     } else {
                         # redirect
-                        // redirect('bidang');
-                        echo 'ini user bidang';
-                        die;
+                        redirect('bidang');
                     }
                 } else {
                     # jia password salah
@@ -83,5 +80,19 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
             redirect('auth');
         }
+    }
+
+    public function logout()
+    {
+
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role_id');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
+        redirect('auth');
+    }
+
+    public function blocked()
+    {
+        $this->load->view('auth/blocked');
     }
 }
