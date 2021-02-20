@@ -60,7 +60,7 @@ class Auth extends CI_Controller
                     }
                     if ($user['role_id'] == 2) {
                         # redirect ka kpd
-                        redirect('kpd');
+                        redirect('opd');
                     } else {
                         # redirect
                         redirect('bidang');

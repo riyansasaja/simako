@@ -20,3 +20,7 @@
 .bg-kedua {
   background-color: #3f3d56;
 }
+
+.tombol {
+  border-radius: 80px !important;
+}
