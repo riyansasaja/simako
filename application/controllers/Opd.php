@@ -12,11 +12,12 @@ class Opd extends CI_Controller
 
     public function index()
     {
-
+        $id = $this->session->userdata('id');
         $data['judul'] = 'Dashboard';
+        $data['hr_prog'] = $this->db->get_where('totalskor', ['id_atasan' => $id])->result_array();
 
         $this->load->view('opd/header', $data);
-        $this->load->view('opd/dashboard');
+        $this->load->view('opd/dashboard', $data);
         $this->load->view('opd/footer');
         $this->load->view('opd/end');
     }
@@ -53,7 +54,6 @@ class Opd extends CI_Controller
 
         $this->load->view('opd/header', $data);
         $this->load->view('opd/adduser');
-        $this->load->view('opd/footer');
         $this->load->view('opd/end');
     }
 }

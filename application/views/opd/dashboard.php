@@ -4,7 +4,7 @@
             <!-- Page Heading -->
 
             <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-5">
-                <h1 class="h3 mb-0 text-gray-800">ADMIN <?= $this->session->userdata('name'); ?></h1>
+                <h5 class="h5 mb-0 text-gray-800">ADMIN <?= $this->session->userdata('name'); ?></h3>
             </div>
             <!-- Content Row -->
             <div class="row">
@@ -34,7 +34,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Total Risk Input</div>
+                                        Total Inputan Resiko</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                                 </div>
                                 <div class="col-auto">
@@ -51,7 +51,7 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Average Risk Point
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Average Nilai Resiko
                                     </div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
@@ -103,7 +103,7 @@
                 <div class="col">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">List Of High Risk Program</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Daftar Program Beresiko Tinggi</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -124,13 +124,16 @@
                                     </tfoot>
                                     <tbody>
 
-                                        <?php for ($i = 1; $i <= 30; $i++) : ?>
+                                        <?php foreach ($hr_prog as $hr) : ?>
                                             <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>61</td>
-                                                <td>Detail</td>
+                                                <td><?= $hr['program']; ?></td>
+                                                <td><?= $hr['totalskor']; ?></td>
+                                                <td>
+                                                    <a href="#" class="badge badge-pill badge-primary">Detail</a>
+                                                </td>
                                             </tr>
-                                        <?php endfor; ?>
+                                        <?php endforeach; ?>
+
 
                                     </tbody>
                                 </table>

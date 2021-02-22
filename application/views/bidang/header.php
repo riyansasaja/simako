@@ -18,35 +18,44 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- style for data table -->
+    <link href="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- jquery ui css -->
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/jquery-ui.css">
+
     <!-- costum css -->
     <link href="<?= base_url('assets/') ?>css/costum.css" rel="stylesheet">
 
 </head>
 
-<!-- start nav -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-    <div class="container">
-        <a class="navbar-brand" href="#">SIMAKO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="#">Cetak</a>
-            </div>
-        </div>
-        <!-- Example single danger button -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary tombol dropdown-toggle ml-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                User
+<body>
+
+    <!-- start nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="<?= base_url('bidang/') ?>">SIMAKO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Detail</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= base_url('auth/logout/') ?>">Logout</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link <?= $judul == 'Dashboard' ? 'active' : ''; ?>" href="<?= base_url('bidang/') ?>">Dashboard <span class="sr-only">(current)</span></a>
+                    <a class="nav-link <?= $judul == 'Input' ? 'active' : ''; ?>" href="<?= base_url('bidang/input') ?>">Input</a>
+                    <a class="nav-link <?= $judul == 'Output' ? 'active' : ''; ?>" href="<?= base_url('bidang/output') ?>">Output</a>
+                </div>
+            </div>
+            <!-- Example single danger button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary tombol dropdown-toggle ml-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Detail</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="<?= base_url('auth/logout/') ?>">Logout</a>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
-<!-- end nav -->
+    </nav>
+    <!-- end nav -->

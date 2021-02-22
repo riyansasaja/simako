@@ -15,6 +15,7 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/') ?>js/demo/datatables-demo.js"></script>
 
+
 <!-- script tambahan khusus input program method -->
 <script>
     $(document).ready(function() {
@@ -36,8 +37,12 @@
                             <td>${d.tujuan_pd}</td>
                             <td>${d.program}</td>
                             <td>${d.output_kegiatan}</td>
-                            <td>Detail| Edit | Delete</td>
-                        </tr>`;
+                            <td>
+                            <a href="#" class="badge badge-pill badge-primary">Detail</a>
+                            <a href="#" class="badge badge-pill badge-warning">Edit</a>
+                            <a href="#" class="badge badge-pill badge-danger">Delete</a>
+</td>
+</tr>`;
                     });
                     $('#showdata').html(html);
                 }
@@ -46,8 +51,9 @@
         //end program
 
         //add program
-
         $('#btn_simpan').on('click', function() {
+
+            // tangkap hasil
             let tujuan_pd = $('#tujuan_pd').val();
             let sasaran_pd = $('#sasaran_pd').val();
             let program = $('#program').val();
@@ -57,36 +63,61 @@
             let sifat_kegiatan = $('#sifat_kegiatan').val();
             let unor_tujuan = $('#unor_tujuan').val();
 
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url() ?>/opd/addkegiatan/",
-                dataType: "JSON",
-                cache: false,
-                data: {
-                    tujuan_pd: tujuan_pd,
-                    sasaran_pd: sasaran_pd,
-                    program: program,
-                    kegiatan: kegiatan,
-                    output_kegiatan: output_kegiatan,
-                    tujuan_kegiatan: tujuan_kegiatan,
-                    sifat_kegiatan: sifat_kegiatan,
-                    unor_tujuan: unor_tujuan
-                },
-                cache: false,
-                success: function(data) {
-                    $('[name="tujuan_pd"]').val("");
-                    $('[name="sasaran_pd"]').val("");
-                    $('[name="program"]').val("");
-                    $('[name="kegiatan"]').val("");
-                    $('[name="output_kegiatan"]').val("");
-                    $('[name="tujuan_kegiatan"]').val("");
-                    $('[name="sifat_kegiatan"]').val("");
-                    $('[name="unor_tujuan"]').val("");
-                    $('#addModal').modal('hide');
-                    tampil_data();
-                }
-            });
-            return false;
+            // validsi
+            if (tujuan_pd == "") {
+                alert('Tujuan PD Tidak Boleh Kosong');
+                return;
+            }
+            if (sasaran_pd == "") {
+                alert('Sasaran Perangkat Daerah Tidak Boleh Kosong');
+                return
+            }
+            if (program == "") {
+                alert('Program Tidak Boleh Kosong');
+                return
+            }
+            if (kegiatan == "") {
+                alert('Tujuan PD Tidak Boleh Kosong');
+                return
+            }
+            if (output_kegiatan == "") {
+                alert('Tujuan PD Tidak Boleh Kosong');
+                return
+            }
+            if (tujuan_kegiatan == "") {
+                alert('Tujuan PD Tidak Boleh Kosong');
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url() ?>/opd/addkegiatan/",
+                    dataType: "JSON",
+                    cache: false,
+                    data: {
+                        tujuan_pd: tujuan_pd,
+                        sasaran_pd: sasaran_pd,
+                        program: program,
+                        kegiatan: kegiatan,
+                        output_kegiatan: output_kegiatan,
+                        tujuan_kegiatan: tujuan_kegiatan,
+                        sifat_kegiatan: sifat_kegiatan,
+                        unor_tujuan: unor_tujuan
+                    },
+                    cache: false,
+                    success: function(data) {
+                        $('[name="tujuan_pd"]').val("");
+                        $('[name="sasaran_pd"]').val("");
+                        $('[name="program"]').val("");
+                        $('[name="kegiatan"]').val("");
+                        $('[name="output_kegiatan"]').val("");
+                        $('[name="tujuan_kegiatan"]').val("");
+                        $('[name="sifat_kegiatan"]').val("");
+                        $('[name="unor_tujuan"]').val("");
+                        $('#addModal').modal('hide');
+                        tampil_data();
+                    }
+                });
+                return false;
+            }
 
         });
         //end add program

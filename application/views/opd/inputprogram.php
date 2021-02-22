@@ -9,10 +9,10 @@
                             <div class="col">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Input Program</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Input Program Kegiatan</h6>
                                     </div>
                                     <div class="card-body">
-                                        <button type="button" name="" id="" class="btn btn-block btn-user bg-kedua text-white mb-3" data-toggle="modal" data-target="#addModal">Add Program</button>
+                                        <button type="button" name="" id="" class="btn btn-block btn-user bg-kedua text-white mb-3" data-toggle="modal" data-target="#addModal">Tambah Program Kegiatan</button>
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="dataTable" cellspacing="0">
                                                 <thead>
@@ -23,14 +23,14 @@
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
+                                                <!-- <tfoot>
                                                     <tr>
                                                         <th>Tujuan</th>
                                                         <th>Program</th>
                                                         <th>Output Kegiatan</th>
                                                         <th>Action</th>
                                                     </tr>
-                                                </tfoot>
+                                                </tfoot> -->
                                                 <tbody id="showdata">
 
 
@@ -69,42 +69,42 @@
                     <div class="form-group row">
                         <label for="tujuan_pd" class="col-sm-2 col-form-label">Tujuan Perangkat Daerah</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="tujuan_pd" id="tujuan_pd" rows="3"></textarea>
+                            <textarea class="form-control" name="tujuan_pd" id="tujuan_pd" rows="3" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="sasaran_pd" class="col-sm-2 col-form-label">Sasaran Perangkat Daerah</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="sasaran_pd" id="sasaran_pd" rows="3"></textarea>
+                            <textarea class="form-control" name="sasaran_pd" id="sasaran_pd" rows="3" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="program" class="col-sm-2 col-form-label">Program</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="program" id="program" rows="3"></textarea>
+                            <textarea class="form-control" name="program" id="program" rows="3" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="kegiatan" id="kegiatan" rows="3"></textarea>
+                            <textarea class="form-control" name="kegiatan" id="kegiatan" rows="3" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="output_kegiatan" class="col-sm-2 col-form-label">Output Kegiatan</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="output_kegiatan" id="output_kegiatan" rows="3"></textarea>
+                            <textarea class="form-control" name="output_kegiatan" id="output_kegiatan" rows="3" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="tujuan_kegiatan" class="col-sm-2 col-form-label">Tujuan Kegiatan</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="tujuan_kegiatan" id="tujuan_kegiatan" rows="3"></textarea>
+                            <textarea class="form-control" name="tujuan_kegiatan" id="tujuan_kegiatan" rows="3" required></textarea>
                         </div>
                     </div>
 
@@ -113,7 +113,7 @@
                         <div class="col-sm-10">
                             <select class="form-control" name="sifat_kegiatan" id="sifat_kegiatan">
                                 <?php foreach ($sifat_kegiatan as $sk) : ?>
-                                    <option value="<?= $sk['sifat_kegiatan']; ?>"><?= $sk['sifat_kegiatan']; ?></option>
+                                    <option value="<?= $sk['id_sk']; ?>"><?= $sk['sifat_kegiatan']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

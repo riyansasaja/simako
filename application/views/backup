@@ -1,0 +1,36 @@
+
+<script>
+    $(document).ready(function() {
+
+        $('#tableInputRisk').DataTable();
+        tampil_data();
+
+        // fungsi tampil data
+        function tampil_data() {
+            $.ajax({
+                type: "GET",
+                url: "<?php echo base_url() ?>/bidang/get_program/",
+                async: true,
+                dataType: "json",
+                success: function(data) {
+                    let html = '';
+                    let no = 1;
+
+                    $.each(data, function(i, d) {
+                        let cek = d.is_idev == 1 ? `<a href=""><span class='badge badge-primary'>Input Analis Resiko</span></a>` : `<a href=""><span class='badge badge-success'>edit Analis Resiko</span></a>`;
+
+                        html += `<tr>
+                                    <td>${no}</td>
+                                    <td>${d.program}</td>
+                                    <td>${d.kegiatan}</td>
+                                    <td class='text-center'>${cek}</td>
+                                </tr>`;
+                        no++;
+                    });
+                    $('#showdata').html(html);
+                }
+            });
+        }
+
+    });
+</script>
