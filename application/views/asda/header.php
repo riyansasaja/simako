@@ -40,6 +40,7 @@
                     <a class="nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
                     <a class="nav-link" href="#"></a>
                     <a class="nav-link" href="#">Lihat Detail</a>
+                    <a class="nav-link" href="#">Input Ref.Resiko</a>
                 </div>
             </div>
             <!-- Example single danger button -->
@@ -51,7 +52,7 @@
                     <a class="dropdown-item" href="#">Tambah User OPD</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Detail</a>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="<?= base_url('auth/logout/') ?>">Logout</a>
                 </div>
             </div>
         </div>
