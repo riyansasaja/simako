@@ -26,6 +26,7 @@
 
     <!-- costum css -->
     <link href="<?= base_url('assets/') ?>css/costum.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?= base_url('assets/img/') ?>international.svg">
 
 </head>
 
