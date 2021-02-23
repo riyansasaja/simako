@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
                     <a class="nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
-                    <a class="nav-link" href="#">Input Resiko</a>
+                    <a class="nav-link" href="#"></a>
                     <a class="nav-link" href="#">Lihat Detail</a>
                 </div>
             </div>
@@ -48,8 +48,9 @@
                     User
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Detail</a>
+                    <a class="dropdown-item" href="#">Tambah User OPD</a>
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Detail</a>
                     <a class="dropdown-item" href="#">Logout</a>
                 </div>
             </div>

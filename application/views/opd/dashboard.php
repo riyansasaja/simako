@@ -129,7 +129,7 @@
                                                 <td><?= $hr['program']; ?></td>
                                                 <td><?= $hr['totalskor']; ?></td>
                                                 <td>
-                                                    <a href="#" class="badge badge-pill badge-primary">Detail</a>
+                                                    <a href="#" data-toggle="modal" data-target="#modalDetail" class="badge badge-pill badge-primary">Detail</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -146,3 +146,25 @@
     </section>
 
 </main>
+
+<!-- modal detail start -->
+<div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Program</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Detail Program dan Analis Resikonya serta Skornya nanti akan tampil di sini
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal detail end -->
