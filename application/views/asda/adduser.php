@@ -98,94 +98,12 @@
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery/jquery.min.js"></script>
 <script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 <!-- Core plugin JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/') ?>js/sb-admin-2.min.js"></script>
-
 <!-- Page level plugins -->
 <script src="<?= base_url('assets/') ?>vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-
-
-<script>
-    $(document).ready(function() {
-
-        $('#dataTable').DataTable();
-
-        tampil_data()
-
-        // start tampil data
-        function tampil_data() {
-            $.ajax({
-                type: "GET",
-                url: "<?php echo base_url() ?>/user/getUserByAtasan/",
-                async: true,
-                dataType: "json",
-                success: function(data) {
-                    let html = '';
-
-                    $.each(data, function(i, d) {
-                        // console.log(d);
-                        html += `<tr>
-                                    <td>${d.name}</td>
-                                    <td>Detail | Edit | Delete</td>
-                                </tr>`;
-                    });
-                    $('#showdata').html(html);
-                }
-            });
-        }
-        // end tampil data
-
-        //start add data
-
-        $('#btn_save').on('click', function() {
-            // console.log('tombolditekan');
-            let name = $('#name').val();
-            let email = $('#email').val();
-            let password = $('#password').val();
-
-            $.ajax({
-                type: "POST",
-                url: "<?= base_url('user/adduser') ?>",
-                data: {
-                    name: name,
-                    email: email,
-                    password: password
-                },
-                dataType: "JSON",
-                success: function(response) {
-                    // console.log(response);
-                    if (response.status == 'unsuccess') {
-                        $('#modal_alert').html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            ${response.message}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>`);
-                    } else {
-                        $('[name="name"]').val("");
-                        $('[name="email"]').val("");
-                        $('[name="password"]').val("");
-                        $('#modal_alert').empty();
-                        $('#ModalAddUser').modal('hide');
-                        tampil_data();
-                    }
-
-
-                }
-            });
-
-
-        });
-
-        //end add data
-
-
-
-    });
-</script>
+<!-- custom js -->
+<script src="<?= base_url('assets/') ?>js/views/asda/adduser.js"></script>
