@@ -40,13 +40,13 @@
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block text-right">
                                 <!-- gambar -->
-                                <img class="mt-5" style="width: 70%;" src="<?= base_url('assets/img/') ?>bglogin.png" alt="login pict">
+                                <img style="width: 110%;" src="<?= base_url('assets/img/') ?>simako-bg-3.png" alt="login pict">
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 bg-abu2">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-utama text-tebal judul">SIMAKO</h1>
-                                        <p class="mb-4">Sistem Informasi Manajemen Resiko</p>
+                                        <h1 class="h4 text-kedua judul">SIMAKO</h1>
+                                        <p class="mb-4">Welcome Back</p>
                                     </div>
                                     <form method="POST" action="" class="user">
                                         <div class="form-group">
