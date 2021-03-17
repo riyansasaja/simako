@@ -8,11 +8,12 @@ class User extends CI_Controller
         parent::__construct();
         is_logged_in();
         // $this->load->model('ModelUser', 'user');
+        $this->load->library('form_validation');
     }
 
     public function index()
     {
-        echo 'tes';
+        echo 'success garanteed';
     }
 
     public function getUserByAtasan()
@@ -24,20 +25,38 @@ class User extends CI_Controller
 
     public function adduser()
     {
-        $id = $this->session->userdata('id');
-        $data = [
-            'id' => '',
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'id_atasan' => $id,
-            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'role_id' => $id + 1,
-            'is_active' => 1,
-            'date_created' => date('d-m-y')
 
-        ];
+        $this->form_validation->set_rules('name', 'Nama', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
 
-        $this->db->insert('user', $data);
-        redirect('opd/adduser');
+        if ($this->form_validation->run() == FALSE) {
+            # kirim pesan salah
+            $json = [
+                'status' => 'unsuccess',
+                'message' => validation_errors()
+            ];
+            echo json_encode($json);
+        } else {
+
+            $id = $this->session->userdata('id');
+            $data = [
+                'id' => '',
+                'name' => $this->input->post('name', true),
+                'email' => $this->input->post('email', true),
+                'id_atasan' => $id,
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'role_id' => $id + 1,
+                'is_active' => 1,
+                'date_created' => date('Y-m-d')
+
+            ];
+
+            $proses = $this->db->insert('user', $data);
+            $json = [
+                'status' => 'success',
+                'data' => $proses
+            ];
+            echo json_encode($json);
+        }
     }
 }
