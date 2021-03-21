@@ -13,7 +13,14 @@ class User extends CI_Controller
 
     public function index()
     {
-        echo 'success garanteed';
+        $data['title'] = 'User Management';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('user/index');
+        $this->load->view('templates/footer');
+        $this->load->view('user/endindex');
     }
 
     public function getUserById()

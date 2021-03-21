@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
-    const path = 'http://localhost/simako/user'
-
+    
     $('#dataTable').DataTable();
+    const path = 'http://localhost/simako/user'
 
     tampil_data()
 

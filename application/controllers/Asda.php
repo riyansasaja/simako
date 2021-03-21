@@ -13,18 +13,13 @@ class Asda extends CI_Controller
     public function index()
     {
 
-        $data['judul'] = 'Dashboard';
+        $data['title'] = 'Dashboard';
 
-        $this->load->view('asda/header', $data);
-        $this->load->view('asda/dashboard');
-        $this->load->view('asda/end');
-    }
-
-    public function adduser()
-    {
-        $data['judul'] = 'Add User';
-        $this->load->view('asda/header', $data);
-        $this->load->view('asda/adduser');
-        $this->load->view('asda/end');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('asda/dashboardsatu');
+        $this->load->view('templates/footer');
+        $this->load->view('asda/enddashboardsatu');
     }
 }
