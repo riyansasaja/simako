@@ -33,30 +33,28 @@
     <!-- start nav -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
         <div class="container">
-            <a class="navbar-brand" href="#">SIMAKO</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="<?= base_url('asda/') ?>"">SIMAKO</a>
+            <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ml-auto">
-                    <a class="nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
-                    <a class="nav-link <?= $judul == 'Dashboard' ? 'active' : ''; ?>" href="#"></a>
-                    <a class="nav-link <?= $judul == 'Detail' ? 'active' : ''; ?>" href="#">Lihat Detail</a>
-                    <a class="nav-link" href="#">Input Ref.Resiko</a>
-                </div>
-            </div>
-            <!-- Example single danger button -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary tombol dropdown-toggle ml-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    User
                 </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= base_url('asda/adduser/') ?>">Tambah User OPD</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Detail</a>
-                    <a class="dropdown-item" href="<?= base_url('auth/logout/') ?>">Logout</a>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ml-auto">
+                        <a class="nav-link <?= $judul == 'Dashboard' ? 'active' : ''; ?>" href="<?= base_url('asda/') ?>">Dashboard <span class="sr-only">(current)</span></a>
+                        <a class="nav-link <?= $judul == 'Detail' ? 'active' : ''; ?>" href="<?= base_url('asda/detail') ?>">Lihat Detail</a>
+                    </div>
                 </div>
-            </div>
+                <!-- Example single danger button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary tombol dropdown-toggle ml-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        User
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?= base_url('asda/adduser/') ?>">Tambah User OPD</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Detail</a>
+                        <a class="dropdown-item" href="<?= base_url('auth/logout/') ?>">Logout</a>
+                    </div>
+                </div>
         </div>
     </nav>
     <!-- end nav -->
