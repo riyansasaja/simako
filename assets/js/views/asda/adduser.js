@@ -22,6 +22,7 @@ $(document).ready(function() {
                                 <td>${d.name}</td>
                                 <td class="text-right">
                                 <a href="javascript:;" class="badge badge-pill badge-success item_edit" data="${d.id}">Edit</a>
+                                <a href="javascript:;" class="badge badge-pill badge-secondary item_reset" data="${d.id}">Reset</a>
                                 <a href="javascript:;" class="badge badge-pill badge-danger item_delete" data="${d.id}">Delete</a>
                                 </td>
                             </tr>`;
@@ -36,15 +37,15 @@ $(document).ready(function() {
         // console.log('tombolditekan');
         let name = $('#name').val();
         let email = $('#email').val();
-        let password = $('#password').val();
+        // let password = $('#password').val();
 
         $.ajax({
             type: "POST",
             url: `${path}/adduser`,
             data: {
                 name: name,
-                email: email,
-                password: password
+                email: email
+                // password: password
             },
             dataType: "JSON",
             success: function(response) {
@@ -102,6 +103,30 @@ $(document).ready(function() {
         }
         
     });//end delete
+
+    // start reset password
+    $('#showdata').on('click','.item_reset', function(){
+        let id = $(this).attr('data');
+        let check = confirm('Yakin Mereset Password?');
+        if (check) {
+            
+            $.ajax({
+                type: "POST",
+                url: `${path}/resetuser`,
+                data: {id:id},
+                dataType: "JSON",
+                success: function (response) {
+                    console.log(response);
+                    alert('Data Berhasil direset!!');
+                    tampil_data();
+                    
+                }
+            });
+            return false;
+        }
+        
+    });
+    // end reset password
     
     // start get edit
     $('#showdata').on('click', '.item_edit', function () {  

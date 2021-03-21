@@ -22,10 +22,10 @@
                                 <label for="email">Email address</label>
                                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" class="form-control" id="password">
-                            </div>
+                            </div> -->
                             <button type="button" id="btn_cancel" class="btn btn-secondary">Cancel</button>
                             <button type="button" id="btn_save" class="btn btn-primary">Add User</button>
 

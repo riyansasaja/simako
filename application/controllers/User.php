@@ -48,10 +48,10 @@ class User extends CI_Controller
             $id = $this->session->userdata('id');
             $data = [
                 'id' => '',
-                'name' => $this->input->post('name', true),
+                'name' => strtoupper($this->input->post('name', true)),
                 'email' => $this->input->post('email', true),
                 'id_atasan' => $id,
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'password' => password_hash('1234567890', PASSWORD_DEFAULT),
                 'role_id' => $id + 1,
                 'is_active' => 1,
                 'date_created' => date('Y-m-d')
@@ -97,6 +97,20 @@ class User extends CI_Controller
             ];
             echo json_encode($json);
         }
+    }
+
+    public function resetuser()
+    {
+
+
+        $id = $this->input->post('id');
+        $data = [
+            'password' => password_hash('1234567890', PASSWORD_DEFAULT)
+        ];
+
+        $this->db->where('id', $id);
+        $result = $this->db->update('user', $data);
+        echo json_encode($result);
     }
 
     public function deleteuser()
