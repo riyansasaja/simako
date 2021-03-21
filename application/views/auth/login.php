@@ -45,8 +45,8 @@
                             <div class="col-lg-6 bg-abu2">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-kedua judul">SIMAKO</h1>
-                                        <p class="mb-4">Welcome Back</p>
+                                        <h1 class="h4 text-kedua judul">Welcome Back</h1>
+                                        <p class="mb-4 small">Silahkan Login untuk mengakses SIMAKO </p>
                                     </div>
                                     <form method="POST" action="" class="user">
                                         <div class="form-group">
