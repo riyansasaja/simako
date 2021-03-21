@@ -29,8 +29,7 @@ $(document).ready(function() {
                 $('#showdata').html(html);
             }
         });
-    }
-    // end tampil data
+    }// end tampil data
 
     //start add data
     $('#btn_save').on('click', function() {
@@ -103,11 +102,66 @@ $(document).ready(function() {
         }
         
     });//end delete
-
-
-    // start edit data
     
-    // end edit data
+    // start get edit
+    $('#showdata').on('click', '.item_edit', function () {  
+        let id = $(this).attr('data');
+        $.ajax({
+            type: "POST",
+            url: `${path}/getuserbyid`,
+            data: {id:id},
+            dataType: "JSON",
+            success: function (response) {
+               $.each(response, function (i, val) { 
+                    $('#modalEdit').modal('show');
+                    $('[name="id_edit"]').val(val.id);
+                    $('[name="name_edit"]').val(val.name);
+                     $('[name="email_edit"]').val(val.email);
+                    //  $('[name="password_edit"]').val(val.password);
+               }); 
+            }
+        });
+        return false
+    }); // end get edit 
+
+    //start update data
+    $('#btn_update').on('click', function () {
+        let id_edit = $('#id_edit').val();
+        let name_edit = $('#name_edit').val();
+        let email_edit = $('#email_edit').val();
+
+        $.ajax({
+            type: "POST",
+            url: `${path}/updateuser`,
+            data: {
+                id_edit :id_edit,
+                name_edit: name_edit,
+                email_edit: email_edit,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                // console.log(response);
+                if (response.status == 'unsuccess') {
+                    $('#show_alert_edit').html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        ${response.message}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>`);
+                } else {
+                    $('[name="name_edit"]').val("");
+                    $('[name="email_edit"]').val("");
+                    $('#show_alert').empty();
+                    $('#modalEdit').modal('hide');
+                    tampil_data();
+                }
+
+
+            }
+        });
+
+
+    });//end update data
 
 
 
