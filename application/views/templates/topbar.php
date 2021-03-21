@@ -11,7 +11,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
+                    <small class="text-gray-800">ADMIN <?= strtoupper($this->session->userdata('name')); ?></small>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 

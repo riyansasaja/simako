@@ -10,18 +10,6 @@ class Bidang extends CI_Controller
         $this->load->model('ModelBidang');
     }
 
-    public function index()
-    {
-        $id = $this->session->userdata('id');
-
-        $data['programs'] = $this->ModelBidang->getnilaiprogram($id);
-        $data['judul'] = 'Dashboard';
-        $this->load->view('bidang/header', $data);
-        $this->load->view('bidang/dashboard', $data);
-        $this->load->view('bidang/footer');
-        $this->load->view('bidang/end');
-    }
-
     public function input()
     {
 
