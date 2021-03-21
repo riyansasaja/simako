@@ -6,17 +6,34 @@
 
             <div class="col-4">
                 <div class="card text-left">
-                    <img class="card-img-top" src="holder.js/100px180/" alt="">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Add OPD User</h6>
+                    </div>
                     <div class="card-body">
-                        <h4 class="card-title">Perhatian!</h4>
-                        <p class="card-text">Silahkan Menambahkan User OPD</p>
-                        <p class="card-text">User dan Password tersebut akan digunakan oleh masing masing KPD untuk masuk di aplikasi SIMAKO</p>
+                        <div id="show_alert"></div>
+
+                        <!-- menambahkan form baru -->
+                        <form>
+                            <div class="form-group">
+                                <label for="nama">Nama OPD</label>
+                                <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control" id="password">
+                            </div>
+                            <button type="button" id="btn_cancel" class="btn btn-secondary">Cancel</button>
+                            <button type="button" id="btn_save" class="btn btn-primary">Add User</button>
+
+                        </form>
+                        <!-- end form add user -->
+
                     </div>
                 </div>
-                <div class="bg-adduser">
-                    <img class="bg-ketiga" src="<?= base_url('assets/img/'); ?>bg_useradd.png" alt="">
-                </div>
-
             </div>
 
             <div class="col-8">
@@ -24,10 +41,9 @@
                 <section class="table">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Daftar OPD</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">List of OPD</h6>
                         </div>
                         <div class="card-body">
-                            <button type="button" name="" data-toggle="modal" data-target="#ModalAddUser" id="addUser" class="btn btn-primary text-white mb-3">Tambah User OPD</button>
                             <div class="table-responsive">
                                 <table class="table" id="dataTable" cellspacing="0">
                                     <thead class="bg-primary text-white">
@@ -52,48 +68,6 @@
     </section>
 
 </main>
-
-
-<!-- start modal add user -->
-<div class="modal fade" id="ModalAddUser" tabindex="-1" aria-labelledby="ModalAddUser">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="modal_alert">
-                </div>
-                <form>
-                    <div class="form-group">
-                        <label for="nama">Nama OPD</label>
-                        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
-                        <?= form_error('name', '<small class="text-danger">', '</small>') ?>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password">
-                    </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btn_save" class="btn btn-primary">Save changes</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-<!-- end modal add user -->
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery/jquery.min.js"></script>

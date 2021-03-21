@@ -59,4 +59,11 @@ class User extends CI_Controller
             echo json_encode($json);
         }
     }
+
+    public function deleteuser()
+    {
+        $id_barang = $this->input->post('id');
+        $result = $this->db->delete('user', ['id' => $id_barang]);
+        echo json_encode($result);
+    }
 }
