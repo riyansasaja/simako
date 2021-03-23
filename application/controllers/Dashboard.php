@@ -6,6 +6,7 @@ class Dashboard extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
         is_logged_in();
     }
 
@@ -20,5 +21,9 @@ class Dashboard extends CI_Controller
         $this->load->view('dashboard/index');
         $this->load->view('templates/footer');
         $this->load->view('dashboard/endindex');
+    }
+
+    public function getDashboard()
+    {
     }
 }
