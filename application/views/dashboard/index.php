@@ -72,37 +72,28 @@
     <div class="col">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Daftar Program Beresiko Tinggi</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Daftar Program</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" cellspacing="0">
+                    <table class="table table-bordered" id="tableDashboard" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama OPD</th>
                                 <th>Program</th>
-                                <th>Jumlah Skor Resiko</th>
+                                <th>Skor</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Nama OPD</th>
                                 <th>Program</th>
-                                <th>Jumlah Skor Resiko</th>
+                                <th>Skor</th>
                             </tr>
                         </tfoot>
-                        <tbody>
+                        <tbody id="dashboardisi">
 
-                            <?php for ($i = 1; $i <= 50; $i++) : ?>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Dinas XXXX</td>
-                                    <td>Membuat xxxxx</td>
-                                    <td>22</td>
-                                </tr>
-                            <?php endfor; ?>
+
 
                         </tbody>
                     </table>
