@@ -31,6 +31,19 @@ class Inspektorat extends CI_Controller
         echo json_encode($json);
     }
 
+
+    public function getDataById()
+    {
+
+        $id = $this->input->post('id');
+        $this->db->select('*');
+        $this->db->from('refrr');
+        $this->db->where('id_refrr', $id);
+        $this->db->join('ref_sifat_kegiatan', 'ref_sifat_kegiatan.id_sk=refrr.id_sk');
+        $result = $this->db->get()->result();
+        echo json_encode($result);
+    }
+
     public function deleteData()
     {
         $id = $this->input->post('id');
@@ -57,6 +70,22 @@ class Inspektorat extends CI_Controller
         echo json_encode($json);
     }
 
+    public function updateData()
+    {
+        $id = $this->input->post('id_refrr');
+        $data = [
+            'id_sk' => $this->input->post('id_sk'),
+            'resiko' => $this->input->post('resiko'),
+            'sebab' => $this->input->post('sebab'),
+            'dampak' => $this->input->post('dampak'),
+
+        ];
+        $this->db->where('id_refrr', $id);
+        $proses = $this->db->update('refrr', $data);
+        echo json_encode($proses);
+    }
+
+
     public function addSK()
     {
         $jenisSK = strtoupper($this->input->post('sifat_kegiatan'));
@@ -67,4 +96,25 @@ class Inspektorat extends CI_Controller
         $proses = $this->db->insert('ref_sifat_kegiatan', $data);
         redirect('inspektorat');
     }
+
+    public function getSK()
+    {
+        $data =  $this->db->get('ref_sifat_kegiatan')->result();
+        $json = [
+            'data' => $data
+        ];
+        echo json_encode($json);
+    }
+
+    //delete SK
+    public function deleteSK()
+    {
+        $id = $this->input->post('id');
+        $result = $this->db->delete('ref_sifat_kegiatan', ['id_sk' => $id]);
+        echo json_encode($result);
+    }
+    //------
+
+
+
 }

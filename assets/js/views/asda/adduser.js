@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     tampil_data()
 
-    // start tampil data
+    //---Tampil data
     function tampil_data() {
         $.ajax({
             type: "GET",
@@ -30,9 +30,9 @@ $(document).ready(function() {
                 $('#showdata').html(html);
             }
         });
-    }// end tampil data
+    }//------
 
-    //start add data
+    //--- Add data
     $('#btn_save').on('click', function() {
         // console.log('tombolditekan');
         let name = $('#name').val();
@@ -71,17 +71,19 @@ $(document).ready(function() {
         });
 
 
-    });//end add data
+    });
+    //------
 
-    //cancel on click
+    //---cancel on click
     $('#btn_cancel').on('click', function(){
         console.log('btn-cancel clikc');    
         $('#name').val("");
         $('#email').val("");
         $('#password').val("");
-    }); //end cancel on click
+    }); 
+    //------
 
-    //start delete data
+    //--- Delete data
     $('#showdata').on('click','.item_delete', function(){
         let id = $(this).attr('data');
         let tes = confirm('Yakin Menghapus data?');
@@ -102,9 +104,10 @@ $(document).ready(function() {
             return false;
         }
         
-    });//end delete
+    });
+    //------
 
-    // start reset password
+    //--- Reset password
     $('#showdata').on('click','.item_reset', function(){
         let id = $(this).attr('data');
         let check = confirm('Yakin Mereset Password?');
@@ -126,9 +129,9 @@ $(document).ready(function() {
         }
         
     });
-    // end reset password
+    //------
     
-    // start get edit
+    // --Get edit
     $('#showdata').on('click', '.item_edit', function () {  
         let id = $(this).attr('data');
         $.ajax({
@@ -147,9 +150,10 @@ $(document).ready(function() {
             }
         });
         return false
-    }); // end get edit 
+    });
+     // -------
 
-    //start update data
+    //--- Update Data
     $('#btn_update').on('click', function () {
         let id_edit = $('#id_edit').val();
         let name_edit = $('#name_edit').val();
@@ -186,7 +190,8 @@ $(document).ready(function() {
         });
 
 
-    });//end update data
+    });
+    //------
 
 
 
