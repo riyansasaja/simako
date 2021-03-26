@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2021 at 06:58 AM
+-- Generation Time: Mar 27, 2021 at 12:09 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -51,95 +51,100 @@ INSERT INTO `idev` (`id_idev`, `id_user`, `id_atasan`, `id_tk`, `id_refrr`, `sko
 -- --------------------------------------------------------
 
 --
--- Table structure for table `refrr`
+-- Table structure for table `tb_ref_resiko`
 --
 
-CREATE TABLE `refrr` (
+CREATE TABLE `tb_ref_resiko` (
   `id_refrr` int(11) NOT NULL,
-  `id_sk` int(11) DEFAULT NULL,
-  `resiko` text DEFAULT NULL,
-  `sebab` text DEFAULT NULL,
-  `dampak` text DEFAULT NULL
+  `id_sk` int(100) NOT NULL,
+  `resiko` text NOT NULL,
+  `sebab` text NOT NULL,
+  `dampak` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `refrr`
+-- Dumping data for table `tb_ref_resiko`
 --
 
-INSERT INTO `refrr` (`id_refrr`, `id_sk`, `resiko`, `sebab`, `dampak`) VALUES
-(1, 1, 'Terjadinya pengurusan oleh Calo/Perantara', 'Kesibukan masyarakat untuk meluangkan waktu mengurus langsung akte kelahiran', 'Masyarakat terbebani dengan biaya yang tidak semestinya'),
-(2, 1, 'Terjadinya pemungutan biaya pelayanan di atas ketentuan', 'Pedoman kerja/SOP belum ada', 'Keterlambatan penyelesaian produk layanan'),
-(3, 1, 'Terjadinya pemungutan biaya terhadap pelayanan yang seharusnya bebas biaya', 'Pedoman kerja/SOP tidak jelas dan multi tafsir', 'Dokumen yang dihasilkan dari kegiatan pelayanan cacat hukum/tidak dapat digunakan'),
-(4, 1, 'Terjadinya kesalahan dalam inputing data', 'Kelalaian petugas pelayanan ', 'Masyarakat  tidak puas atas pelayanan yg diterima'),
-(5, 1, 'Terjadinya pelayanan yang tidak sesuai prosedur/SOP', 'Kurangnya/terbatasnya dukungan alat kerja ', 'Terjadinya tututan kepada pemerintah/perangkat daerah'),
-(6, 2, 'Rencana Pengadaan barang/jasa bukan berdasarkan kebutuhan/usulan pihak pengguna (user)', 'Kelalaian Tim/personil Perencana', 'Barang/jasa yang diadakan tidak termanfaatkan secara optimal '),
-(7, 2, 'Penyusunan Anggaran Kebutuhan PBJ tdak wajar', 'Kelalaian Tim/personil Penyusun HPS', 'Kualitas hasil pekerjaan tidak sesuai spesifikasi kontrak'),
-(8, 3, 'Jenis kegiatan tidak/kurang sesuai dengan kebutuhan', 'Tim perencana lalai', 'Kegiatan pelatihan terlambat dilaksanakan'),
-(9, 3, 'Sedikitnya peminat kegiatan', 'Kegiatan Pelatihan tidak/kurang menarik', 'Kegiatan pelatihan tidak terlaksananya');
+INSERT INTO `tb_ref_resiko` (`id_refrr`, `id_sk`, `resiko`, `sebab`, `dampak`) VALUES
+(1, 1, 'terjadinya a', 'fasfafasdf', 'dfsdafsdfsa');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ref_sifat_kegiatan`
+-- Table structure for table `tb_ref_sifat_kegiatan`
 --
 
-CREATE TABLE `ref_sifat_kegiatan` (
+CREATE TABLE `tb_ref_sifat_kegiatan` (
   `id_sk` int(11) NOT NULL,
-  `sifat_kegiatan` varchar(64) DEFAULT NULL
+  `sifat_kegiatan` varchar(254) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `ref_sifat_kegiatan`
+-- Dumping data for table `tb_ref_sifat_kegiatan`
 --
 
-INSERT INTO `ref_sifat_kegiatan` (`id_sk`, `sifat_kegiatan`) VALUES
-(1, 'Pelayanan'),
-(2, 'PJB'),
-(3, 'Diklat'),
-(4, 'Bansos'),
-(5, 'Pengawasan'),
-(6, 'Perencanaan');
+INSERT INTO `tb_ref_sifat_kegiatan` (`id_sk`, `sifat_kegiatan`) VALUES
+(1, 'PELAYANAN'),
+(2, 'PENGADAAN BARANG DAN JASA'),
+(3, 'DIKLAT'),
+(4, 'BANSOS');
 
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `totalskor`
--- (See below for the actual view)
+-- Table structure for table `tb_riwayat_resiko`
 --
-CREATE TABLE `totalskor` (
-`id_tk` int(11)
-,`program` text
-,`kegiatan` text
-,`totalskor` decimal(32,0)
-,`id_atasan` int(11)
-,`id_user` int(11)
-);
+
+CREATE TABLE `tb_riwayat_resiko` (
+  `id` int(11) NOT NULL,
+  `kondisi` text NOT NULL,
+  `kriteria` text NOT NULL,
+  `sebab_uraian` text NOT NULL,
+  `akibat` text NOT NULL,
+  `saran` text NOT NULL,
+  `sumber_data` text NOT NULL,
+  `pernyataan_resiko` text NOT NULL,
+  `sebab` text NOT NULL,
+  `dampak` text NOT NULL,
+  `tindak_lanjut` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_riwayat_resiko`
+--
+
+INSERT INTO `tb_riwayat_resiko` (`id`, `kondisi`, `kriteria`, `sebab_uraian`, `akibat`, `saran`, `sumber_data`, `pernyataan_resiko`, `sebab`, `dampak`, `tindak_lanjut`) VALUES
+(1, 'dffsdfs sdffdsf', 'dsfsdfsd sdf ssf', 'dfdfdfs fdsfd sfsdf  sda', 'fafsdf sfsdf sdfsd fsd', 'fdfas sdf f sfsafd sdf', 'fdfsad fdsfsad fasdf sd', ' fsdfsafdsfa sdafas fsd fsadfas', ' fdsfasfdfasf dsfds sf ', 'fdsafs sdfa dffasfas ', 1),
+(2, 'fdsfad dfdsf', 'fdfas dsf ', 'dffaf dsf', 'fsdf safd', 'dsffs', 'fdsfsafdasf', 'fdsfadf', 'fdfas', 'fdfasfas', 1),
+(3, 'fdfas', 'fdsfasd', 'fsdfsdfa', 'fsdfas', 'dfsadf', 'dfasf', 'dfdsaf', 'dfasdf', 'sdfasdf', 1),
+(4, 'fdafs', 'dsfadsf', 'dfdsafsd', 'fsdfa', 'fdaf', 'dfsaf', 'fdsafdsa', 'fdsfas', 'fsdfafsda', 1),
+(5, 'nananan nene', 'fdsf', 'fsfsf', '', '', '', '', '', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tujuankegiatan`
+-- Table structure for table `tb_tujuan_kegiatan`
 --
 
-CREATE TABLE `tujuankegiatan` (
+CREATE TABLE `tb_tujuan_kegiatan` (
   `id_tk` int(11) NOT NULL,
-  `tujuan_pd` text DEFAULT NULL,
-  `sasaran_pd` text DEFAULT NULL,
-  `program` text DEFAULT NULL,
-  `kegiatan` text DEFAULT NULL,
-  `output_kegiatan` text DEFAULT NULL,
-  `tujuan_kegiatan` text DEFAULT NULL,
-  `id_sk` int(32) DEFAULT NULL,
-  `kode_unor` int(11) DEFAULT NULL,
-  `is_idev` int(2) DEFAULT NULL
+  `program` text NOT NULL,
+  `outcome` text NOT NULL,
+  `kegiatan` text NOT NULL,
+  `output` text NOT NULL,
+  `tujuan` text NOT NULL,
+  `id_sk` int(100) NOT NULL,
+  `kode_unor` int(100) NOT NULL,
+  `is_idev` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tujuankegiatan`
+-- Dumping data for table `tb_tujuan_kegiatan`
 --
 
-INSERT INTO `tujuankegiatan` (`id_tk`, `tujuan_pd`, `sasaran_pd`, `program`, `kegiatan`, `output_kegiatan`, `tujuan_kegiatan`, `id_sk`, `kode_unor`, `is_idev`) VALUES
-(1, 'Meningkatkan Kualitas Kesejahteraan Sosial Masyarakat', 'Meningkatnya kesempatan kerja', 'Program Pelatihan Kerja dan Produktivitas Tenaga Kerja', 'Pelaksanaan Pendidikan dan Pelatihan Keterampilan bagi Pencari Kerja berdasarkan Klaster Kompetensi', 'Terlaksananya 5X Diklat Keterampilan untuk 500 orang peserta', 'Terlaksananya 5X Diklat Keterampilan untuk 500 orang peserta yang yang sesuai kebutuhan peserta, tepat waktu dengan 80% peserta pelatihan yg ditargetkan memahami materi pelatihan', 3, 3, 1);
+INSERT INTO `tb_tujuan_kegiatan` (`id_tk`, `program`, `outcome`, `kegiatan`, `output`, `tujuan`, `id_sk`, `kode_unor`, `is_idev`) VALUES
+(1, 'tes satu', '', 'tes satu', '', '', 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -164,10 +169,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `email`, `id_atasan`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (1, 'PEMERINTAH KOTA BITUNG', 'asda@simako.com', '00', '$2y$10$sLY9eqOHFU7Eh5g/1apZ2e6EM/4F40M.8aJhUmLo/53IuTi/A0zKO', 1, 1, 1552120289),
-(2, 'BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA DAERAH', 'kpd@simako.com', '1', '$2y$10$N54g6lppHvajXGwt6S/QCOj5FQ4YO82fiIJ7cF10vWlpkbq8LGwi2', 2, 1, 1552285263),
-(3, 'BIDANG PENGEMBANGAN SDM', 'kabid@simako.com', '2', '$2y$10$fX3ruwYrl9wUO0893rhNbeKMT2qagwr27fQ3bn1yzq4l6I3eei.F2', 3, 1, 1553151354),
+(2, 'BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA DAERAH KOTA BITUNG', 'bkpsdmd@simako.com', '1', '$2y$10$4SNTQ6xQp/8WNyGaqV0ixeKceXtF//hd9j.NEScTZ/TA8le431Q1.', 2, 1, 1552285263),
+(3, 'BIDANG PENGEMBANGAN SDM', 'bid.psdm@simako.com', '2', '$2y$10$ZFBEwaht3MteXr2jYL/zSe1RBNDdsiz.7nJMwLRcJJPAqmUwz3/f.', 3, 1, 1553151354),
 (6, 'BADAN KEUANGAN DAN ASET DAERAH KOTA BITUNG', 'bkad@simako.com', '1', '$2y$10$Z11Np/Aq39m1JjrLrHePguNP8hajcRpsIoeL8My7jiP0ZvLaQWcK6', 2, 1, 2021),
-(10, 'BIDANG INFORMASI KEPEGAWAIAN', 'inka@simako.com', '2', '$2y$10$D3VFKLqIiKS7JUEQlYQ3T.RNpV0.4g9VpaTXpJrQEWYbt5i1utlZi', 3, 1, 2021);
+(10, 'BIDANG INFORMASI KEPEGAWAIAN', 'bid.inka@simako.com', '2', '$2y$10$LPVvNpOr9NB/rsHilH1XDex1jNe95Y9DIgY8xmfVaUIdC2AopyuPO', 3, 1, 2021),
+(11, 'INSPEKTORAT', 'inspektorat@simako.com', '00', '$2y$10$Yo2QJaziwYmG.2GtmQ1wFetrs.LfA1lMh85lYdGZYOGi96cmiCYl2', 4, 1, 2021);
 
 -- --------------------------------------------------------
 
@@ -194,7 +200,9 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (7, 3, 4),
 (8, 1, 5),
 (9, 2, 5),
-(10, 3, 5);
+(10, 3, 5),
+(12, 4, 5),
+(13, 4, 6);
 
 -- --------------------------------------------------------
 
@@ -214,10 +222,11 @@ CREATE TABLE `user_menu` (
 
 INSERT INTO `user_menu` (`id`, `menu`, `urutan`) VALUES
 (1, 'ASDA', 2),
-(2, 'OPD', 3),
-(3, 'BIDANG', 4),
-(4, 'USER', 5),
-(5, 'DASHBOARD', 1);
+(2, 'OPD', 4),
+(3, 'BIDANG', 5),
+(4, 'USER', 6),
+(5, 'DASHBOARD', 1),
+(6, 'INSPEKTORAT', 3);
 
 -- --------------------------------------------------------
 
@@ -237,7 +246,8 @@ CREATE TABLE `user_role` (
 INSERT INTO `user_role` (`id`, `role`) VALUES
 (1, 'Admin Asda'),
 (2, 'Admin OPD'),
-(3, 'Admin Bidang');
+(3, 'Admin Bidang'),
+(4, 'Admin Inspektorat');
 
 -- --------------------------------------------------------
 
@@ -260,16 +270,41 @@ CREATE TABLE `user_sub_menu` (
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (1, 4, 'User Management', 'user/', 'fas fa-user-cog', 1),
-(2, 5, 'Dashboard', 'dashboard/', 'fas fa-tachometer-alt', 1);
+(2, 5, 'Dashboard', 'dashboard/', 'fas fa-tachometer-alt', 1),
+(3, 6, 'Input Ref. Resiko', 'inspektorat/', 'fas fa-database', 1),
+(4, 2, 'Input Riwayat Resiko', 'opd/riwayat', 'fas fa-history', 1),
+(5, 2, 'List Riwayat Resiko', 'opd/listriwayat', 'fas fa-list-ul', 1),
+(6, 2, 'Input Program', 'opd/inputprogram', 'fas fa-keyboard', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure for view `totalskor`
+-- Stand-in structure for view `v_totalskor`
+-- (See below for the actual view)
 --
-DROP TABLE IF EXISTS `totalskor`;
+CREATE TABLE `v_totalskor` (
+`program` text
+,`outcome` text
+,`kegiatan` text
+,`output` text
+,`tujuan` text
+,`is_idev` int(2)
+,`id_user` int(11)
+,`id_atasan` int(11)
+,`id_refrr` int(255)
+,`total1` decimal(32,0)
+,`total2` decimal(32,0)
+,`total3` decimal(32,0)
+);
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `totalskor`  AS  select `tujuankegiatan`.`id_tk` AS `id_tk`,`tujuankegiatan`.`program` AS `program`,`tujuankegiatan`.`kegiatan` AS `kegiatan`,sum(`idev`.`skor_resiko`) AS `totalskor`,`idev`.`id_atasan` AS `id_atasan`,`idev`.`id_user` AS `id_user` from (`tujuankegiatan` left join `idev` on(`tujuankegiatan`.`id_tk` = `idev`.`id_tk`)) group by `tujuankegiatan`.`id_tk` <> 0 and `idev`.`id_user` <> 0 ;
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_totalskor`
+--
+DROP TABLE IF EXISTS `v_totalskor`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_totalskor`  AS  select `tb_tujuan_kegiatan`.`program` AS `program`,`tb_tujuan_kegiatan`.`outcome` AS `outcome`,`tb_tujuan_kegiatan`.`kegiatan` AS `kegiatan`,`tb_tujuan_kegiatan`.`output` AS `output`,`tb_tujuan_kegiatan`.`tujuan` AS `tujuan`,`tb_tujuan_kegiatan`.`is_idev` AS `is_idev`,`idev`.`id_user` AS `id_user`,`idev`.`id_atasan` AS `id_atasan`,`idev`.`id_refrr` AS `id_refrr`,sum(`idev`.`skor_kemungkinan`) AS `total1`,sum(`idev`.`skor_dampak`) AS `total2`,sum(`idev`.`skor_resiko`) AS `total3` from (`tb_tujuan_kegiatan` join `idev`) where `tb_tujuan_kegiatan`.`id_tk` = `idev`.`id_tk` group by `tb_tujuan_kegiatan`.`id_tk` ;
 
 --
 -- Indexes for dumped tables
@@ -282,21 +317,27 @@ ALTER TABLE `idev`
   ADD PRIMARY KEY (`id_idev`);
 
 --
--- Indexes for table `refrr`
+-- Indexes for table `tb_ref_resiko`
 --
-ALTER TABLE `refrr`
+ALTER TABLE `tb_ref_resiko`
   ADD PRIMARY KEY (`id_refrr`);
 
 --
--- Indexes for table `ref_sifat_kegiatan`
+-- Indexes for table `tb_ref_sifat_kegiatan`
 --
-ALTER TABLE `ref_sifat_kegiatan`
+ALTER TABLE `tb_ref_sifat_kegiatan`
   ADD PRIMARY KEY (`id_sk`);
 
 --
--- Indexes for table `tujuankegiatan`
+-- Indexes for table `tb_riwayat_resiko`
 --
-ALTER TABLE `tujuankegiatan`
+ALTER TABLE `tb_riwayat_resiko`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_tujuan_kegiatan`
+--
+ALTER TABLE `tb_tujuan_kegiatan`
   ADD PRIMARY KEY (`id_tk`);
 
 --
@@ -340,52 +381,58 @@ ALTER TABLE `idev`
   MODIFY `id_idev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `refrr`
+-- AUTO_INCREMENT for table `tb_ref_resiko`
 --
-ALTER TABLE `refrr`
-  MODIFY `id_refrr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `tb_ref_resiko`
+  MODIFY `id_refrr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `ref_sifat_kegiatan`
+-- AUTO_INCREMENT for table `tb_ref_sifat_kegiatan`
 --
-ALTER TABLE `ref_sifat_kegiatan`
-  MODIFY `id_sk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `tb_ref_sifat_kegiatan`
+  MODIFY `id_sk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tujuankegiatan`
+-- AUTO_INCREMENT for table `tb_riwayat_resiko`
 --
-ALTER TABLE `tujuankegiatan`
+ALTER TABLE `tb_riwayat_resiko`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tb_tujuan_kegiatan`
+--
+ALTER TABLE `tb_tujuan_kegiatan`
   MODIFY `id_tk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
