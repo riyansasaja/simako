@@ -10,6 +10,27 @@ class Opd extends CI_Controller
         $this->load->model('ModelOpd');
     }
 
+    public function riwayat()
+    {
+        $data['title'] = 'Input Riwayat Resiko';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('opd/riwayat');
+        $this->load->view('templates/footer');
+    }
+
+    public function listriwayat()
+    {
+        $data['title'] = 'Lihat Riwayat Resiko';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('opd/listriwayat');
+        $this->load->view('templates/footer');
+        $this->load->view('opd/endlistriwayat');
+    }
+
 
     public function input()
     {
@@ -35,14 +56,5 @@ class Opd extends CI_Controller
     {
         $data = $this->ModelOpd->tambah();
         echo json_encode($data);
-    }
-
-    public function adduser()
-    {
-        $data['judul'] = 'Add User';
-
-        $this->load->view('opd/header', $data);
-        $this->load->view('opd/adduser');
-        $this->load->view('opd/end');
     }
 }

@@ -13,13 +13,13 @@ class Inspektorat extends CI_Controller
     public function index()
     {
         $data['title'] = 'Input Ref. Resiko';
+        $data['js'] = 'inputref.js';
         $data['sifatkegiatan'] = $this->db->get('ref_sifat_kegiatan')->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
         $this->load->view('inspektorat/inputref');
         $this->load->view('templates/footer');
-        $this->load->view('inspektorat/endinputref');
     }
 
     public function getData()

@@ -14,13 +14,13 @@ class Dashboard extends CI_Controller
     {
 
         $data['title'] = 'Dashboard';
+        $data['js'] = 'dashboard.js';
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
         $this->load->view('dashboard/index');
-        $this->load->view('templates/footer');
-        $this->load->view('dashboard/endindex');
+        $this->load->view('templates/footer', $data);
     }
 
     public function getDashboard()
