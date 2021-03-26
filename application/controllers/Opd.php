@@ -22,13 +22,12 @@ class Opd extends CI_Controller
 
     public function listriwayat()
     {
-        $data['title'] = 'Lihat Riwayat Resiko';
+        $data['title'] = 'List Riwayat Resiko';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
         $this->load->view('opd/listriwayat');
         $this->load->view('templates/footer');
-        $this->load->view('opd/endlistriwayat');
     }
 
 
