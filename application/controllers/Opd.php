@@ -6,23 +6,39 @@ class Opd extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('form_validation');
         is_logged_in();
         $this->load->model('ModelOpd');
     }
 
     public function riwayat()
     {
-        $data['title'] = 'Input Riwayat Resiko';
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar');
-        $this->load->view('opd/riwayat');
-        $this->load->view('templates/footer');
+
+        $this->form_validation->set_rules('kondisi', 'Kondisi', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            # code...
+            $data['title'] = 'Input Riwayat Resiko';
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar');
+            $this->load->view('opd/riwayat');
+            $this->load->view('templates/footer');
+        } else {
+
+            $cek =  $this->ModelOpd->tambahriwayat();
+            if ($cek) {
+                redirect('opd/listriwayat');
+            } else {
+                redirect('opd/riwayat');
+            }
+        }
     }
 
     public function listriwayat()
     {
         $data['title'] = 'List Riwayat Resiko';
+        $data['listriwayat'] = $this->db->get('tb_riwayat_resiko')->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
@@ -31,24 +47,29 @@ class Opd extends CI_Controller
     }
 
 
-    public function input()
+    public function inputprogram()
     {
         $id = $this->session->userdata('id');
-        $data['judul'] = 'Input Program';
+        $data['title'] = 'Input Program';
         $data['bidang'] = $this->db->get_where('user', ['id_atasan' => $id])->result_array();
-        $data['sifat_kegiatan'] = $this->db->get('ref_sifat_kegiatan')->result_array();
+        $data['sifat_kegiatan'] = $this->db->get('tb_ref_sifat_kegiatan')->result_array();
+        $data['js'] = 'inputprogram.js';
 
-        $this->load->view('opd/header', $data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
         $this->load->view('opd/inputprogram', $data);
-        $this->load->view('opd/inputprogscript');
-        $this->load->view('opd/end');
+        $this->load->view('templates/footer', $data);
     }
 
 
-    public function get_kegiatan()
+    public function getkegiatan()
     {
-        $data = $this->db->get('tujuankegiatan')->result();
-        echo json_encode($data);
+        $data = $this->db->get('tb_tujuan_kegiatan')->result();
+        $json = [
+            'data' => $data
+        ];
+        echo json_encode($json);
     }
 
     public function addKegiatan()

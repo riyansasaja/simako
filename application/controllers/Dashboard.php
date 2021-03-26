@@ -39,7 +39,7 @@ class Dashboard extends CI_Controller
             $highrisk = $this->dashboard->countRiskByAtasan($id);
         } else {
             #jika user asda atau Inspektorat
-            $data = $this->db->get('totalskor')->result();
+            $data = $this->db->get('v_totalskor')->result();
             $highrisk = $this->dashboard->countRiskByAtasan($id);
         }
 

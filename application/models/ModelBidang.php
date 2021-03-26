@@ -23,6 +23,6 @@ class ModelBidang extends CI_Model
     {
         $this->db->like('resiko', $program);
         $this->db->limit(10);
-        return $this->db->get_where('refrr', ['id_sk' => $id_sk])->result();
+        return $this->db->get_where('tb_ref_resiko', ['id_sk' => $id_sk])->result();
     }
 }

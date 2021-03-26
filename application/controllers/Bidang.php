@@ -16,7 +16,7 @@ class Bidang extends CI_Controller
         $id = $this->session->userdata('id');
 
 
-        $data['programs'] = $this->db->get_where('tujuankegiatan', ['kode_unor' => $id])->result_array();
+        $data['programs'] = $this->db->get_where('tb_tujuan_kegiatan', ['kode_unor' => $id])->result_array();
         $data['judul'] = 'Input';
         $this->load->view('bidang/header', $data);
         $this->load->view('bidang/inputidev', $data);
@@ -56,7 +56,7 @@ class Bidang extends CI_Controller
     public function cari_refrr()
     {
         $id_tk = $this->input->post('id_tk');
-        $ambe_id_sk = $this->db->get_where('tujuankegiatan', ['id_tk' => $id_tk])->result_array();
+        $ambe_id_sk = $this->db->get_where('tb_tujuan_kegiatan', ['id_tk' => $id_tk])->result_array();
         $id_sk = $ambe_id_sk[0]['id_sk'];
         $cari = $this->db->get_where('refrr', ['id_sk' => $id_sk])->result();
         echo json_encode($cari);
@@ -64,7 +64,7 @@ class Bidang extends CI_Controller
     public function tess()
     {
         $id_tk = 1;
-        $ambe_id_sk = $this->db->get_where('tujuankegiatan', ['id_tk' => $id_tk])->result_array();
+        $ambe_id_sk = $this->db->get_where('tb_tujuan_kegiatan', ['id_tk' => $id_tk])->result_array();
         $id_sk = $ambe_id_sk[0]['id_sk'];
         var_dump($id_sk);
     }

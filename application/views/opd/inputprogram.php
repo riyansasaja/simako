@@ -1,54 +1,35 @@
-<main class="inputprogram mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-
-                <section class="table">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Input Program Kegiatan</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <button type="button" name="" id="" class="btn btn-block btn-user bg-kedua text-white mb-3" data-toggle="modal" data-target="#addModal">Tambah Program Kegiatan</button>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="dataTable" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Tujuan</th>
-                                                        <th>Program</th>
-                                                        <th>Output Kegiatan</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <!-- <tfoot>
-                                                    <tr>
-                                                        <th>Tujuan</th>
-                                                        <th>Program</th>
-                                                        <th>Output Kegiatan</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </tfoot> -->
-                                                <tbody id="showdata">
-
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+<div class="row justify-content-start mb-3">
+    <div class="col">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Input Program Kegiatan</h6>
+            </div>
+            <div class="card-body">
+                <button type="button" name="" id="" class="btn btn-block btn-user  bg-primary text-white mb-3" data-toggle="modal" data-target="#addModal">Tambah Program Kegiatan</button>
+                <div class="table-responsive">
+                    <table class="table" id="showprogram" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Program</th>
+                                <th>Kegiatan</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
+
+
+
     </div>
-</main>
+
+</div>
+
 
 
 <!-- modal Add -->
@@ -67,20 +48,6 @@
                 <form id="form_add">
 
                     <div class="form-group row">
-                        <label for="tujuan_pd" class="col-sm-2 col-form-label">Tujuan Perangkat Daerah</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="tujuan_pd" id="tujuan_pd" rows="3" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="sasaran_pd" class="col-sm-2 col-form-label">Sasaran Perangkat Daerah</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="sasaran_pd" id="sasaran_pd" rows="3" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <label for="program" class="col-sm-2 col-form-label">Program</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" name="program" id="program" rows="3" required></textarea>
@@ -91,20 +58,6 @@
                         <label for="kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" name="kegiatan" id="kegiatan" rows="3" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="output_kegiatan" class="col-sm-2 col-form-label">Output Kegiatan</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="output_kegiatan" id="output_kegiatan" rows="3" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="tujuan_kegiatan" class="col-sm-2 col-form-label">Tujuan Kegiatan</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="tujuan_kegiatan" id="tujuan_kegiatan" rows="3" required></textarea>
                         </div>
                     </div>
 

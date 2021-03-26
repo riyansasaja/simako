@@ -14,17 +14,17 @@ class Inspektorat extends CI_Controller
     {
         $data['title'] = 'Input Ref. Resiko';
         $data['js'] = 'inputref.js';
-        $data['sifatkegiatan'] = $this->db->get('ref_sifat_kegiatan')->result_array();
+        $data['sifatkegiatan'] = $this->db->get('tb_ref_sifat_kegiatan')->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
         $this->load->view('inspektorat/inputref');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
 
     public function getData()
     {
-        $data =  $this->db->get('refrr')->result();
+        $data =  $this->db->get('tb_ref_resiko')->result();
         $json = [
             'data' => $data
         ];
@@ -37,9 +37,9 @@ class Inspektorat extends CI_Controller
 
         $id = $this->input->post('id');
         $this->db->select('*');
-        $this->db->from('refrr');
+        $this->db->from('tb_ref_resiko');
         $this->db->where('id_refrr', $id);
-        $this->db->join('ref_sifat_kegiatan', 'ref_sifat_kegiatan.id_sk=refrr.id_sk');
+        $this->db->join('tb_ref_sifat_kegiatan', 'tb_ref_sifat_kegiatan.id_sk=tb_ref_resiko.id_sk');
         $result = $this->db->get()->result();
         echo json_encode($result);
     }
@@ -47,7 +47,7 @@ class Inspektorat extends CI_Controller
     public function deleteData()
     {
         $id = $this->input->post('id');
-        $result = $this->db->delete('refrr', ['id_refrr' => $id]);
+        $result = $this->db->delete('tb_ref_resiko', ['id_refrr' => $id]);
         echo json_encode($result);
     }
 
@@ -62,7 +62,7 @@ class Inspektorat extends CI_Controller
 
         ];
 
-        $proses = $this->db->insert('refrr', $data);
+        $proses = $this->db->insert('tb_ref_resiko', $data);
         $json = [
             'status' => 'success',
             'data' => $proses
@@ -81,7 +81,7 @@ class Inspektorat extends CI_Controller
 
         ];
         $this->db->where('id_refrr', $id);
-        $proses = $this->db->update('refrr', $data);
+        $proses = $this->db->update('tb_ref_resiko', $data);
         echo json_encode($proses);
     }
 
@@ -93,13 +93,13 @@ class Inspektorat extends CI_Controller
             'id_sk' => '',
             'sifat_kegiatan' => $jenisSK
         ];
-        $proses = $this->db->insert('ref_sifat_kegiatan', $data);
+        $proses = $this->db->insert('tb_ref_sifat_kegiatan', $data);
         redirect('inspektorat');
     }
 
     public function getSK()
     {
-        $data =  $this->db->get('ref_sifat_kegiatan')->result();
+        $data =  $this->db->get('tb_ref_sifat_kegiatan')->result();
         $json = [
             'data' => $data
         ];
@@ -110,7 +110,7 @@ class Inspektorat extends CI_Controller
     public function deleteSK()
     {
         $id = $this->input->post('id');
-        $result = $this->db->delete('ref_sifat_kegiatan', ['id_sk' => $id]);
+        $result = $this->db->delete('tb_ref_sifat_kegiatan', ['id_sk' => $id]);
         echo json_encode($result);
     }
     //------

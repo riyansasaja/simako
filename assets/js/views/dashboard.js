@@ -1,26 +1,28 @@
-const path = 'http://localhost/simako/dashboard/';
-$('#tableDashboard').DataTable();
+$(document).ready(function () {
+    const path = 'http://localhost/simako/dashboard/';
 
-//ambil json
-$.getJSON("http://localhost/simako/dashboard/getdashboard", function (e) {
-      // looping
-    let x = 1;
-    $.each(e.data, function (i, val) { 
-        // console.log(val);
-        
-       
-        $('#dashboardisi').html(`
-                <tr>
-                    <td>${x}</td>
-                    <td>${val.program}</td>
-                    <td>${val.totalskor}</td>
-                </tr>
-        
-        `);
-        x++
-       
-         
-    });
+    // ---tampil data table
+    let showtable = $('#tableDashboard').DataTable( {
+        "ajax": `${path}getdashboard`,
+        "columns": [
+            { 
+                "data": null,"sortable": false, 
+                 render: function (data, type, row, meta) {
+                 return meta.row + meta.settings._iDisplayStart + 1;}  
+            },
+            { "data": "program" },
+            { "data": "kegiatan" },
+            { "data": "total1" },
+            { "data": "total2" },
+            { "data": "total3" },
+            
+        ]
+    } );
+    // ------
 
 
-    });
+    
+});
+
+
+

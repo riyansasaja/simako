@@ -8,21 +8,36 @@ class ModelOpd extends CI_Model
     {
 
         $data = [
-            'tujuan_pd' => $this->input->post('tujuan_pd', true),
-            'sasaran_pd' => $this->input->post('sasaran_pd', true),
+            'id_tk' => '',
             'program' => $this->input->post('program', true),
-            'kegiatan' => $this->input->post('kegiatan', true),
-            'output_kegiatan' => $this->input->post('output_kegiatan', true),
-            'tujuan_kegiatan' => $this->input->post('tujuan_kegiatan', true),
-            'sifat_kegiatan' => $this->input->post('sifat_kegiatan', true),
+            'outcome' => '',
+            'kegiatan' => $this->input->post('program', true),
+            'output' => '',
+            'tujuan' => '',
+            'id_sk' => $this->input->post('sifat_kegiatan', true),
             'kode_unor' => $this->input->post('unor_tujuan', true),
             'is_idev' => 1
 
         ];
-
-
-
-        $hasil = $this->db->insert('tujuankegiatan', $data);
+        $hasil = $this->db->insert('tb_tujuan_kegiatan', $data);
         return $hasil;
+    }
+
+    public function tambahriwayat()
+    {
+        $data = [
+            'id' => '',
+            'kondisi' => $this->input->post('kondisi', true),
+            'kriteria' => $this->input->post('kriteria', true),
+            'sebab_uraian' => $this->input->post('sebab_uraian', true),
+            'akibat' => $this->input->post('akibat', true),
+            'saran' => $this->input->post('saran', true),
+            'sumber_data' => $this->input->post('sumber_data', true),
+            'pernyataan_resiko' => $this->input->post('pernyataan_resiko', true),
+            'sebab' => $this->input->post('sebab', true),
+            'dampak' => $this->input->post('dampak', true),
+            'tindak_lanjut' => $this->input->post('tindak_lanjut', true)
+        ];
+        return $this->db->insert('tb_riwayat_resiko', $data);
     }
 }

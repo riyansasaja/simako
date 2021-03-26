@@ -81,24 +81,21 @@
                             <tr>
                                 <th>#</th>
                                 <th>Program</th>
-                                <th>Skor</th>
+                                <th>kegiatan</th>
+                                <th>Total Resiko</th>
+                                <th>Total Sebab</th>
+                                <th>Total Dampak</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Program</th>
-                                <th>Skor</th>
-                            </tr>
-                        </tfoot>
-                        <tbody id="dashboardisi">
-
-
-
-                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<!-- chart -->
+<script src="<?= base_url('assets/') ?>vendor/chart.js/Chart.min.js"></script>
+<script src="<?= base_url('assets/') ?>js/demo/chart-area-demo.js"></script>
+<script src="<?= base_url('assets/') ?>js/demo/chart-pie-demo.js"></script>
