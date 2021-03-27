@@ -11,7 +11,7 @@ class ModelOpd extends CI_Model
             'id_tk' => '',
             'program' => $this->input->post('program', true),
             'outcome' => '',
-            'kegiatan' => $this->input->post('program', true),
+            'kegiatan' => $this->input->post('kegiatan', true),
             'output' => '',
             'tujuan' => '',
             'id_sk' => $this->input->post('sifat_kegiatan', true),
@@ -20,6 +20,25 @@ class ModelOpd extends CI_Model
 
         ];
         $hasil = $this->db->insert('tb_tujuan_kegiatan', $data);
+        return $hasil;
+    }
+
+    public function update()
+    {
+        $id = $this->input->post('id_tk');
+        $data = [
+            'program' => $this->input->post('program', true),
+            'outcome' => '',
+            'kegiatan' => $this->input->post('kegiatan', true),
+            'output' => '',
+            'tujuan' => '',
+            'id_sk' => $this->input->post('id_sk', true),
+            'kode_unor' => $this->input->post('kode_unor', true),
+            'is_idev' => 1
+
+        ];
+        $this->db->where('id_tk', $id);
+        $hasil = $this->db->update('tb_tujuan_kegiatan', $data);
         return $hasil;
     }
 

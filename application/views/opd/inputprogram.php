@@ -97,3 +97,70 @@
 </div>
 
 <!-- end modal add -->
+
+<!-- modal Edit -->
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModal">Edit Program</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="form_edit">
+                    <input type="text" name="id_tk" id="id_tk" hidden>
+
+                    <div class="form-group row">
+                        <label for="program" class="col-sm-2 col-form-label">Program</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="program" id="edit_program" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="kegiatan" id="edit_kegiatan" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="sifat_kegiatan" class="col-sm-2 col-form-label">Sifat Kegiatan</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="sifat_kegiatan" id="edit_sifat_kegiatan">
+                                <?php foreach ($sifat_kegiatan as $sk) : ?>
+                                    <option value="<?= $sk['id_sk']; ?>"><?= $sk['sifat_kegiatan']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="unor_tujuan" class="col-sm-2 col-form-label">Bidang Pelaksana</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="unor_tujuan" id="edit_unor_tujuan">
+                                <?php foreach ($bidang as $b) : ?>
+                                    <option value="<?= $b['id']; ?>"><?= $b['name']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn_update">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end modal add -->

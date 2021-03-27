@@ -31,12 +31,8 @@ $(document).ready(function() {
     $('#btn_simpan').on('click', function() {
 
         // tangkap hasil
-        let tujuan_pd = $('#tujuan_pd').val();
-        let sasaran_pd = $('#sasaran_pd').val();
         let program = $('#program').val();
         let kegiatan = $('#kegiatan').val();
-        let output_kegiatan = $('#output_kegiatan').val();
-        let tujuan_kegiatan = $('#tujuan_kegiatan').val();
         let sifat_kegiatan = $('#sifat_kegiatan').val();
         let unor_tujuan = $('#unor_tujuan').val();
 
@@ -44,12 +40,8 @@ $(document).ready(function() {
             type: "POST",
             url: `${path}addkegiatan`,
             data: {
-                tujuan_pd : tujuan_pd,
-                sasaran_pd : sasaran_pd,
                 program : program,
                 kegiatan: kegiatan,
-                output_kegiatan : output_kegiatan,
-                tujuan_kegiatan : tujuan_kegiatan,
                 sifat_kegiatan : sifat_kegiatan,
                 unor_tujuan : unor_tujuan
             },
@@ -73,9 +65,76 @@ $(document).ready(function() {
     });
     // ------
 
-    // ---EditProgram
     
+    //---start delete Program
+    $('#showprogram').on('click', '.item_delete', function(){
+        var data = showprogram.row( $(this).parents('tr') ).data();
+        let id = data['id_tk'];
+        let hapus = confirm('yakin menghapus??');
+        if (hapus) {
+            //lakukan penghapusan
+            $.ajax({
+                type: "POST",
+                url: `${path}deletekegiatan`,
+                data: {id:id},
+                dataType: "JSON",
+                success: function (response) {
+                    console.log(response);
+                    alert('Data Terhapus!!');
+                    showprogram.ajax.reload();
+                }
+            });
+        }//endif
+        
+    });
+
+    //---------
+
+
+    // ---Start get Edit Program
+    $('#showprogram').on('click', '.item_edit', function(){
+        var data = showprogram.row( $(this).parents('tr') ).data();
+        let id = data['id_tk'];
+        $('#editModal').modal('show');
+       $('[name="id_tk"]').val(id);
+        $('[name="program"]').val(data['program']);
+        $('[name="kegiatan"]').val(data['kegiatan']);
+        $('[name="sifat_kegiatan"]').val(data['id_sk']);
+        $('[name="unor_tujuan"]').val(data['kode_unor']);
+    });
     // ------
+
+    //--- Start Update Program
+    $('#btn_update').on('click', function () {
+        console.log('tombol ditekan');
+        let id_tk = $('#id_tk').val();
+        let program = $('#edit_program').val();
+        let kegiatan = $('#edit_kegiatan').val();
+        let id_sk = $('#edit_sifat_kegiatan').val();
+        let kode_unor = $('#edit_unor_tujuan').val();
+
+        $.ajax({
+            type: "POST",
+            url: `${path}updatekegiatan`,
+            data: {
+                id_tk: id_tk,
+                program: program,
+                kegiatan: kegiatan,
+                id_sk: id_sk,
+                kode_unor: kode_unor,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                console.log(response);
+                  
+                    alert('Data Berhasil Dirubah !');
+                    showprogram.ajax.reload();
+                }
+        });
+        return false;
+
+    });
+    // -----
 
 
 

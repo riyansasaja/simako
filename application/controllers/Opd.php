@@ -77,4 +77,17 @@ class Opd extends CI_Controller
         $data = $this->ModelOpd->tambah();
         echo json_encode($data);
     }
+
+    public function deleteKegiatan()
+    {
+        $id = $this->input->post('id');
+        $result = $this->db->delete('tb_tujuan_kegiatan', ['id_tk' => $id]);
+        echo json_encode($result);
+    }
+
+    public function updateKegiatan()
+    {
+        $data = $this->ModelOpd->update();
+        echo json_encode($data);
+    }
 }
