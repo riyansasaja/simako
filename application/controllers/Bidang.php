@@ -14,15 +14,27 @@ class Bidang extends CI_Controller
     {
 
         $id = $this->session->userdata('id');
-
-
         $data['programs'] = $this->db->get_where('tb_tujuan_kegiatan', ['kode_unor' => $id])->result_array();
-        $data['judul'] = 'Input';
-        $this->load->view('bidang/header', $data);
-        $this->load->view('bidang/inputidev', $data);
-        $this->load->view('bidang/footer');
-        $this->load->view('bidang/jsinputdev');
-        $this->load->view('bidang/end');
+
+
+
+        $data['title'] = 'Input Analisis Resiko';
+        $data['js'] = 'bidanginput.js';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('bidang/input');
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function list()
+    {
+        $data['title'] = 'List Analisis Resiko';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('bidang/input');
+        $this->load->view('templates/footer');
     }
 
     public function inputform()

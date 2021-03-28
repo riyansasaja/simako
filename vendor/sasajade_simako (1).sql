@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2021 at 12:09 AM
+-- Generation Time: Mar 29, 2021 at 01:47 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -144,7 +144,9 @@ CREATE TABLE `tb_tujuan_kegiatan` (
 --
 
 INSERT INTO `tb_tujuan_kegiatan` (`id_tk`, `program`, `outcome`, `kegiatan`, `output`, `tujuan`, `id_sk`, `kode_unor`, `is_idev`) VALUES
-(1, 'tes satu', '', 'tes satu', '', '', 2, 3, 1);
+(7, 'Kegiatan Satu', '', 'Membuat kegiatan satu ', '', '', 1, 3, 1),
+(8, 'Kegiatan Dua', '', 'Membuat kegiatan dua', '', '', 2, 3, 1),
+(9, 'Kegiatan Tiga', '', 'Membuat kegiatan tiga', '', '', 1, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -170,9 +172,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `email`, `id_atasan`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (1, 'PEMERINTAH KOTA BITUNG', 'asda@simako.com', '00', '$2y$10$sLY9eqOHFU7Eh5g/1apZ2e6EM/4F40M.8aJhUmLo/53IuTi/A0zKO', 1, 1, 1552120289),
 (2, 'BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA DAERAH KOTA BITUNG', 'bkpsdmd@simako.com', '1', '$2y$10$4SNTQ6xQp/8WNyGaqV0ixeKceXtF//hd9j.NEScTZ/TA8le431Q1.', 2, 1, 1552285263),
-(3, 'BIDANG PENGEMBANGAN SDM', 'bid.psdm@simako.com', '2', '$2y$10$ZFBEwaht3MteXr2jYL/zSe1RBNDdsiz.7nJMwLRcJJPAqmUwz3/f.', 3, 1, 1553151354),
+(3, 'BIDANG PENGEMBANGAN SDM', 'bid.psdm@simako.com', '2', '$2y$10$.gBmE36Wf5xBpNOxYB3Cqea4xXVEOf4qI8QoTybTUC6Dp4b5cUkjW', 3, 1, 1553151354),
 (6, 'BADAN KEUANGAN DAN ASET DAERAH KOTA BITUNG', 'bkad@simako.com', '1', '$2y$10$Z11Np/Aq39m1JjrLrHePguNP8hajcRpsIoeL8My7jiP0ZvLaQWcK6', 2, 1, 2021),
-(10, 'BIDANG INFORMASI KEPEGAWAIAN', 'bid.inka@simako.com', '2', '$2y$10$LPVvNpOr9NB/rsHilH1XDex1jNe95Y9DIgY8xmfVaUIdC2AopyuPO', 3, 1, 2021),
+(10, 'BIDANG INFORMASI KEPEGAWAIAN', 'bid.inka@simako.com', '2', '$2y$10$hM1/VslBvIR4huQIbMVKDuBLAA1QMpaeJ9GlSP/VffrFXs6CfiViy', 3, 1, 2021),
 (11, 'INSPEKTORAT', 'inspektorat@simako.com', '00', '$2y$10$Yo2QJaziwYmG.2GtmQ1wFetrs.LfA1lMh85lYdGZYOGi96cmiCYl2', 4, 1, 2021);
 
 -- --------------------------------------------------------
@@ -274,7 +276,9 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (3, 6, 'Input Ref. Resiko', 'inspektorat/', 'fas fa-database', 1),
 (4, 2, 'Input Riwayat Resiko', 'opd/riwayat', 'fas fa-history', 1),
 (5, 2, 'List Riwayat Resiko', 'opd/listriwayat', 'fas fa-list-ul', 1),
-(6, 2, 'Input Program', 'opd/inputprogram', 'fas fa-keyboard', 1);
+(6, 2, 'Input Program', 'opd/inputprogram', 'fas fa-keyboard', 1),
+(7, 3, 'Input Analisis Resiko', 'bidang/input', 'fas fa-highlighter', 1),
+(8, 3, 'List Analisis Resiko', 'bidang/list', 'fas fa-mask', 1);
 
 -- --------------------------------------------------------
 
@@ -402,7 +406,7 @@ ALTER TABLE `tb_riwayat_resiko`
 -- AUTO_INCREMENT for table `tb_tujuan_kegiatan`
 --
 ALTER TABLE `tb_tujuan_kegiatan`
-  MODIFY `id_tk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -432,7 +436,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

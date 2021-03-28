@@ -17,8 +17,8 @@ $(document).ready(function() {
             { "data": "kegiatan" },
             {
             "data": null,
-            "defaultContent": `<a href="javascript:;" id='edit' class="badge badge-pill badge-danger item_edit"'>Edit</a>
-            <a href="javascript:;" id='delete' class="badge badge-pill badge-danger item_delete"'>Delete</a>`
+            "defaultContent": `<a href="javascript:;" id='edit' class="text-danger item_edit"'><i class="fas fa-edit"></i></a>
+            <a href="javascript:;" id='delete' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
         }
         ]
     } );
@@ -70,7 +70,7 @@ $(document).ready(function() {
     $('#showprogram').on('click', '.item_delete', function(){
         var data = showprogram.row( $(this).parents('tr') ).data();
         let id = data['id_tk'];
-        let hapus = confirm('yakin menghapus??');
+        let hapus = confirm(`Yakin menghapus ${data['program']}???`);
         if (hapus) {
             //lakukan penghapusan
             $.ajax({
@@ -126,9 +126,11 @@ $(document).ready(function() {
             dataType: "JSON",
             success: function(response) {
                 console.log(response);
-                  
-                    alert('Data Berhasil Dirubah !');
-                    showprogram.ajax.reload();
+                $('[name="program"]').val('');
+                $('[name="kegiatan"]').val('');
+                alert('Data Berhasil Dirubah !');
+                $('#editModal').modal('hide');
+                showprogram.ajax.reload();
                 }
         });
         return false;
