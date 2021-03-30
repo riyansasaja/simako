@@ -60,9 +60,8 @@ class Bidang extends CI_Controller
 
     public function inputrisk($id_tk)
     {
-        $id = $this->session->userdata('id');
         $data['list'] = $this->ModelBidang->getprogrambyid($id_tk);
-        $data['ref_risk'] = $this->ModelBidang->getrefrisk($data['list'][0]['id_sk']);
+        $data['ref_risk'] = $this->ModelBidang->getrefrisk($id_tk);
         $data['title'] = 'Input Analisis Resiko';
         $data['js'] = 'inputrisk.js';
         $this->load->view('templates/header', $data);
@@ -72,6 +71,27 @@ class Bidang extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
+    public function seveidev()
+    {
+        $id_user = $this->session->userdata('id');
+        $id_atasan = $this->session->userdata('id_atasan');
+        $data['data'] = $this->ModelBidang->m_saveidev($id_user, $id_atasan);
+        echo json_encode($data);
+    }
+
+    public function getidev($id_tk)
+    {
+        $data['data'] = $this->db->get_where('tb_idev', ['id_tk' => $id_tk])->result();
+        echo json_encode($data);
+    }
+
+    public function del_idev()
+    {
+        $id_idev = $this->input->post('id_idev');
+        $this->db->where('id_idev', $id_idev);
+        $data = $this->db->delete('tb_idev');
+        echo json_encode($data);
+    }
 
 
 

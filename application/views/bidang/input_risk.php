@@ -5,10 +5,10 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-6">
-                        <p>Program <br><?= $list[0]['program'] ?></p>
+                        <p><span class="font-weight-bold">Program</span> <br><?= $list[0]['program'] ?></p>
                     </div>
                     <div class="col-6">
-                        <p>Kegiatan <br><?= $list[0]['kegiatan'] ?></p>
+                        <p><span class="font-weight-bold">Kegiatan</span><br><?= $list[0]['kegiatan'] ?></p>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 Daftar Analis Resiko
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <table id="table_idev" class="table table-bordered">
                     <thead>
                         <tr>
 
@@ -39,25 +39,16 @@
                             <th scope="col">Skor<br>Kemungkinan</th>
                             <th scope="col">Skor<br>Dampak</th>
                             <th scope="col">Skor<br>Resiko</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>1</td>
-                            <td>4</td>
-                            <td>8</td>
-                        </tr>
-                    </tbody>
+
                     <tfoot>
                         <tr class="bg-warning text-dark">
                             <th colspan="4" class="text-center">Total Skor</th>
-                            <th>1</th>
-                            <th>4</th>
-                            <th>8</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </tfoot>
                 </table>
@@ -74,12 +65,15 @@
             </div>
             <div class="card-body">
                 <form>
+                    <input type="text" id="id_tk" name="id_tk" value="<?= $list[0]['id_tk'] ?>" hidden>
                     <div class="form-row">
                         <div class="form-group col">
                             <label for="resiko">Resiko</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
+                            <select id="resiko" class="form-control" name="resiko">
+                                <option selected>---Pilih Salah Satu ---</option>
+                                <?php foreach ($ref_risk as $ref) : ?>
+                                    <option value="<?= $ref['resiko'] ?>"><?= $ref['resiko'] ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
 
@@ -87,9 +81,11 @@
                     <div class="form-row">
                         <div class="form-group col-8">
                             <label for="sebab">Sebab</label>
-                            <select id="sebab" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
+                            <select id="sebab" class="form-control" name="sebab">
+                                <option selected>---Pilih Salah Satu ---</option>
+                                <?php foreach ($ref_risk as $ref) : ?>
+                                    <option value="<?= $ref['sebab'] ?>"><?= $ref['sebab'] ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group col">
@@ -101,9 +97,11 @@
                     <div class="form-row">
                         <div class="form-group col-8">
                             <label for="dampak">Dampak/Akibat</label>
-                            <select id="dampak" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
+                            <select id="dampak" class="form-control" name="dampak">
+                                <option selected>---Pilih Salah Satu ---</option>
+                                <?php foreach ($ref_risk as $ref) : ?>
+                                    <option value="<?= $ref['dampak'] ?>"><?= $ref['dampak'] ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group col">
@@ -114,10 +112,8 @@
                 </form>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary btn-block btn-lg" type="submit">Tambah</button>
+                <button class="btn btn-primary btn-block btn-lg" type="submit" id="btn_tambah">Tambah</button>
             </div>
         </div>
     </div>
 </div>
-
-<?php var_dump($ref_risk); ?>
