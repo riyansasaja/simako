@@ -29,7 +29,7 @@
                         <tr>
 
                             <th colspan="4" class="bg-secondary text-light">Identifikasi Resiko</th>
-                            <th colspan="3" class="bg-secondary text-light">Analisis Resiko</th>
+                            <th colspan="4" class="bg-secondary text-light">Analisis Resiko</th>
                         </tr>
                         <tr>
                             <th scope="col">#</th>

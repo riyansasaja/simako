@@ -15,15 +15,15 @@ $(document).ready(function () {
                  render: function (data, type, row, meta) {
                  return meta.row + meta.settings._iDisplayStart + 1;}  
             },
-            { "data": "resiko" },
-            { "data": "sebab" },
-            { "data": "dampak" },
-            { "data": "n_kemungkinan" },
-            { "data": "n_dampak" },
-            { "data": "n_resiko" },
+            { data: "resiko" },
+            { data: "sebab" },
+            { data: "dampak" },
+            { data: "n_kemungkinan" },
+            { data: "n_dampak" },
+            { data: "n_resiko" },
             {
-            "data": null,
-            "defaultContent": `<a href="javascript:;" id='tes' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
+            data: null,
+            "defaultContent": `<a href="javascript:;" id='delete' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
         }
         ],
         //hitung total lewat footerCallback dataTables
