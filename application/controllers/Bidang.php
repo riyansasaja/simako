@@ -10,22 +10,72 @@ class Bidang extends CI_Controller
         $this->load->model('ModelBidang');
     }
 
-    public function input()
+    public function inpuTK()
     {
 
-        $id = $this->session->userdata('id');
-        $data['programs'] = $this->db->get_where('tb_tujuan_kegiatan', ['kode_unor' => $id])->result_array();
-
-
-
-        $data['title'] = 'Input Analisis Resiko';
+        $data['title'] = 'Input Tujuan Kegiatan';
         $data['js'] = 'bidanginput.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('bidang/input');
+        $this->load->view('bidang/input_tujuan_kegiatan');
         $this->load->view('templates/footer', $data);
     }
+
+    public function geTK()
+    {
+        $id = $this->session->userdata('id');
+        $data['data'] = $this->db->get_where('tb_tujuan_kegiatan', ['kode_unor' => $id])->result();
+        echo json_encode($data);
+    }
+
+    public function updateTK()
+    {
+        $id = $this->input->post('id_tk');
+        $data = [
+            'outcome' => $this->input->post('outcome'),
+            'output' => $this->input->post('output'),
+            'tujuan' => $this->input->post('tujuan_kegiatan'),
+            'is_idev' => 2
+
+        ];
+        $this->db->where('id_tk', $id);
+        $this->db->set($data);
+        $hasil = $this->db->update('tb_tujuan_kegiatan');
+        echo json_encode($hasil);
+    }
+
+    public function analisrisk()
+    {
+        $id = $this->session->userdata('id');
+        $data['list'] = $this->ModelBidang->getlist($id);
+        $data['title'] = 'Input Analisis Resiko';
+        $data['js'] = 'analis.js';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('bidang/input_analis');
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function inputrisk($id_tk)
+    {
+        $id = $this->session->userdata('id');
+        $data['list'] = $this->ModelBidang->getprogrambyid($id_tk);
+        $data['ref_risk'] = $this->ModelBidang->getrefrisk($data['list'][0]['id_sk']);
+        $data['title'] = 'Input Analisis Resiko';
+        $data['js'] = 'inputrisk.js';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('bidang/input_risk');
+        $this->load->view('templates/footer', $data);
+    }
+
+
+
+
+    //-----batas yang bakal dihapus
 
     public function list()
     {

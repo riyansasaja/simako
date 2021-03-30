@@ -5,6 +5,35 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class ModelBidang extends CI_Model
 {
 
+
+    public function getlist($id)
+    {
+        $where = [
+            "kode_unor" => $id,
+            "is_idev" => 2
+        ];
+
+        $this->db->where($where);
+        return $this->db->get('tb_tujuan_kegiatan')->result_array();
+    }
+
+    public function getprogrambyid($id_tk)
+    {
+        $this->db->select('program, kegiatan, id_sk');
+        return $this->db->get_where('tb_tujuan_kegiatan', ['id_tk' => $id_tk])->result_array();
+    }
+
+    public function getrefrisk($id_sk)
+    {
+
+        $this->db->get_where('tb_ref_resiko', ['id_sk' => $id_sk]);
+    }
+
+    // ini yang mo hapus
+
+
+
+
     public function getNilaiProgram($id)
     {
         // // $this->db->join('idev', 'tujuankegiatan.id_tk = idev.id_tk', 'left');
