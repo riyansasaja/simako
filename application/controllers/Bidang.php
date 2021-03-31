@@ -93,16 +93,34 @@ class Bidang extends CI_Controller
         echo json_encode($data);
     }
 
-    public function inputrtp()
+    public function inputrtp($id_idev)
     {
         $data['title'] = 'Input RTP';
-        $id_user = $this->session->userdata('id');
-        $data['rtp'] = $this->ModelBidang->getrtp($id_user);
+        $data['rtp'] = $this->ModelBidang->getrtp($id_idev);
         $data['js'] = 'inputrtp.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
         $this->load->view('bidang/input_rtp');
         $this->load->view('templates/footer', $data);
+    }
+
+    public function savertp()
+    {
+        $data = $this->ModelBidang->m_savertp();
+        echo json_encode($data);
+    }
+
+    public function getinputrtp($id_idev)
+    {
+        $data['data'] = $this->db->get_where('tb_rtp', ['id_idev' => $id_idev])->result_array();
+        echo json_encode($data);
+    }
+    public function del_rtp()
+    {
+        $id_rtp = $this->input->post('id_rtp');
+        $this->db->where('id_rtp', $id_rtp);
+        $data = $this->db->delete('tb_rtp');
+        echo json_encode($data);
     }
 }

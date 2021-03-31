@@ -23,7 +23,15 @@ $(document).ready(function () {
             { data: "n_resiko" },
             {
             data: null,
-            "defaultContent": `<a href="javascript:;" id='delete' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
+            "render" : function (data, type, row) {
+                if (row.n_resiko > 3 ) {
+                    return `<a href="javascript:;" id='delete' class="badge badge-pill badge-danger input_rtp"'>Input RTP</a>
+                    <a href="javascript:;" id='delete' class="badge badge-pill badge-danger item_delete"'>Delete</a>`
+                } else {
+                    return `<a href="javascript:;" id='delete' class="badge badge-pill badge-danger item_delete"'>delete</a>`
+                }
+            }
+            
         }
         ],
         //hitung total lewat footerCallback dataTables
@@ -125,6 +133,17 @@ $(document).ready(function () {
                 }
             });
         }//endif
+        
+    });
+    // -----
+
+    //-- Input RTP click
+    $('#table_idev').on('click', '.input_rtp', function(){
+        var data = table_idev.row( $(this).parents('tr') ).data();
+        let id_idev = data['id_idev'];
+        window.location.href = `${path}inputrtp/${id_idev}`;
+        return
+        
         
     });
     // -----

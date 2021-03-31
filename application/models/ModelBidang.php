@@ -49,8 +49,24 @@ class ModelBidang extends CI_Model
         return $this->db->insert('tb_idev', $data);
     }
 
-    public function getrtp($id_user)
+    public function getrtp($id_idev)
     {
-        return $this->db->get_where('v_highrisk', ['id_user' => $id_user])->result_array();
+        return $this->db->get_where('v_highrisk', ['id_idev' => $id_idev])->result_array();
+    }
+
+    public function m_savertp()
+    {
+        $data = [
+            'id_rtp' => '',
+            'id_idev' => $this->input->post('id_idev'),
+            'uraian_pengendalian' => $this->input->post('uraian_pengendalian'),
+            'hasil_evaluasi' => $this->input->post('hasil_evaluasi'),
+            'uraian_rtp' => $this->input->post('uraian_rtp'),
+            'target_waktu' => $this->input->post('target_waktu'),
+            'pj' => $this->input->post('pj'),
+            'keterangan' => $this->input->post('keterangan')
+        ];
+
+        return $this->db->insert('tb_rtp', $data);
     }
 }
