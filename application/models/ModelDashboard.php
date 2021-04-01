@@ -16,13 +16,18 @@ class ModelDashboard extends CI_Model
 
     public function countRiskById($id)
     {
-        $query = "SELECT * FROM v_totalskor WHERE total3 >12";
+        $query = "SELECT * FROM v_totalskor WHERE id_user = $id AND nilai_reskeg > 4";
         return $this->db->query($query)->num_rows();
     }
 
     public function countRiskByAtasan($id)
     {
-        $query = "SELECT * FROM v_totalskor WHERE total3 >12";
+        $query = "SELECT * FROM v_totalskor WHERE id_atasan = $id AND nilai_reskeg > 4";
+        return $this->db->query($query)->num_rows();
+    }
+    public function countRiskAll()
+    {
+        $query = "SELECT * FROM v_totalskor WHERE nilai_reskeg > 4";
         return $this->db->query($query)->num_rows();
     }
 }
