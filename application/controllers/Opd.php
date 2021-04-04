@@ -37,8 +37,9 @@ class Opd extends CI_Controller
 
     public function listriwayat()
     {
+        $id_user = $this->session->userdata('id');
         $data['title'] = 'List Riwayat Resiko';
-        $data['listriwayat'] = $this->db->get('tb_riwayat_resiko')->result_array();
+        $data['listriwayat'] = $this->db->get_where('tb_riwayat_resiko', ['id_user' => $id_user])->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
@@ -65,7 +66,8 @@ class Opd extends CI_Controller
 
     public function getkegiatan()
     {
-        $data = $this->db->get('tb_tujuan_kegiatan')->result();
+        $id_user = $this->session->userdata('id');
+        $data = $this->db->get_where('tb_tujuan_kegiatan', ['id_user' => $id_user])->result();
         $json = [
             'data' => $data
         ];
@@ -74,7 +76,8 @@ class Opd extends CI_Controller
 
     public function addKegiatan()
     {
-        $data = $this->ModelOpd->tambah();
+        $id_user = $this->session->userdata('id');
+        $data = $this->ModelOpd->tambah($id_user);
         echo json_encode($data);
     }
 

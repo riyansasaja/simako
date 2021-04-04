@@ -48,5 +48,13 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <div class="dropdown">
+                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm dropdown-toggle" data-toggle="dropdown"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="<?= base_url('exportexcel/cetaktkbyid/') . $this->session->userdata('id'); ?>">Program</a>
+                                <a class="dropdown-item" href="#">Resiko</a>
+                                <a class="dropdown-item" href="#">RTP</a>
+                            </div>
+                        </div>
                     </div>

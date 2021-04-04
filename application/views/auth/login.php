@@ -58,6 +58,16 @@
                                             <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" required>
                                             <?= form_error('password', '<p class="text-danger text-center small">', '</p'); ?>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="tahunanggaran">Tahun Anggaran</label>
+                                            <select class="form-control" id="tahunanggaran">
+                                                <option selected>2021</option>
+                                                <option>2022</option>
+                                            </select>
+                                        </div>
+
+
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">

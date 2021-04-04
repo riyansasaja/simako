@@ -6,6 +6,7 @@
 
                 <!-- form -->
                 <form method="POST" action="">
+                    <input type="text" name="id_user" value="<?= $this->session->userdata('id'); ?>" hidden>
                     <div class="form-group row">
                         <label for="kondisi" class="col-sm-2 col-form-label">Kondisi</label>
                         <div class="col-sm-10">

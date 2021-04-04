@@ -53,13 +53,14 @@ class User extends CI_Controller
         } else {
 
             $id = $this->session->userdata('id');
+            $role_id = $this->session->userdata('role_id');
             $data = [
                 'id' => '',
                 'name' => strtoupper($this->input->post('name', true)),
                 'email' => $this->input->post('email', true),
                 'id_atasan' => $id,
                 'password' => password_hash('1234567890', PASSWORD_DEFAULT),
-                'role_id' => $id + 1,
+                'role_id' => $role_id + 1,
                 'is_active' => 1,
                 'date_created' => date('Y-m-d')
 

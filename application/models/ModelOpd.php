@@ -4,11 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class ModelOpd extends CI_Model
 {
-    public function tambah()
+    public function tambah($id_user)
     {
 
         $data = [
             'id_tk' => '',
+            'id_user' => $id_user,
             'program' => $this->input->post('program', true),
             'outcome' => '',
             'kegiatan' => $this->input->post('kegiatan', true),
@@ -46,6 +47,7 @@ class ModelOpd extends CI_Model
     {
         $data = [
             'id' => '',
+            'id_user' => $this->input->post('id_user', true),
             'kondisi' => $this->input->post('kondisi', true),
             'kriteria' => $this->input->post('kriteria', true),
             'sebab_uraian' => $this->input->post('sebab_uraian', true),
