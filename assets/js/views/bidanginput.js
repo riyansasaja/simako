@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    let path = 'http://localhost/simako/bidang/'
+    let prapath = window.location.origin;
+    const path = `${prapath}/simako/bidang/`;
     
 
     // ---start tampil data

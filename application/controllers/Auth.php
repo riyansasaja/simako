@@ -54,21 +54,21 @@ class Auth extends CI_Controller
                     ];
                     #buat session
                     $this->session->set_userdata($data);
-                    redirect('dashboard');
+                    redirect('dashboard/');
                 } else {
                     # jia password salah
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-                    redirect('auth');
+                    redirect('auth/');
                 }
             } else {
                 # jika email tidak aktif
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
-                redirect('auth');
+                redirect('auth/');
             }
         } else {
             # jika tidak ada user
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-            redirect('auth');
+            redirect('auth/');
         }
     }
 
@@ -78,11 +78,11 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
-        redirect('auth');
+        redirect('auth/');
     }
 
     public function blocked()
     {
-        $this->load->view('auth/blocked');
+        $this->load->view('auth/blocked/');
     }
 }

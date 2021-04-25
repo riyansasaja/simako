@@ -2,7 +2,8 @@ $(document).ready(function() {
 
     
     $('#dataTable').DataTable();
-    const path = 'http://localhost/simako/user'
+    const path = window.location.href;
+    console.log(path);
 
     tampil_data()
 

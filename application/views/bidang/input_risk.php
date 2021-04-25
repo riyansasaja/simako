@@ -90,7 +90,7 @@
                         </div>
                         <div class="form-group col">
                             <label for="n_kemungkinan">Skor Kemungkinan</label>
-                            <input type="number" class="form-control" id="n_kemungkinan" name="n_kemungkinan">
+                            <input type="number" min='1' max='10' class="form-control" id="n_kemungkinan" name="n_kemungkinan">
                         </div>
 
                     </div>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-group col">
                             <label for="n_dampak">Skor Dampak</label>
-                            <input type="number" class="form-control" id="n_dampak" name="n_dampak">
+                            <input type="number" min='1' max='10' class="form-control" id="n_dampak" name="n_dampak">
                         </div>
                     </div>
                 </form>

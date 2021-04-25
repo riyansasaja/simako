@@ -1,9 +1,8 @@
 $(document).ready(function() {
 
     //========UPDATE 26.03.21 ========
-
-    let path = 'http://localhost/simako/opd/'
-
+    const prapath = window.location.origin;
+    const path = `${prapath}/simako/opd`;
     //---Tampil data table
     let showprogram = $('#showprogram').DataTable( {
         "ajax": `${path}getkegiatan`,

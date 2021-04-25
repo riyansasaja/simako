@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    let path = 'http://localhost/simako/bidang/';
+    const prapath = window.location.origin;
+    const path = `${prapath}/simako/bidang/`;
     let tes = window.location.pathname.split("/").pop()
 
     //---tampil data
@@ -51,6 +52,12 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (response) {
                 alert('Data Berhasil Ditambahkan');
+                $('[name="uraian_pengendalian"]').val("");
+                $('[name="hasil_evaluasi"]').val("");
+                $('[name="uraian_rtp"]').val("");
+                $('[name="target_waktu"]').val("");
+                $('[name="pj"]').val("");
+                $('[name="keterangan"]').val("");
                 table_rtp.ajax.reload();
             }
         });

@@ -1,6 +1,7 @@
 $(document).ready(function () {
     
-    let path = 'http://localhost/simako/inspektorat/';
+    const prapath = window.location.origin;
+    const path = `${prapath}/simako/inspektorat/`;
 
     // tampil data to datatable
     let table = $('#example').DataTable( {

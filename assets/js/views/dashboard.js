@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const path = 'http://localhost/simako/dashboard/';
+    const path = window.location.href;
 
     // ---tampil data table
     let table_dashboard = $('#table_dashboard').DataTable( {

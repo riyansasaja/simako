@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    
-    let path = 'http://localhost/simako/bidang/';
+    const prapath = window.location.origin;
+    const path = `${prapath}/simako/bidang/`;
     let tes = window.location.pathname.split("/").pop()
 
      // tampil data to datatable
@@ -25,10 +25,12 @@ $(document).ready(function () {
             data: null,
             "render" : function (data, type, row) {
                 if (row.n_resiko > 3 ) {
-                    return `<a href="javascript:;" id='delete' class="badge badge-pill badge-danger input_rtp"'>Input RTP</a>
+                    return `<a href="javascript:;" id='delete' class="badge badge-pill badge-danger input_rtp"'>Input RTP</a> <br>
+                    <a href="javascript:;" id='realisasi' class="badge badge-pill badge-success item_realisasi"'>Realisasi</a> <br>
                     <a href="javascript:;" id='delete' class="badge badge-pill badge-danger item_delete"'>Delete</a>`
                 } else {
-                    return `<a href="javascript:;" id='delete' class="badge badge-pill badge-danger item_delete"'>delete</a>`
+                    return `<a href="javascript:;" id='realisasi' class="badge badge-pill badge-success item_realisasi"'>Realisasi</a> <br>
+                    <a href="javascript:;" id='delete' class="badge badge-pill badge-danger item_delete"'>delete</a>`
                 }
             }
             
