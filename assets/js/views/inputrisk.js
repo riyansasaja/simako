@@ -25,11 +25,11 @@ $(document).ready(function () {
             data: null,
             "render" : function (data, type, row) {
                 if (row.n_resiko > 3 ) {
-                    return `<a href="javascript:;" id='delete' class="badge badge-pill badge-danger input_rtp"'>Input RTP</a> <br>
-                    <a href="javascript:;" id='realisasi' class="badge badge-pill badge-success item_realisasi"'>Realisasi</a> <br>
+                    return `<a href="javascript:;" id='inputrtp' class="badge badge-pill badge-danger input_rtp"'>Input RTP</a> <br>
+                    <a href="javascript:;" id='realisasi' class="badge badge-pill badge-success input_realisasi"'>Realisasi</a> <br>
                     <a href="javascript:;" id='delete' class="badge badge-pill badge-danger item_delete"'>Delete</a>`
                 } else {
-                    return `<a href="javascript:;" id='realisasi' class="badge badge-pill badge-success item_realisasi"'>Realisasi</a> <br>
+                    return `<a href="javascript:;" id='realisasi' class="badge badge-pill badge-success input_realisasi"'>Realisasi</a> <br>
                     <a href="javascript:;" id='delete' class="badge badge-pill badge-danger item_delete"'>delete</a>`
                 }
             }
@@ -145,6 +145,17 @@ $(document).ready(function () {
         let id_idev = data['id_idev'];
         window.location.href = `${path}inputrtp/${id_idev}`;
         return
+        
+        
+    });
+    // -----
+
+    //-- Input Realisasi click
+    $('#table_idev').on('click', '.input_realisasi', function(){
+        var data = table_idev.row( $(this).parents('tr') ).data();
+        let id_idev = data['id_idev'];
+        window.location.href = `${path}inputrealisasi/${id_idev}`;
+        return;
         
         
     });

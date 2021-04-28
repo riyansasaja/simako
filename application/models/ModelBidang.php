@@ -69,4 +69,14 @@ class ModelBidang extends CI_Model
 
         return $this->db->insert('tb_rtp', $data);
     }
+
+    public function get_rtp($id_idev)
+    {
+        return $this->db->get_where('tb_rtp', ['id_idev' => $id_idev])->result_array();
+    }
+
+    public function get_realisasi($id_idev)
+    {
+        return $this->db->get_where('tb_realisasi', ['id_idev' => $id_idev])->result_array();
+    }
 }

@@ -123,4 +123,46 @@ class Bidang extends CI_Controller
         $data = $this->db->delete('tb_rtp');
         echo json_encode($data);
     }
+
+    //realisasi
+    public function inputrealisasi($id_idev)
+    {
+        //load library
+        $this->load->library('form_validation');
+
+        //form validation rules
+        $this->form_validation->set_rules('uraian', 'Uraian', 'required');
+
+        //form validation check
+        if ($this->form_validation->run() == FALSE) {
+            $data['title'] = 'Input Realisasi';
+            $data['resiko'] = $this->ModelBidang->getrtp($id_idev);
+            $data['rtp'] = $this->ModelBidang->get_rtp($id_idev);
+            $data['realisasi'] = $this->ModelBidang->get_realisasi($id_idev);
+            $data['js'] = 'inputrealisasi.js';
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar');
+            $this->load->view('bidang/input_realisasi');
+            $this->load->view('templates/footer', $data);
+        } else {
+            $data = [
+                'id_realisasi' => '',
+                'id_idev' => $this->input->post('id_idev'),
+                'kejadian' => $this->input->post('kejadian'),
+                'uraian' => $this->input->post('uraian'),
+                'waktu' => $this->input->post('waktu'),
+                'pj' => $this->input->post('pj')
+            ];
+            //input ke database
+            $this->db->insert('tb_realisasi', $data);
+            header("Refresh:0");
+        }
+    }
+
+    public function delrealisasi($id_idev, $id_realisasi)
+    {
+        $this->db->delete('tb_realisasi', ['id_realisasi' => $id_realisasi]);
+        redirect('bidang/inputrealisasi/' . $id_idev . '/');
+    }
 }

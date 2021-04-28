@@ -11,7 +11,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <small class="text-gray-800">ADMIN <?= strtoupper($this->session->userdata('name')); ?></small>
+                    <small class="text-primary">ADMIN <?= strtoupper($this->session->userdata('name')); ?></small>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -53,9 +53,26 @@
                             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm dropdown-toggle" data-toggle="dropdown"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="<?= base_url('exportexcel/cetaktkbyid/') . $this->session->userdata('id'); ?>">Program</a>
-                                <a class="dropdown-item" href="#">Resiko</a>
-                                <a class="dropdown-item" href="#">RTP</a>
+                                <?php $role_id = $this->session->userdata['role_id']; ?>
+                                <?php if ($role_id == 3) : ?>
+                                    <a class="dropdown-item" href="<?= base_url('exportexcel/cetaktkbykodeunor/') . $this->session->userdata('id'); ?>">Cetak Program Kegiatan (excel)</a>
+                                    <a class="dropdown-item" href="#">Cetak Program Kegiatan (pdf)</a>
+                                    <a class="dropdown-item" href="<?= base_url('exportexcelrtp/cetakrtpbykodeunor/') . $this->session->userdata('id'); ?>">Cetak RTP (excel)</a>
+                                    <a class="dropdown-item" href="#">Cetak RTP (pdf)</a>
+
+                                <?php elseif ($role_id == 2) : ?>
+                                    <a class="dropdown-item" href="<?= base_url('exportexcel/cetaktkbyid/') . $this->session->userdata('id'); ?>">Cetak Program Kegiatan (excel)</a>
+                                    <a class="dropdown-item" href="#">Cetak Program Kegiatan (pdf)</a>
+                                    <a class="dropdown-item" href="<?= base_url('exportexcelrtp/cetakrtpbyid/') . $this->session->userdata('id'); ?>">Cetak RTP (excel)</a>
+                                    <a class="dropdown-item" href="#">Cetak RTP (pdf)</a>
+
+                                <?php else : ?>
+                                    <a class="dropdown-item" href="<?= base_url('exportexcel/cetaktkall/') ?>">Cetak Program Kegiatan (excel)</a>
+                                    <a class="dropdown-item" href="#">Cetak Program Kegiatan (pdf)</a>
+                                    <a class="dropdown-item" href="<?= base_url('exportexcelrtp/cetakrtpall/') ?>">Cetak RTP (excel)</a>
+                                    <a class="dropdown-item" href="#">Cetak RTP (pdf)</a>
+
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
