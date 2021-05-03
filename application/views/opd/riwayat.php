@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="uraian" class="col-sm-2 col-form-label">Uraian</label>
+                        <label for="uraian" class="col-sm-2 col-form-label">Sebab</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="uraian" rows="5" name="sebab_uraian"></textarea>
                         </div>
