@@ -87,26 +87,28 @@
                     </div>
                     <div class="form-group">
                         <label for="pj">Penanggung Jawab</label>
-                        <select class="form-control" id="pj" name="pj" rows="3">
+                        <textarea class="form-control" id="pj" name="pj" rows="3"></textarea>
+                        <!-- <select class="form-control" id="pj" name="pj" rows="3">
                             <?php foreach ($rtp as $u) : ?>
                                 <option selected>--Pilih Salah Satu -- </option>
                                 <option value="<?= $u['pj'] ?>"><?= $u['uraian_rtp'] ?></option>
                             <?php endforeach; ?>
-                        </select>
+                        </select> -->
                     </div>
                     <div class="form-group">
                         <label for="uraian">Uraian</label>
-                        <select class="form-control" id="uraian" name="uraian" onchange="CheckData (this.value);">
+                        <textarea class="form-control" id="uraian" name="uraian" rows="3"></textarea>
+                        <!-- <select class="form-control" id="uraian" name="uraian" onchange="CheckData (this.value);">
                             <?php foreach ($rtp as $u) : ?>
                                 <option selected>--Pilih Salah Satu -- </option>
                                 <option value="<?= $u['uraian_rtp'] ?>"><?= $u['uraian_rtp'] ?></option>
                                 <option value="others">Lainnya </option>
                             <?php endforeach; ?>
-                        </select>
+                        </select> -->
                     </div>
-                    <div class="form-group">
-                        <textarea class="form-control" id="uraian_other" rows="3" style="display:none"></textarea>
-                    </div>
+                    <!-- <div class="form-group">
+                        <textarea class="form-control" id="uraian_other" rows="3"></textarea>
+                    </div> -->
 
 
                     <div class="form-group">
