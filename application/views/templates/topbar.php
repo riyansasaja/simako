@@ -60,7 +60,7 @@
                                     <a class="dropdown-item" href="<?= base_url('exportexcelrtp/cetakrtpbykodeunor/') . $this->session->userdata('id'); ?>">Cetak RTP (excel)</a>
                                     <a class="dropdown-item" href="#">Cetak RTP (pdf)</a>
 
-                                    <a class="dropdown-item" href="#">Cetak Identifikasi dan Analis Resiko (Excel)</a>
+                                    <a class="dropdown-item" href="<?= base_url('exportidev/cetakidevbyunor/') . $this->session->userdata('id'); ?>">Cetak Identifikasi dan Analis Resiko (Excel)</a>
                                     <a class="dropdown-item" href="#">Cetak Identifikasi dan Analis Resiko (pdf)</a>
                                     <a class="dropdown-item" href="#">Cetak Realisasi (Excel)</a>
                                     <a class="dropdown-item" href="#">Cetak Realisasi (pdf)</a>
@@ -73,6 +73,8 @@
                                     <a class="dropdown-item" href="#">Cetak RTP (pdf)</a>
                                     <a class="dropdown-item" href="<?= base_url('exportexcelhistoris/cetakhistorisbyid/') . $this->session->userdata('id'); ?>">Cetak Data Historis Resiko (Excel)</a>
                                     <a class="dropdown-item" href="#">Cetak Data Historis Resiko (pdf)</a>
+                                    <a class="dropdown-item" href="<?= base_url('exportidev/cetakidevbyid/') . $this->session->userdata('id'); ?>">Cetak Identifikasi dan Analis Resiko (Excel)</a>
+                                    <a class="dropdown-item" href="#">Cetak Identifikasi dan Analis Resiko (pdf)</a>
 
                                 <?php else : ?>
                                     <a class="dropdown-item" href="<?= base_url('exportexcel/cetaktkall/') ?>">Cetak Program Kegiatan (excel)</a>

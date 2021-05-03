@@ -63,4 +63,18 @@ class ModelCetak extends CI_Model
     }
     //--
 
+    //idev
+    function getidevbyid($id)
+    {
+        $query = "SELECT tb_idev.*, tb_tujuan_kegiatan.program,tb_tujuan_kegiatan.kegiatan, user.name FROM tb_idev JOIN tb_tujuan_kegiatan ON tb_idev.id_tk = tb_tujuan_kegiatan.id_tk JOIN user ON tb_idev.id_user = user.id WHERE tb_idev.id_atasan = $id";
+        return $this->db->query($query)->result_array();
+    }
+    function getidevbyunor($id)
+    {
+        $query = "SELECT tb_idev.*, tb_tujuan_kegiatan.program,tb_tujuan_kegiatan.kegiatan, user.name FROM tb_idev JOIN tb_tujuan_kegiatan ON tb_idev.id_tk = tb_tujuan_kegiatan.id_tk JOIN user ON tb_idev.id_user = user.id WHERE tb_idev.id_user = $id";
+        return $this->db->query($query)->result_array();
+    }
+
+    //---
+
 }
