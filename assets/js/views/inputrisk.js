@@ -72,9 +72,9 @@ $(document).ready(function () {
             }, 0 );
 
             
-            $( api.column( 4 ).footer() ).html(total4);
-            $( api.column( 5 ).footer() ).html(total5);
-            $( api.column( 6 ).footer() ).html(total6);
+            $( api.column( 4 ).footer() ).html(total4/data.length);
+            $( api.column( 5 ).footer() ).html(total5/data.length);
+            $( api.column( 6 ).footer() ).html(total6/data.length);
         },
         //end
 
