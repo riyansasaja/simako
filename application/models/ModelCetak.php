@@ -44,4 +44,23 @@ class ModelCetak extends CI_Model
 
         return $this->db->query($query)->result_array();
     }
+
+    //historis
+    function gethistorisbyid($id)
+    {
+
+        $query = "SELECT tb_riwayat_resiko.*, user.name FROM tb_riwayat_resiko JOIN user ON tb_riwayat_resiko.id_user = user.id WHERE tb_riwayat_resiko.id_user = $id";
+
+        return $this->db->query($query)->result_array();
+    }
+
+    function gethistorisall()
+    {
+
+        $query = "SELECT tb_riwayat_resiko.*, user.name FROM tb_riwayat_resiko JOIN user ON tb_riwayat_resiko.id_user = user.id";
+
+        return $this->db->query($query)->result_array();
+    }
+    //--
+
 }
