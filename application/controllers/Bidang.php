@@ -62,7 +62,7 @@ class Bidang extends CI_Controller
     {
         $data['list'] = $this->ModelBidang->getprogrambyid($id_tk);
         $data['ref_risk'] = $this->ModelBidang->getrefrisk($id_tk);
-        $data['title'] = 'Analisis Resiko';
+        $data['title'] = 'Input Analisis Risiko';
         $data['js'] = 'inputrisk.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
