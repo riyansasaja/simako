@@ -31,7 +31,7 @@ $(document).ready(function () {
             var myChart = new Chart(ctx, {
             type: 'polarArea',
             data: {
-                labels: ['Jumlah Program', 'nilai resiko tinggi'],
+                labels: ['Jumlah Program', 'Nilai Risiko Tinggi'],
                 datasets: [{
                     // label: '# of Votes',
                     data: [response.totalrisk, response.highrisk],

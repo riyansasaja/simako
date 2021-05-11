@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block text-right">
                                 <!-- gambar -->
-                                <img style="width: 110%;" src="<?= base_url('assets/img/') ?>simako-bg-3.png" alt="login pict">
+                                <img style="width: 110%;" src="<?= base_url('assets/img/') ?>simako-bg-4.png" alt="login pict">
                             </div>
                             <div class="col-lg-6 bg-abu2">
                                 <div class="p-5">

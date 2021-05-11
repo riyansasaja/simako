@@ -49,7 +49,7 @@ class Bidang extends CI_Controller
     {
         $id = $this->session->userdata('id');
         $data['list'] = $this->ModelBidang->getlist($id);
-        $data['title'] = 'Input Analisis Resiko';
+        $data['title'] = 'Input Analisis Risiko';
         $data['js'] = 'analis.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
