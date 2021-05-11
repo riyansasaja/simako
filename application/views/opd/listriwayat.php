@@ -9,7 +9,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Kondisi</th>
                         <th scope="col">Kriteria</th>
-                        <th scope="col">Uraian</th>
+                        <th scope="col">Sebab</th>
                         <th scope="col">Akibat</th>
                         <th scope="col">Saran</th>
                         <th scope="col">Sumber Data</th>

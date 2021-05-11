@@ -18,7 +18,7 @@ class Opd extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             # code...
-            $data['title'] = 'Input Riwayat Resiko';
+            $data['title'] = 'Input Riwayat Risiko';
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar');
@@ -38,7 +38,7 @@ class Opd extends CI_Controller
     public function listriwayat()
     {
         $id_user = $this->session->userdata('id');
-        $data['title'] = 'List Riwayat Resiko';
+        $data['title'] = 'List Riwayat Risiko';
         $data['listriwayat'] = $this->db->get_where('tb_riwayat_resiko', ['id_user' => $id_user])->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
