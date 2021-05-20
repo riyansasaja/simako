@@ -49,6 +49,15 @@ class Exportexcelrtp extends CI_Controller
             $sheet->setCellValue('I' . $x, $d['keterangan']);
             $x++;
         }
+        $styleArray = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                ],
+            ],
+        ];
+        $y = $x - 1;
+        $sheet->getStyle('A5:I' . $y)->applyFromArray($styleArray);
 
         $writer = new Xlsx($spreadsheet);
         $filename = 'report_RTP_' . $this->session->name;
@@ -93,6 +102,16 @@ class Exportexcelrtp extends CI_Controller
             $sheet->setCellValue('H' . $x, $d['keterangan']);
             $x++;
         }
+
+        $styleArray = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                ],
+            ],
+        ];
+        $y = $x - 1;
+        $sheet->getStyle('A5:H' . $y)->applyFromArray($styleArray);
 
         $writer = new Xlsx($spreadsheet);
         $filename = 'report_RTP_' . $this->session->name;
@@ -139,6 +158,16 @@ class Exportexcelrtp extends CI_Controller
             $sheet->setCellValue('I' . $x, $d['keterangan']);
             $x++;
         }
+
+        $styleArray = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                ],
+            ],
+        ];
+        $y = $x - 1;
+        $sheet->getStyle('A5:I' . $y)->applyFromArray($styleArray);
 
         $writer = new Xlsx($spreadsheet);
         $filename = 'report_RTP_' . $this->session->name;

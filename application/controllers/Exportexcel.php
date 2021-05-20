@@ -43,6 +43,16 @@ class Exportexcel extends CI_Controller
             $x++;
         }
 
+        $styleArray = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                ],
+            ],
+        ];
+        $y = $x - 1;
+        $sheet->getStyle('A5:F' . $y)->applyFromArray($styleArray);
+
         $writer = new Xlsx($spreadsheet);
         $filename = 'report_tujuan_kegiatan_' . $data[0]['name'];
 
@@ -82,6 +92,16 @@ class Exportexcel extends CI_Controller
             $sheet->setCellValue('F' . $x, $d['tujuan']);
             $x++;
         }
+
+        $styleArray = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                ],
+            ],
+        ];
+        $y = $x - 1;
+        $sheet->getStyle('A5:F' . $y)->applyFromArray($styleArray);
 
         $writer = new Xlsx($spreadsheet);
         $filename = 'report_tujuan_kegiatan_' . $data[0]['name'];
@@ -123,6 +143,16 @@ class Exportexcel extends CI_Controller
             $sheet->setCellValue('G' . $x, $d['tujuan']);
             $x++;
         }
+
+        $styleArray = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                ],
+            ],
+        ];
+        $y = $x - 1;
+        $sheet->getStyle('A5:G' . $y)->applyFromArray($styleArray);
 
         $writer = new Xlsx($spreadsheet);
         $filename = 'report_tujuan_kegiatan_' . $data[0]['name'];
