@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="resiko" class="col-sm-2 col-form-label">Resiko</label>
+                        <label for="resiko" class="col-sm-2 col-form-label">Risiko</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="resiko" rows="3" name="resiko"></textarea>
                         </div>
@@ -108,14 +108,14 @@
     <div class="col">
         <div class="card">
             <div class="card-header bg-info text-light">
-                <p>DAFTAR REFERENSI RESIKO</p>
+                <p>DAFTAR REFERENSI RISIKO</p>
             </div>
             <div class="card-body">
                 <table class="table table-hover" id="example" cellspacing="0">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Resiko</th>
+                            <th>Risiko</th>
                             <th>Sebab</th>
                             <th>Dampak/Akibat</th>
                             <th>Action</th>
@@ -185,7 +185,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="resiko" class="col-sm-2 col-form-label">Resiko</label>
+                        <label for="resiko" class="col-sm-2 col-form-label">Risiko</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="mresiko" rows="3" name="resiko"></textarea>
                         </div>

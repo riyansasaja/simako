@@ -21,24 +21,24 @@
     <div class="col">
         <div class="card">
             <div class="card-header">
-                Daftar Analis Resiko
+                Daftar Analis Risiko
             </div>
             <div class="card-body">
                 <table id="table_idev" class="table table-bordered">
                     <thead>
                         <tr>
 
-                            <th colspan="4" class="bg-secondary text-light">Identifikasi Resiko</th>
-                            <th colspan="4" class="bg-secondary text-light">Analisis Resiko</th>
+                            <th colspan="4" class="bg-secondary text-light">Identifikasi Risiko</th>
+                            <th colspan="4" class="bg-secondary text-light">Analisis Risiko</th>
                         </tr>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Resiko</th>
+                            <th scope="col">Risiko</th>
                             <th scope="col">Sebab</th>
                             <th scope="col">Dampak</th>
                             <th scope="col">Skor<br>Kemungkinan</th>
                             <th scope="col">Skor<br>Dampak</th>
-                            <th scope="col">Skor<br>Resiko</th>
+                            <th scope="col">Skor<br>Risiko</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -61,14 +61,14 @@
     <div class="col">
         <div class="card">
             <div class="card-header">
-                Tambah Analisis Resiko
+                Tambah Analisis Risiko
             </div>
             <div class="card-body">
                 <form>
                     <input type="text" id="id_tk" name="id_tk" value="<?= $list[0]['id_tk'] ?>" hidden>
                     <div class="form-row">
                         <div class="form-group col">
-                            <label for="resiko">Resiko</label>
+                            <label for="resiko">Risiko</label>
                             <select id="resiko" class="form-control" name="resiko">
                                 <option selected>---Pilih Salah Satu ---</option>
                                 <?php foreach ($ref_risk as $ref) : ?>

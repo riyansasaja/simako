@@ -26,7 +26,7 @@
                 Daftar RTP
             </div>
             <div class="card-body">
-                <p><span class="font-weight-bold">Resiko</span><br><?= $rtp[0]['resiko'] ?></p>
+                <p><span class="font-weight-bold">Risiko</span><br><?= $rtp[0]['resiko'] ?></p>
                 <table id="table_rtp" class="table table-bordered">
                     <thead>
                         <tr>
@@ -60,7 +60,7 @@
                 <form>
                     <input type="text" id="id_idev" name="id_idev" value="<?= $rtp[0]['id_idev'] ?>" hidden>
                     <div class="form-group">
-                        <label for="resiko">Resiko</label>
+                        <label for="resiko">Risiko</label>
                         <textarea class="form-control" id="resiko" name="resiko" rows="3" readonly><?= $rtp[0]['resiko'] ?></textarea>
                     </div>
                     <div class="form-group">

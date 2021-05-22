@@ -31,7 +31,7 @@
                     <?php foreach ($realisasi as $real) : ?>
                         <div class="col-4">
                             <?php foreach ($resiko as $risk) : ?>
-                                <p><span class="font-weight-bold">Resiko</span><br><?= $risk['resiko'] ?></p>
+                                <p><span class="font-weight-bold">Risiko</span><br><?= $risk['resiko'] ?></p>
                             <?php endforeach; ?>
                             <p> <?= $real['kejadian'] ?></p>
                             <p><span class="font-weight-bold">Uraian</span><br><?= $real['uraian'] ?></p>
@@ -66,11 +66,11 @@
                 <form method="POST" action="">
                     <input type="text" id="id_idev" name="id_idev" value="<?= $resiko[0]['id_idev'] ?>" hidden>
                     <div class="form-group">
-                        <label for="resiko">Resiko</label>
+                        <label for="resiko">Risiko</label>
                         <textarea class="form-control" id="resiko" name="resiko" rows="3" readonly><?= $resiko[0]['resiko'] ?></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="uraian_pengendalian">Kejadian Resiko</label>
+                        <label for="uraian_pengendalian">Kejadian Risiko</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="kejadian" id="exampleRadios1" value="Teridentifikasi">
                             <label class="form-check-label" for="exampleRadios1">

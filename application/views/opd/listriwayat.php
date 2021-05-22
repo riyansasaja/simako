@@ -13,7 +13,7 @@
                         <th scope="col">Akibat</th>
                         <th scope="col">Saran</th>
                         <th scope="col">Sumber Data</th>
-                        <th scope="col">Pernyataan Resiko</th>
+                        <th scope="col">Pernyataan Risiko</th>
                         <th scope="col">Sebab</th>
                         <th scope="col">Dampak</th>
                     </tr>

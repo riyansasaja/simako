@@ -17,7 +17,7 @@
                     let no = 1;
 
                     $.each(data, function(i, d) {
-                        let cek = d.is_idev == 1 ? `<a href=""><span class='badge badge-primary'>Input Analis Resiko</span></a>` : `<a href=""><span class='badge badge-success'>edit Analis Resiko</span></a>`;
+                        let cek = d.is_idev == 1 ? `<a href=""><span class='badge badge-primary'>Input Analis Risiko</span></a>` : `<a href=""><span class='badge badge-success'>edit Analis Risiko</span></a>`;
 
                         html += `<tr>
                                     <td>${no}</td>

@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="pernyataan" class="col-sm-2 col-form-label">Pernyataan Resiko</label>
+                        <label for="pernyataan" class="col-sm-2 col-form-label">Pernyataan Risiko</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="pernyataan" rows="5" name="pernyataan_resiko"></textarea>
                         </div>

@@ -70,7 +70,7 @@
                                 <th>Program</th>
                                 <th>Kegiatan</th>
                                 <th>Output</th>
-                                <th>Nilai <br>resiko <br>kegiatan</th>
+                                <th>Nilai <br>risiko <br>kegiatan</th>
                             </tr>
                         </thead>
                     </table>
