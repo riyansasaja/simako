@@ -55,30 +55,39 @@
                     <div class="form-group row">
                         <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Outcome Program</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="realOutProgram" name="realOutProgram" onchange='Chekrealoutprogram(this.value);'>
                                 <option>Seluruh bangunan SD dalam kondisi baik dan termanfaatkan</option>
-                                <option>--lainnya--</option>
+                                <option value="others">--lainnya--</option>
                             </select>
+                            <div class="form-group">
+                                <textarea class="form-control" id="otherrealoutprogram" rows="3" style='display:none;'></textarea>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Kegiatan</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="realOutKegiatan" name="realOutKegiatan" onchange="Chekrealoutkegiatan(this.value)">
                                 <option>100 RKB</option>
-                                <option>--lainnya--</option>
+                                <option value="others">--lainnya--</option>
                             </select>
+                            <div class="form-group">
+                                <textarea class="form-control" id="otherrealkegiatan" rows="3" style='display:none;'></textarea>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Tujuan Kegiatan</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="realouttujuankegiatan" name="realouttujuankegiatan" onchange="Chekrealouttujuankegiatan(this.value);">
                                 <option>Terlaksananya rehabilitasi atas 100 RKB SD yang tepat waktu dan sesuai spesifikasi</option>
-                                <option>--lainnya--</option>
+                                <option value="others">--lainnya--</option>
                             </select>
+                            <div class="form-group">
+                                <textarea class="form-control" id="otherrealtujuankegiatan" rows="3" style='display:none;'></textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -95,3 +104,37 @@
 </div>
 
 <!-- end modal input realisasi -->
+
+
+
+
+
+
+
+<!-- script js -->
+
+<script>
+    function Chekrealoutprogram(val) {
+        var element = document.getElementById('otherrealoutprogram');
+        if (val == 'others')
+            element.style.display = 'block';
+        else
+            element.style.display = 'none';
+    }
+
+    function Chekrealoutkegiatan(val) {
+        var element = document.getElementById('otherrealkegiatan');
+        if (val == 'others')
+            element.style.display = 'block';
+        else
+            element.style.display = 'none';
+    }
+
+    function Chekrealouttujuankegiatan(val) {
+        var element = document.getElementById('otherrealtujuankegiatan');
+        if (val == 'others')
+            element.style.display = 'block';
+        else
+            element.style.display = 'none';
+    }
+</script>
