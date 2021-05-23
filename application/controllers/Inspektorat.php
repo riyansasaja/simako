@@ -12,7 +12,7 @@ class Inspektorat extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Input Ref. Resiko';
+        $data['title'] = 'Input Ref. Risiko';
         $data['js'] = 'inputref.js';
         $data['sifatkegiatan'] = $this->db->get('tb_ref_sifat_kegiatan')->result_array();
         $this->load->view('templates/header', $data);

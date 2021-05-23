@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="kegiatan" class="col-sm-2 col-form-label">Outcome Kegiatan</label>
+                        <label for="kegiatan" class="col-sm-2 col-form-label">Outcome Program</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" name="outcome" id="outcome" rows="3" required></textarea>
                         </div>

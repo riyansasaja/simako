@@ -3,8 +3,8 @@ $(document).ready(function() {
     //========UPDATE 26.03.21 ========
     const prapath = window.location.origin;
     const path = `${prapath}/simako/opd/`;
-    //---Tampil data table
-    let showprogram = $('#showprogram').DataTable( {
+    //---Tampil data table kegiatan
+    let showkegiatan = $('#showkegiatan').DataTable( {
         "ajax": `${path}getkegiatan`,
         "columns": [
             { 
@@ -16,17 +16,68 @@ $(document).ready(function() {
             { "data": "kegiatan" },
             {
             "data": null,
-            "defaultContent": `<a href="javascript:;" id='edit' class="text-danger item_edit"'><i class="fas fa-edit"></i></a>
-            <a href="javascript:;" id='delete' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
+            "defaultContent": `<a href="javascript:;" id='editkegiatan' class="text-danger item_edit"'><i class="fas fa-edit"></i></a>
+            <a href="javascript:;" id='deletekegiatan' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
         }
         ]
     } );
     // -----
 
+        //========UPDATE 26.03.21 ========
+        //---Tampil data table program
+        let showprogram = $('#showprogram').DataTable( {
+            "ajax": `${path}getprogram`,
+            "columns": [
+                { 
+                    "data": null,"sortable": false, 
+                     render: function (data, type, row, meta) {
+                     return meta.row + meta.settings._iDisplayStart + 1;}  
+                },
+                { "data": "nama_program" },
+                { "data": "outcome_program" },
+                {
+                "data": null,
+                "defaultContent": `<a href="javascript:;" id='editprogram' class="text-danger item_edit"'><i class="fas fa-edit"></i></a>
+                <a href="javascript:;" id='deleteprogram' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
+            }
+            ]
+        } );
+        // -----
+
+
     //======
 
-    
+
     //add program
+    $('#btn_simpan1').on('click', function() {
+
+        // tangkap hasil
+        let program = $('#program1').val();
+        let outcome = $('#outcomeprogram1').val();
+
+        $.ajax({
+            type: "POST",
+            url: `${path}addprogram`,
+            data: {
+                program : program,
+                outcome: outcome
+            },
+            dataType: "JSON",
+            success: function (response) {
+                console.log(response);
+                alert('Data Berhasil di Input')
+                $('[name="program1"]').val("");
+                $('[name="outcomeprogram1"]').val("");
+                $('#addprogramModal').modal('hide');
+                showprogram.ajax.reload();
+            }
+        });
+
+    });
+    // =====
+
+    
+    //add kegiatan
     $('#btn_simpan').on('click', function() {
 
         // tangkap hasil
@@ -57,7 +108,7 @@ $(document).ready(function() {
                 $('[name="sifat_kegiatan"]').val("");
                 $('[name="unor_tujuan"]').val("");
                 $('#addModal').modal('hide');
-                showprogram.ajax.reload();
+                showkegiatan.ajax.reload();
             }
         });
 
@@ -65,9 +116,9 @@ $(document).ready(function() {
     // ------
 
     
-    //---start delete Program
-    $('#showprogram').on('click', '.item_delete', function(){
-        var data = showprogram.row( $(this).parents('tr') ).data();
+    //---start delete kegiatan
+    $('#showkegiatan').on('click', '.item_delete', function(){
+        var data = showkegiatan.row( $(this).parents('tr') ).data();
         let id = data['id_tk'];
         let hapus = confirm(`Yakin menghapus ${data['program']}???`);
         if (hapus) {
@@ -80,7 +131,7 @@ $(document).ready(function() {
                 success: function (response) {
                     console.log(response);
                     alert('Data Terhapus!!');
-                    showprogram.ajax.reload();
+                    showkegiatan.ajax.reload();
                 }
             });
         }//endif
@@ -90,11 +141,11 @@ $(document).ready(function() {
     //---------
 
 
-    // ---Start get Edit Program
-    $('#showprogram').on('click', '.item_edit', function(){
-        var data = showprogram.row( $(this).parents('tr') ).data();
+    // ---Start get Edit Kegiatan
+    $('#showkegiatan').on('click', '.item_edit', function(){
+        var data = showkegiatan.row( $(this).parents('tr') ).data();
         let id = data['id_tk'];
-        $('#editModal').modal('show');
+        $('#editkegiatanModal').modal('show');
        $('[name="id_tk"]').val(id);
         $('[name="program"]').val(data['program']);
         $('[name="kegiatan"]').val(data['kegiatan']);
@@ -105,7 +156,7 @@ $(document).ready(function() {
 
     //--- Start Update Program
     $('#btn_update').on('click', function () {
-        console.log('tombol ditekan');
+      
         let id_tk = $('#id_tk').val();
         let program = $('#edit_program').val();
         let kegiatan = $('#edit_kegiatan').val();
@@ -129,7 +180,8 @@ $(document).ready(function() {
                 $('[name="kegiatan"]').val('');
                 alert('Data Berhasil Dirubah !');
                 $('#editModal').modal('hide');
-                showprogram.ajax.reload();
+                $('#editkegiatanModal').modal('hide');
+                showkegiatan.ajax.reload();
                 }
         });
         return false;

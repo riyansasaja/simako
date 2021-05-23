@@ -54,6 +54,7 @@ class Opd extends CI_Controller
         $data['title'] = 'Input Program';
         $data['bidang'] = $this->db->get_where('user', ['id_atasan' => $id])->result_array();
         $data['sifat_kegiatan'] = $this->db->get('tb_ref_sifat_kegiatan')->result_array();
+        $data['program'] = $this->db->get_where('tb_program', ['id_user' => $id])->result_array();
         $data['js'] = 'inputprogram.js';
 
         $this->load->view('templates/header', $data);
@@ -63,6 +64,22 @@ class Opd extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
+    public function addProgram()
+    {
+        $id_user = $this->session->userdata('id');
+        $data = $this->ModelOpd->tambahProgram($id_user);
+        echo json_encode($data);
+    }
+
+    public function getprogram()
+    {
+        $id_user = $this->session->userdata('id');
+        $data = $this->db->get_where('tb_program', ['id_user' => $id_user])->result();
+        $json = [
+            'data' => $data
+        ];
+        echo json_encode($json);
+    }
 
     public function getkegiatan()
     {

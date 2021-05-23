@@ -23,6 +23,19 @@ class ModelOpd extends CI_Model
         $hasil = $this->db->insert('tb_tujuan_kegiatan', $data);
         return $hasil;
     }
+    public function tambahProgram($id_user)
+    {
+
+        $data = [
+            'id' => '',
+            'nama_program' => $this->input->post('program', true),
+            'outcome_program' => $this->input->post('outcome', true),
+            'id_user' => $id_user
+
+        ];
+        $hasil = $this->db->insert('tb_program', $data);
+        return $hasil;
+    }
 
     public function update()
     {

@@ -165,4 +165,26 @@ class Bidang extends CI_Controller
         $this->db->delete('tb_realisasi', ['id_realisasi' => $id_realisasi]);
         redirect('bidang/inputrealisasi/' . $id_idev . '/');
     }
+
+    public function realisasi()
+    {
+        $data['title'] = 'Input Realisasi';
+        $data['js'] = 'inputrealisasi.js';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('bidang/inputRealisasi');
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function realisasikegiatan()
+    {
+        $data['title'] = 'Input Realisasi';
+        $data['js'] = 'inputrealisasi.js';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('bidang/realisasikegiatan');
+        $this->load->view('templates/footer', $data);
+    }
 }
