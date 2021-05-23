@@ -128,7 +128,7 @@
                     <div class="form-group row">
                         <label for="program" class="col-sm-2 col-form-label">Program</label>
                         <div class="col-sm-10">
-                            <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <select class="form-control" id="program" name="program">
                                 <?php foreach ($program as $prog) : ?>
                                     <option value="<?= $prog['nama_program']; ?>"><?= $prog['nama_program']; ?></option>
                                 <?php endforeach; ?>
