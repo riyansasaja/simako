@@ -85,7 +85,7 @@ class ModelBidang extends CI_Model
         $this->db->select('*');
         $this->db->from('tb_realisasi_kegiatan');
         $this->db->join('tb_tujuan_kegiatan', 'tb_realisasi_kegiatan.id_tk = tb_tujuan_kegiatan.id_tk');
-        // $this->db->where('tb_tujuan_kegiatan.id_user', $id);
+        $this->db->where('tb_tujuan_kegiatan.id_user', $id);
         return $this->db->get()->result_array();
     }
 }

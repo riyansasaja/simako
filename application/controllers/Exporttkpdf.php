@@ -32,4 +32,5 @@ class Exporttkpdf extends CI_Controller
         $pdf->SetFont('Arial', '', 10);
         $pdf->Output();
     }
+    //tambah komen
 }
