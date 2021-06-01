@@ -26,7 +26,8 @@ class ModelOpd extends CI_Model
             'tujuan' => '',
             'id_sk' => $this->input->post('sifat_kegiatan', true),
             'kode_unor' => $this->input->post('unor_tujuan', true),
-            'is_idev' => 1
+            'is_idev' => 1,
+            'realisasi' => null
 
         ];
         $hasil = $this->db->insert('tb_tujuan_kegiatan', $data);
