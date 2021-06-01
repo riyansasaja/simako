@@ -54,18 +54,20 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="kegiatan" class="col-sm-2 col-form-label">Outcome Program</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="outcome" id="outcome" rows="3" required disabled></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" name="kegiatan" id="kegiatan" rows="3" disabled></textarea>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="kegiatan" class="col-sm-2 col-form-label">Outcome Program</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="outcome" id="outcome" rows="3" required></textarea>
-                        </div>
-                    </div>
+
 
                     <div class="form-group row">
                         <label for="kegiatan" class="col-sm-2 col-form-label">Output Kegiatan</label>

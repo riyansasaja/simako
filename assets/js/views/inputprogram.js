@@ -12,7 +12,7 @@ $(document).ready(function() {
                  render: function (data, type, row, meta) {
                  return meta.row + meta.settings._iDisplayStart + 1;}  
             },
-            { "data": "nama_program" },
+            { "data": "program" },
             { "data": "kegiatan" },
             {
             "data": null,
@@ -144,7 +144,8 @@ $(document).ready(function() {
     $('#btn_simpan').on('click', function() {
 
         // tangkap hasil
-        let program = $('#program').val();
+        let program = $('#program').val(); 
+        let outcomeprogram = $('#outcomeProgram').val(); 
         let kegiatan = $('#kegiatan').val();
         let sifat_kegiatan = $('#sifat_kegiatan').val();
         let unor_tujuan = $('#unor_tujuan').val();
@@ -154,6 +155,7 @@ $(document).ready(function() {
             url: `${path}addkegiatan`,
             data: {
                 program : program,
+                outcomeprogram : outcomeprogram,
                 kegiatan: kegiatan,
                 sifat_kegiatan : sifat_kegiatan,
                 unor_tujuan : unor_tujuan
@@ -162,14 +164,7 @@ $(document).ready(function() {
             success: function (response) {
                 console.log(response);
                 alert('Data Berhasil di Input')
-                $('[name="tujuan_pd"]').val("");
-                $('[name="sasaran_pd"]').val("");
-                $('[name="program"]').val("");
-                $('[name="kegiatan"]').val("");
-                $('[name="output_kegiatan"]').val("");
-                $('[name="tujuan_kegiatan"]').val("");
-                $('[name="sifat_kegiatan"]').val("");
-                $('[name="unor_tujuan"]').val("");
+                $('[name="kegiatan"]').val("");                
                 $('#addkegiatanModal').modal('hide');
                 showkegiatan.ajax.reload();
             }
@@ -210,7 +205,7 @@ $(document).ready(function() {
         let id = data['id_tk'];
         $('#editkegiatanModal').modal('show');
        $('[name="id_tk"]').val(id);
-        $('[name="programedit"]').val(data['nama_program']);
+        $('[name="programedit"]').val(data['program']);
         $('[name="kegiatan"]').val(data['kegiatan']);
         $('[name="sifat_kegiatan"]').val(data['id_sk']);
         $('[name="unor_tujuan"]').val(data['kode_unor']);

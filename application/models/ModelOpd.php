@@ -19,7 +19,8 @@ class ModelOpd extends CI_Model
         $data = [
             'id_tk' => '',
             'id_user' => $id_user,
-            'id_program' => $this->input->post('program', true),
+            'program' => $this->input->post('program', true),
+            'outcome' => $this->input->post('outcomeprogram', true),
             'kegiatan' => $this->input->post('kegiatan', true),
             'output' => '',
             'tujuan' => '',
@@ -91,5 +92,13 @@ class ModelOpd extends CI_Model
             'tindak_lanjut' => $this->input->post('tindak_lanjut', true)
         ];
         return $this->db->insert('tb_riwayat_resiko', $data);
+    }
+    public function get_realprogram($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_realisasi_program');
+        $this->db->join('tb_program', 'tb_realisasi_program.id_program = tb_program.id');
+        // $this->db->where('tb_tujuan_kegiatan.id_user', $id);
+        return $this->db->get()->result_array();
     }
 }

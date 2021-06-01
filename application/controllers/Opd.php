@@ -69,6 +69,7 @@ class Opd extends CI_Controller
         $id = $this->session->userdata('id');
         $data['title'] = 'Input Realisasi Outcome';
         $data['program'] = $this->db->get_where('tb_program', ['id_user' => $id])->result_array();
+        $data['real_program'] = $this->ModelOpd->get_realprogram($id);
         $data['js'] = 'inputrealisasioutcome.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -96,8 +97,8 @@ class Opd extends CI_Controller
 
     public function getoutcomprog()
     {
-        $id = $this->input->post('id');
-        $data = $this->db->get_where('tb_program', ['id' => $id])->result();
+        $nama_program = $this->input->post('nama_program');
+        $data = $this->db->get_where('tb_program', ['nama_program' => $nama_program])->result();
 
         echo json_encode($data);
     }
@@ -115,13 +116,26 @@ class Opd extends CI_Controller
         echo json_encode($result);
     }
 
+
+    public function addrealisasiprogram()
+    {
+        $data = [
+            'id' => '',
+            'id_program' => $this->input->post('id_program'),
+            'real_outcome' => $this->input->post('realisasi_outcome'),
+
+        ];
+        $this->db->insert('tb_realisasi_program', $data);
+        redirect('opd/inputoutcome');
+    }
+
     // ====================================================================
 
     public function getkegiatan()
     {
         $id_user = $this->session->userdata('id');
         // $data = $this->db->get_where('tb_tujuan_kegiatan', ['id_user' => $id_user])->result();
-        $data = $this->ModelOpd->get_kegiatan($id_user);
+        $data = $this->db->get_where('tb_tujuan_kegiatan', ['id_user' => $id_user])->result();
         $json = [
             'data' => $data
         ];

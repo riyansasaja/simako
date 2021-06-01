@@ -18,14 +18,59 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($kegiatan as $keg) : ?>
+                            <tr>
+                                <th scope="row"><?= $i; ?></th>
+                                <td><?= $keg['program'] ?></td>
+                                <td><?= $keg['kegiatan'] ?></td>
+                                <td>
+                                    <a href="" data-toggle="modal" data-target="#modalrealkegiatan">Input</a>
+                                </td>
+                            </tr>
+                            <?php $i++ ?>
+                        <?php endforeach; ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-6">
+
+        <div class="card">
+            <div class="card-header">
+                <h5>Daftar Realisasi</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Pengembangan Mutu Pendidikan Dasar</td>
-                            <td>Rehabilitasi RKB Sekolah Dasar</td>
-                            <td>
-                                <a href="" data-toggle="modal" data-target="#modalrealkegiatan">Input</a>
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">Kegiatan</th>
+                            <th scope="col">Realisasi Output Kegiatan</th>
+                            <th scope="col">Realisasi Tujuan Kegiatan</th>
+                            <th scope="col">
+                                Action
+                            </th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($real_kegiatan as $rk) : ?>
+                            <tr>
+                                <th scope="row"><?= $i; ?></th>
+                                <td><?= $rk['kegiatan'] ?></td>
+                                <td><?= $rk['real_output'] ?></td>
+                                <td><?= $rk['real_tujuan_kegiatan'] ?></td>
+                                <td>
+                                    <a href="" data-toggle="modal" data-target="#updatemodal">edit</a>
+                                </td>
+                            </tr>
+                            <?php $i++ ?>
+                        <?php endforeach; ?>
 
                     </tbody>
                 </table>
@@ -49,92 +94,80 @@
             </div>
             <div class="modal-body">
 
-                <form id="form_edit">
-                    <input type="text" name="id_tk" id="id_tk" hidden>
+                <form id="form_edit" method="POST" action="<?= base_url('bidang/addrealisasikegiatan'); ?>">
+                    <input type="text" value="<?= $kegiatan[0]['id_tk'] ?>" name="id_tk" id="id_tk" hidden>
 
                     <div class="form-group row">
-                        <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Outcome Program</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="realOutProgram" name="realOutProgram" onchange='Chekrealoutprogram(this.value);'>
-                                <option>Seluruh bangunan SD dalam kondisi baik dan termanfaatkan</option>
-                                <option value="others">--lainnya--</option>
-                            </select>
-                            <div class="form-group">
-                                <textarea class="form-control" id="otherrealoutprogram" rows="3" style='display:none;'></textarea>
+                        <div class="form-group row">
+                            <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Kegiatan</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="realOutKegiatan" name="realoutkegiatan" onchange="Chekrealoutkegiatan(this.value)">
+                                    <option value="<?= $kegiatan[0]['output'] ?>"><?= $kegiatan[0]['output'] ?></option>
+                                    <option value="others">--lainnya--</option>
+                                </select>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="otherrealOutKegiatan" rows="3" style='display:none;'></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Kegiatan</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="realOutKegiatan" name="realOutKegiatan" onchange="Chekrealoutkegiatan(this.value)">
-                                <option>100 RKB</option>
-                                <option value="others">--lainnya--</option>
-                            </select>
-                            <div class="form-group">
-                                <textarea class="form-control" id="otherrealkegiatan" rows="3" style='display:none;'></textarea>
+                        <div class="form-group row">
+                            <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Tujuan Kegiatan</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="realouttujuankegiatan" name="realouttujuankegiatan" onchange="Chekrealouttujuankegiatan(this.value);">
+                                    <option value="<?= $kegiatan[0]['tujuan'] ?>"><?= $kegiatan[0]['tujuan'] ?> </option>
+                                    <option value="others">--lainnya--</option>
+                                </select>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="otherrealtujuankegiatan" rows="3" style='display:none;'></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Tujuan Kegiatan</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="realouttujuankegiatan" name="realouttujuankegiatan" onchange="Chekrealouttujuankegiatan(this.value);">
-                                <option>Terlaksananya rehabilitasi atas 100 RKB SD yang tepat waktu dan sesuai spesifikasi</option>
-                                <option value="others">--lainnya--</option>
-                            </select>
-                            <div class="form-group">
-                                <textarea class="form-control" id="otherrealtujuankegiatan" rows="3" style='display:none;'></textarea>
-                            </div>
-                        </div>
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="btn_update">Save changes</button>
+                    </div>
                 </form>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btn_update">Save changes</button>
             </div>
         </div>
     </div>
-</div>
 
-<!-- end modal input realisasi -->
-
+    <!-- end modal input realisasi -->
 
 
 
 
 
 
-<!-- script js -->
 
-<script>
-    function Chekrealoutprogram(val) {
-        var element = document.getElementById('otherrealoutprogram');
-        if (val == 'others')
-            element.style.display = 'block';
-        else
-            element.style.display = 'none';
-    }
+    <!-- script js -->
 
-    function Chekrealoutkegiatan(val) {
-        var element = document.getElementById('otherrealkegiatan');
-        if (val == 'others')
-            element.style.display = 'block';
-        else
-            element.style.display = 'none';
-    }
+    <script>
+        function Chekrealoutkegiatan(val) {
+            var select = document.getElementById('realOutKegiatan');
+            var textbox = document.getElementById('otherrealOutKegiatan');
+            if (val == 'others') {
+                textbox.style.display = 'block';
+                select.removeAttribute('name');
+                textbox.setAttribute('name', 'realoutkegiatan');
 
-    function Chekrealouttujuankegiatan(val) {
-        var element = document.getElementById('otherrealtujuankegiatan');
-        if (val == 'others')
-            element.style.display = 'block';
-        else
-            element.style.display = 'none';
-    }
-</script>
+            } else {
+                textbox.style.display = 'none';
+            }
+        }
+
+        function Chekrealouttujuankegiatan(val) {
+            var select = document.getElementById('realtujuankegiatan');
+            var textbox = document.getElementById('otherrealtujuankegiatan');
+            if (val == 'others') {
+
+                textbox.style.display = 'block';
+                textbox.setAttribute('name', 'realouttujuankegiatan');
+                select.removeAttribute('name');
+            } else {
+                element.style.display = 'none';
+            }
+        }
+    </script>

@@ -79,4 +79,13 @@ class ModelBidang extends CI_Model
     {
         return $this->db->get_where('tb_realisasi', ['id_idev' => $id_idev])->result_array();
     }
+
+    public function getrealkeg($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_realisasi_kegiatan');
+        $this->db->join('tb_tujuan_kegiatan', 'tb_realisasi_kegiatan.id_tk = tb_tujuan_kegiatan.id_tk');
+        // $this->db->where('tb_tujuan_kegiatan.id_user', $id);
+        return $this->db->get()->result_array();
+    }
 }

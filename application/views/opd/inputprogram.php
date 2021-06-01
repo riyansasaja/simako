@@ -173,7 +173,7 @@
                             <select class="form-control" id="program" name="program" onchange="gantiProg();">
                                 <option value="">Pilih Salah Satu--</option>
                                 <?php foreach ($program as $prog) : ?>
-                                    <option value="<?= $prog['id']; ?>"><?= $prog['nama_program']; ?></option>
+                                    <option value="<?= $prog['nama_program']; ?>"><?= $prog['nama_program']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -181,7 +181,7 @@
                     <div class="form-group row">
                         <label for="outcomeProgram" class="col-sm-2 col-form-label">Outcome Program</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="kegiatan" id="outcomeProgram" rows="3" readonly></textarea>
+                            <textarea class="form-control" name="outcomeProgram" id="outcomeProgram" rows="3" readonly></textarea>
                         </div>
                     </div>
 
@@ -297,13 +297,13 @@
 <script>
     function gantiProg() {
         //ambil id
-        let id = $('#program').val();
+        let nama_program = $('#program').val();
         //panggil ajax
         $.ajax({
             type: "POST",
             url: "<?= base_url('opd/getoutcomprog/') ?>",
             data: {
-                id: id
+                nama_program: nama_program
             },
             dataType: "JSON",
             success: function(response) {

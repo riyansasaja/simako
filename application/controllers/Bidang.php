@@ -179,12 +179,28 @@ class Bidang extends CI_Controller
 
     public function realisasikegiatan()
     {
+        $id = $this->session->userdata('id');
         $data['title'] = 'Input Realisasi';
         $data['js'] = 'inputrealisasi.js';
+        $data['kegiatan'] = $this->db->get_where('tb_tujuan_kegiatan', ['kode_unor' => $id])->result_array();
+        $data['real_kegiatan'] = $this->ModelBidang->getrealkeg($id);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
         $this->load->view('bidang/realisasikegiatan');
         $this->load->view('templates/footer', $data);
+    }
+
+    public function addrealisasikegiatan()
+    {
+        $data = [
+            'id' => '',
+            'id_tk' => $this->input->post('id_tk'),
+            'real_output' => $this->input->post('realoutkegiatan'),
+            'real_tujuan_kegiatan' => $this->input->post('realouttujuankegiatan'),
+        ];
+
+        $this->db->insert('tb_realisasi_kegiatan', $data);
+        redirect('bidang/realisasikegiatan');
     }
 }
