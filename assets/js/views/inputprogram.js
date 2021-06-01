@@ -12,7 +12,7 @@ $(document).ready(function() {
                  render: function (data, type, row, meta) {
                  return meta.row + meta.settings._iDisplayStart + 1;}  
             },
-            { "data": "program" },
+            { "data": "nama_program" },
             { "data": "kegiatan" },
             {
             "data": null,
@@ -37,7 +37,7 @@ $(document).ready(function() {
                 { "data": "outcome_program" },
                 {
                 "data": null,
-                "defaultContent": `<a href="javascript:;" id='editprogram' class="text-danger item_edit"'><i class="fas fa-edit"></i></a>
+                "defaultContent": `<a href="javascript:;" class="text-danger item_edit"'><i class="fas fa-edit"></i></a>
                 <a href="javascript:;" id='deleteprogram' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
             }
             ]
@@ -69,14 +69,77 @@ $(document).ready(function() {
                 $('[name="program1"]').val("");
                 $('[name="outcomeprogram1"]').val("");
                 $('#addprogramModal').modal('hide');
-                showprogram.ajax.reload();
+                window.location.href = window.location.href;
             }
         });
 
     });
     // =====
 
+     // ---Start get Edit program
+     $('#showprogram').on('click', '.item_edit', function(){
+        var data = showprogram.row( $(this).parents('tr') ).data();
+        let id = data['id'];
+        $('#editprogramModal').modal('show');
+       $('[name="id"]').val(id);
+        $('[name="nama_program"]').val(data['nama_program']);
+        $('[name="outcome_program"]').val(data['outcome_program']);
+    });
+    // ------
+
+    //--- Start Update program
+        $('#btn_update').on('click', function () {
+      
+            let id = $('#id').val();
+            let nama_program = $('#edit_nama_program').val();
+            let outcome_program = $('#editoutcomeprog').val();
     
+            $.ajax({
+                type: "POST",
+                url: `${path}updateprogram`,
+                data: {
+                    id: id,
+                    nama_program: nama_program,
+                    outcome_program : outcome_program
+                },
+                dataType: "JSON",
+                success: function(response) {
+                    console.log(response);
+                    $('[name="nama_program"]').val('');
+                    $('[name="outcome_program"]').val('');
+                    window.location.href = window.location.href;
+                    }
+            });
+            return false;
+    
+        });
+        // -----
+
+        //start delete program
+        $('#showprogram').on('click', '.item_delete', function(){
+            var data = showprogram.row( $(this).parents('tr') ).data();
+            let id = data['id'];
+            let hapus = confirm(`Yakin menghapus ${data['nama_program']}???`);
+            if (hapus) {
+                //lakukan penghapusan
+                $.ajax({
+                    type: "POST",
+                    url: `${path}deleteprogram`,
+                    data: {id:id},
+                    dataType: "JSON",
+                    success: function (response) {
+                        console.log(response);
+                        alert('Data Terhapus!!');
+                        window.location.href = window.location.href;
+                    }
+                });
+            }//endif
+            
+        });
+
+
+//===============================================================================
+
     //add kegiatan
     $('#btn_simpan').on('click', function() {
 
@@ -107,7 +170,7 @@ $(document).ready(function() {
                 $('[name="tujuan_kegiatan"]').val("");
                 $('[name="sifat_kegiatan"]').val("");
                 $('[name="unor_tujuan"]').val("");
-                $('#addModal').modal('hide');
+                $('#addkegiatanModal').modal('hide');
                 showkegiatan.ajax.reload();
             }
         });
@@ -120,7 +183,7 @@ $(document).ready(function() {
     $('#showkegiatan').on('click', '.item_delete', function(){
         var data = showkegiatan.row( $(this).parents('tr') ).data();
         let id = data['id_tk'];
-        let hapus = confirm(`Yakin menghapus ${data['program']}???`);
+        let hapus = confirm(`Yakin menghapus ${data['kegiatan']}???`);
         if (hapus) {
             //lakukan penghapusan
             $.ajax({
@@ -147,28 +210,26 @@ $(document).ready(function() {
         let id = data['id_tk'];
         $('#editkegiatanModal').modal('show');
        $('[name="id_tk"]').val(id);
-        $('[name="program"]').val(data['program']);
+        $('[name="programedit"]').val(data['nama_program']);
         $('[name="kegiatan"]').val(data['kegiatan']);
         $('[name="sifat_kegiatan"]').val(data['id_sk']);
         $('[name="unor_tujuan"]').val(data['kode_unor']);
     });
     // ------
 
-    //--- Start Update Program
-    $('#btn_update').on('click', function () {
+    //--- Start Update kegiatan
+    $('#btn_update_kegiatan').on('click', function () {
       
         let id_tk = $('#id_tk').val();
-        let program = $('#edit_program').val();
         let kegiatan = $('#edit_kegiatan').val();
         let id_sk = $('#edit_sifat_kegiatan').val();
         let kode_unor = $('#edit_unor_tujuan').val();
 
-        $.ajax({
+        $.ajax({ 
             type: "POST",
             url: `${path}updatekegiatan`,
             data: {
                 id_tk: id_tk,
-                program: program,
                 kegiatan: kegiatan,
                 id_sk: id_sk,
                 kode_unor: kode_unor,
@@ -176,10 +237,8 @@ $(document).ready(function() {
             dataType: "JSON",
             success: function(response) {
                 console.log(response);
-                $('[name="program"]').val('');
-                $('[name="kegiatan"]').val('');
                 alert('Data Berhasil Dirubah !');
-                $('#editModal').modal('hide');
+                $('[name="kegiatan"]').val('');
                 $('#editkegiatanModal').modal('hide');
                 showkegiatan.ajax.reload();
                 }

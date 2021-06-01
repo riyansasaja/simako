@@ -64,6 +64,19 @@ class Opd extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
+    public function inputoutcome()
+    {
+        $id = $this->session->userdata('id');
+        $data['title'] = 'Input Realisasi Outcome';
+        $data['program'] = $this->db->get_where('tb_program', ['id_user' => $id])->result_array();
+        $data['js'] = 'inputrealisasioutcome.js';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('opd/inputrealoutcome', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
     public function addProgram()
     {
         $id_user = $this->session->userdata('id');
@@ -81,10 +94,34 @@ class Opd extends CI_Controller
         echo json_encode($json);
     }
 
+    public function getoutcomprog()
+    {
+        $id = $this->input->post('id');
+        $data = $this->db->get_where('tb_program', ['id' => $id])->result();
+
+        echo json_encode($data);
+    }
+
+    public function updateprogram()
+    {
+        $data = $this->ModelOpd->updateProgram();
+        echo json_encode($data);
+    }
+
+    public function deleteProgram()
+    {
+        $id = $this->input->post('id');
+        $result = $this->db->delete('tb_program', ['id' => $id]);
+        echo json_encode($result);
+    }
+
+    // ====================================================================
+
     public function getkegiatan()
     {
         $id_user = $this->session->userdata('id');
-        $data = $this->db->get_where('tb_tujuan_kegiatan', ['id_user' => $id_user])->result();
+        // $data = $this->db->get_where('tb_tujuan_kegiatan', ['id_user' => $id_user])->result();
+        $data = $this->ModelOpd->get_kegiatan($id_user);
         $json = [
             'data' => $data
         ];

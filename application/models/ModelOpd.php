@@ -4,14 +4,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class ModelOpd extends CI_Model
 {
+
+    public function get_kegiatan($id_user)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_tujuan_kegiatan');
+        $this->db->where('tb_tujuan_kegiatan.id_user', $id_user);
+        $this->db->join('tb_program', 'tb_tujuan_kegiatan.id_program = tb_program.id');
+        return $this->db->get()->result();
+    }
     public function tambah($id_user)
     {
 
         $data = [
             'id_tk' => '',
             'id_user' => $id_user,
-            'program' => $this->input->post('program', true),
-            'outcome' => '',
+            'id_program' => $this->input->post('program', true),
             'kegiatan' => $this->input->post('kegiatan', true),
             'output' => '',
             'tujuan' => '',
@@ -37,15 +45,25 @@ class ModelOpd extends CI_Model
         return $hasil;
     }
 
+    public function updateProgram()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'nama_program' => $this->input->post('nama_program', true),
+            'outcome_program' => $this->input->post('outcome_program', true),
+
+        ];
+        $this->db->where('id', $id);
+        $hasil = $this->db->update('tb_program', $data);
+        return $hasil;
+    }
+
+
     public function update()
     {
         $id = $this->input->post('id_tk');
         $data = [
-            'program' => $this->input->post('program', true),
-            'outcome' => '',
             'kegiatan' => $this->input->post('kegiatan', true),
-            'output' => '',
-            'tujuan' => '',
             'id_sk' => $this->input->post('id_sk', true),
             'kode_unor' => $this->input->post('kode_unor', true),
             'is_idev' => 1

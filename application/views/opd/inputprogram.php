@@ -111,6 +111,48 @@
 
 <!-- end modal add program -->
 
+<!-- modal edit program -->
+<div class="modal fade" id="editprogramModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Program</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="form_editprogram">
+                    <input type="text" name="id" id="id" hidden>
+
+                    <div class="form-group row">
+                        <label for="program" class="col-sm-2 col-form-label">Program</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="nama_program" id="edit_nama_program" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="editoutcomeprog" class="col-sm-2 col-form-label">Outcome Program</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="outcome_program" id="editoutcomeprog" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn_update">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal edit program -->
+
 <!-- modal Add Kegiatan-->
 
 <div class="modal fade" id="addkegiatanModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,11 +170,18 @@
                     <div class="form-group row">
                         <label for="program" class="col-sm-2 col-form-label">Program</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="program" name="program">
+                            <select class="form-control" id="program" name="program" onchange="gantiProg();">
+                                <option value="">Pilih Salah Satu--</option>
                                 <?php foreach ($program as $prog) : ?>
-                                    <option value="<?= $prog['nama_program']; ?>"><?= $prog['nama_program']; ?></option>
+                                    <option value="<?= $prog['id']; ?>"><?= $prog['nama_program']; ?></option>
                                 <?php endforeach; ?>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="outcomeProgram" class="col-sm-2 col-form-label">Outcome Program</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="kegiatan" id="outcomeProgram" rows="3" readonly></textarea>
                         </div>
                     </div>
 
@@ -177,16 +226,14 @@
         </div>
     </div>
 </div>
-
 <!-- end modal add kegiatan -->
 
-<!-- modal Edit -->
-
+<!-- modal Edit Kegiatan -->
 <div class="modal fade" id="editkegiatanModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModal">Edit Program</h5>
+                <h5 class="modal-title" id="editModal">Edit Kegiatan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -197,9 +244,9 @@
                     <input type="text" name="id_tk" id="id_tk" hidden>
 
                     <div class="form-group row">
-                        <label for="program" class="col-sm-2 col-form-label">Program</label>
+                        <label for="programedit" class="col-sm-2 col-form-label">Program</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="program" id="edit_program" rows="3" required></textarea>
+                            <textarea class="form-control" name="programedit" id="programedit" rows="3" readonly></textarea>
                         </div>
                     </div>
 
@@ -239,10 +286,32 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btn_update">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btn_update_kegiatan">Save changes</button>
             </div>
         </div>
     </div>
 </div>
-
 <!-- end modal edit -->
+
+
+<script>
+    function gantiProg() {
+        //ambil id
+        let id = $('#program').val();
+        //panggil ajax
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('opd/getoutcomprog/') ?>",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
+            success: function(response) {
+                $.each(response, function(i, val) {
+                    console.log(val.outcome_program);
+                    $('#outcomeProgram').val(val.outcome_program);
+                });
+            }
+        });
+    }
+</script>
