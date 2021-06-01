@@ -64,17 +64,15 @@ class Opd extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
-    public function inputoutcome()
+    public function realisasioutcome()
     {
         $id = $this->session->userdata('id');
         $data['title'] = 'Input Realisasi Outcome';
-        $data['program'] = $this->db->get_where('tb_program', ['id_user' => $id])->result_array();
-        $data['real_program'] = $this->ModelOpd->get_realprogram($id);
         $data['js'] = 'inputrealisasioutcome.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('opd/inputrealoutcome', $data);
+        $this->load->view('opd/inputrealoutcome');
         $this->load->view('templates/footer', $data);
     }
 
@@ -119,14 +117,38 @@ class Opd extends CI_Controller
 
     public function addrealisasiprogram()
     {
+        $id = $this->input->post('id_program');
         $data = [
-            'id' => '',
-            'id_program' => $this->input->post('id_program'),
-            'real_outcome' => $this->input->post('realisasi_outcome'),
+            'realisasi_outcome_program' => $this->input->post('realisasi_outcome'),
+            'realisasi' => 1
 
         ];
-        $this->db->insert('tb_realisasi_program', $data);
-        redirect('opd/inputoutcome');
+        $this->db->where('id', $id);
+        $this->db->update('tb_program', $data);
+        redirect('opd/realisasioutcome');
+    }
+
+    public function get_realisasi_program()
+    {
+        $id_user = $this->session->userdata('id');
+        $data = $this->db->get_where('tb_program', ['id_user' => $id_user, 'realisasi' => 1])->result();
+        $json = [
+            'data' => $data
+        ];
+        echo json_encode($json);
+    }
+
+    public function deleterealisasiprogram()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'realisasi_outcome_program' => null,
+            'realisasi' => null
+
+        ];
+        $this->db->where('id', $id);
+        $jadi = $this->db->update('tb_program', $data);
+        echo json_encode($jadi);
     }
 
     // ====================================================================

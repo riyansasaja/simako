@@ -39,7 +39,9 @@ class ModelOpd extends CI_Model
             'id' => '',
             'nama_program' => $this->input->post('program', true),
             'outcome_program' => $this->input->post('outcome', true),
-            'id_user' => $id_user
+            'realisasi_outcome_program' => '',
+            'id_user' => $id_user,
+            'realisasi' => null
 
         ];
         $hasil = $this->db->insert('tb_program', $data);
