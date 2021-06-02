@@ -218,8 +218,8 @@ class Bidang extends CI_Controller
         $id_tk = $this->input->post('id_tk');
         $data = [
 
-            'realisasi_output_kegiatan' => $this->input->post('realisasi_kegiatan'),
-            'realisasi_tujuan_kegiatan' => $this->input->post('realisasi_tujuan_kegiatan'),
+            'realisasi_output_kegiatan' => null,
+            'realisasi_tujuan_kegiatan' => null,
             'realisasi' => null
         ];
         $this->db->where('id_tk', $id_tk);
@@ -237,5 +237,48 @@ class Bidang extends CI_Controller
         $this->load->view('templates/topbar');
         $this->load->view('bidang/realisasirisiko');
         $this->load->view('templates/footer', $data);
+    }
+
+    public function get_all_idev()
+    {
+        $id_user = $this->session->userdata('id');
+        $data['data'] = $this->ModelBidang->get_all_idev($id_user);
+        echo json_encode($data);
+    }
+
+    public function get_all_idev_realisasi()
+    {
+        $id_user = $this->session->userdata('id');
+        $data['data'] = $this->ModelBidang->get_all_idev_realisasi($id_user);
+        echo json_encode($data);
+    }
+
+    public function addrealisasirisiko()
+    {
+        $id_idev = $this->input->post('id');
+        $data = [
+            'realisasi_resiko' => $this->input->post('realisasi_risiko'),
+            'realisasi_sebab' => $this->input->post('realisasi_sebab'),
+            'realisasi_dampak' => $this->input->post('realisasi_dampak'),
+            'realisasi_idev' => 1
+        ];
+        $this->db->where('id_idev', $id_idev);
+        $cek = $this->db->update('tb_idev', $data);
+        // var_dump($data);
+        redirect('bidang/realisasirisiko');
+    }
+
+    public function delete_realisasi_risiko()
+    {
+        $id_idev = $this->input->post('id_idev');
+        $data = [
+            'realisasi_resiko' => null,
+            'realisasi_sebab' => null,
+            'realisasi_dampak' => null,
+            'realisasi_idev' => null
+        ];
+        $this->db->where('id_idev', $id_idev);
+        $cek = $this->db->update('tb_idev', $data);
+        echo json_encode($cek);
     }
 }

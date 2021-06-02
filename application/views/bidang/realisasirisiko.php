@@ -14,9 +14,7 @@
                             <th scope="col">Risiko</th>
                             <th scope="col">Sebab</th>
                             <th scope="col">Dampak</th>
-                            <th scope="col">
-                                Action
-                            </th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,9 +41,9 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Kegiatan</th>
-                            <th scope="col">Risiko</th>
-                            <th scope="col">Sebab</th>
-                            <th scope="col">Dampak</th>
+                            <th scope="col">Realisasi Risiko</th>
+                            <th scope="col">Realisasi Sebab</th>
+                            <th scope="col">Realisasi Dampak</th>
                             <th scope="col">
                                 Action
                             </th>
@@ -65,40 +63,52 @@
 
 <!-- modal input realisasi -->
 
-<div class="modal fade" id="modal_realisasi_kegiatan" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+<div class="modal fade" id="modal_realisasi_risiko" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModal">Input Realisasi Program</h5>
+                <h5 class="modal-title" id="editModal">Input Realisasi Risiko</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <form id="form_edit" method="POST" action="<?= base_url('bidang/addrealisasikegiatan'); ?>">
-                    <input type="text" name="id_tk" id="id_tk" hidden>
+                <form id="form_edit" method="POST" action="<?= base_url('bidang/addrealisasirisiko'); ?>">
+                    <input type="text" name="id" id="id_idev" hidden>
 
                     <!-- <div class="form-group row"> -->
                     <div class="form-group row">
-                        <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Kegiatan</label>
+                        <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Risiko</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="realisasi_kegiatan" name="realisasi_kegiatan" onchange="Chekrealoutkegiatan(this.value)">
+                            <select class="form-control" id="realisasi_risiko" name="realisasi_risiko" onchange="Realisasiresiko(this.value)">
                             </select>
                             <div class="form-group">
-                                <textarea class="form-control" id="otherrealOutKegiatan" rows="3" style='display:none;'></textarea>
+                                <textarea class="form-control" id="other_realisasi_risiko" rows="3" style='display:none;'></textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Tujuan Kegiatan</label>
+                        <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Sebab</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="realisasi_tujuan_kegiatan" name="realisasi_tujuan_kegiatan" onchange="Chekrealouttujuankegiatan(this.value);">
+                            <select class="form-control" id="realisasi_sebab" name="realisasi_sebab" onchange="Realisasisebab(this.value);">
 
                             </select>
                             <div class="form-group">
-                                <textarea class="form-control" id="otherrealtujuankegiatan" rows="3" style='display:none;'></textarea>
+                                <textarea class="form-control" id="other_realisasi_sebab" rows="3" style='display:none;'></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="kegiatan" class="col-sm-2 col-form-label">Realisasi Dampak/Akibat</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="realisasi_dampak" name="realisasi_dampak" onchange="Realisasidampak(this.value);">
+
+                            </select>
+                            <div class="form-group">
+                                <textarea class="form-control" id="other_realisasi_dampak" rows="3" style='display:none;'></textarea>
                             </div>
                         </div>
                     </div>
@@ -124,33 +134,48 @@
     <!-- script js -->
 
     <script>
-        function Chekrealoutkegiatan(val) {
-            var select = document.getElementById('realOutKegiatan');
-            var textbox = document.getElementById('otherrealOutKegiatan');
+        function Realisasiresiko(val) {
+            var select = document.getElementById('realisasi_risiko');
+            var textbox = document.getElementById('other_realisasi_risiko');
             if (val == 'others') {
                 textbox.style.display = 'block';
                 select.removeAttribute('name');
-                textbox.setAttribute('name', 'realoutkegiatan');
+                textbox.setAttribute('name', 'realisasi_risiko');
 
             } else {
                 textbox.style.display = 'none';
                 textbox.removeAttribute('name');
-                select.setAttribute('name', 'realoutkegiatan');
+                select.setAttribute('name', 'realisasi_risiko');
             }
         }
 
-        function Chekrealouttujuankegiatan(val) {
-            var select = document.getElementById('realtujuankegiatan');
-            var textbox = document.getElementById('otherrealtujuankegiatan');
+        function Realisasisebab(val) {
+            var select = document.getElementById('realisasi_sebab');
+            var textbox = document.getElementById('other_realisasi_sebab');
             if (val == 'others') {
 
                 textbox.style.display = 'block';
-                textbox.setAttribute('name', 'realouttujuankegiatan');
+                textbox.setAttribute('name', 'realisasi_sebab');
                 select.removeAttribute('name');
             } else {
                 textbox.style.display = 'none';
                 textbox.removeAttribute('name');
-                select.setAttribute('name', 'realoutkegiatan');
+                select.setAttribute('name', 'realisasi_sebab');
+            }
+        }
+
+        function Realisasidampak(val) {
+            var select = document.getElementById('realisasi_dampak');
+            var textbox = document.getElementById('other_realisasi_dampak');
+            if (val == 'others') {
+
+                textbox.style.display = 'block';
+                textbox.setAttribute('name', 'realisasi_dampak');
+                select.removeAttribute('name');
+            } else {
+                textbox.style.display = 'none';
+                textbox.removeAttribute('name');
+                select.setAttribute('name', 'realisasi_dampak');
             }
         }
     </script>

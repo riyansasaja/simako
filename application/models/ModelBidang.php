@@ -79,4 +79,21 @@ class ModelBidang extends CI_Model
     {
         return $this->db->get_where('tb_realisasi', ['id_idev' => $id_idev])->result_array();
     }
+    public function get_all_idev($id_user)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_idev');
+        $this->db->where('tb_idev.id_user', $id_user);
+        $this->db->join('tb_tujuan_kegiatan', 'tb_idev.id_tk = tb_tujuan_kegiatan.id_tk');
+        return $this->db->get()->result();
+    }
+    public function get_all_idev_realisasi($id_user)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_idev');
+        $this->db->where('tb_idev.id_user', $id_user);
+        $this->db->where('tb_idev.realisasi_idev', 1);
+        $this->db->join('tb_tujuan_kegiatan', 'tb_idev.id_tk = tb_tujuan_kegiatan.id_tk');
+        return $this->db->get()->result();
+    }
 }
