@@ -6,8 +6,12 @@
                 <li class="list-group-item">
                     <a href="<?= base_url('bidang/realisasikegiatan/') ?>">Input Realisasi Kegiatan</a>
                 </li>
-                <li class="list-group-item">Input Realisasi Risiko</li>
-                <li class="list-group-item">Input Realisasi RTP</li>
+                <li class="list-group-item">
+                    <a href="<?= base_url('bidang/realisasirisiko/') ?>">Input Realisasi Risiko</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="<?= base_url('bidang/realisasirtp/') ?>">Input Realisasi RTP</a>
+                </li>
             </ul>
         </div>
 

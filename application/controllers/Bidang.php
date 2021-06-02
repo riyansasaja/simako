@@ -209,7 +209,7 @@ class Bidang extends CI_Controller
     public function get_realisasi_tk()
     {
         $id = $this->session->userdata('id');
-        $data['data'] = $this->db->get_where('tb_tujuan_kegiatan', ['kode_unor' => $id, 'realisasi' => 1])->result();
+        $data['data'] = $this->db->get_where('tb_tujuan_kegiatan', ['kode_unor' => $id, 'realisasi' => 1])->result_object();
         echo json_encode($data);
     }
 
@@ -225,5 +225,17 @@ class Bidang extends CI_Controller
         $this->db->where('id_tk', $id_tk);
         $jadi = $this->db->update('tb_tujuan_kegiatan', $data);
         echo json_encode($jadi);
+    }
+
+    public function realisasirisiko()
+    {
+        $id = $this->session->userdata('id');
+        $data['title'] = 'Input Realisasi';
+        $data['js'] = 'inputrealisasiresiko.js';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('bidang/realisasirisiko');
+        $this->load->view('templates/footer', $data);
     }
 }

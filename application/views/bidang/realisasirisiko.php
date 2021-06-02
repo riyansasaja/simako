@@ -1,17 +1,19 @@
 <div class="row justify-content-start mb-2">
-    <div class="col-6">
+    <div class="col">
 
         <div class="card">
             <div class="card-header">
-                <h5>Daftar Kegiatan</h5>
+                <h5>Daftar Rencana Risiko Perkegiatan</h5>
             </div>
             <div class="card-body">
-                <table class="table" id="tb_show_kegiatan">
+                <table class="table" id="tb_show_risiko">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Program</th>
                             <th scope="col">Kegiatan</th>
+                            <th scope="col">Risiko</th>
+                            <th scope="col">Sebab</th>
+                            <th scope="col">Dampak</th>
                             <th scope="col">
                                 Action
                             </th>
@@ -26,20 +28,24 @@
 
     </div>
 
-    <div class="col-6">
+</div>
+
+<div class="row justify-content-start mb-2">
+    <div class="col">
 
         <div class="card">
             <div class="card-header">
-                <h5>Daftar Realisasi</h5>
+                <h5>Daftar Realisasi Risiko Perkegiatan</h5>
             </div>
             <div class="card-body">
-                <table class="table" id="show_realisasi_kegiatan">
+                <table class="table" id="tb_show_realisasi_risiko">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Kegiatan</th>
-                            <th scope="col">Realisasi Output Kegiatan</th>
-                            <th scope="col">Realisasi Tujuan Kegiatan</th>
+                            <th scope="col">Risiko</th>
+                            <th scope="col">Sebab</th>
+                            <th scope="col">Dampak</th>
                             <th scope="col">
                                 Action
                             </th>
@@ -53,6 +59,7 @@
         </div>
 
     </div>
+
 </div>
 
 
@@ -118,32 +125,32 @@
 
     <script>
         function Chekrealoutkegiatan(val) {
-            var select = document.getElementById('realisasi_kegiatan');
+            var select = document.getElementById('realOutKegiatan');
             var textbox = document.getElementById('otherrealOutKegiatan');
             if (val == 'others') {
                 textbox.style.display = 'block';
                 select.removeAttribute('name');
-                textbox.setAttribute('name', 'realisasi_kegiatan');
+                textbox.setAttribute('name', 'realoutkegiatan');
 
             } else {
                 textbox.style.display = 'none';
                 textbox.removeAttribute('name');
-                select.setAttribute('name', 'realisasi_kegiatan');
+                select.setAttribute('name', 'realoutkegiatan');
             }
         }
 
         function Chekrealouttujuankegiatan(val) {
-            var select = document.getElementById('realisasi_tujuan_kegiatan');
+            var select = document.getElementById('realtujuankegiatan');
             var textbox = document.getElementById('otherrealtujuankegiatan');
             if (val == 'others') {
 
                 textbox.style.display = 'block';
-                textbox.setAttribute('name', 'realisasi_tujuan_kegiatan');
+                textbox.setAttribute('name', 'realouttujuankegiatan');
                 select.removeAttribute('name');
             } else {
                 textbox.style.display = 'none';
                 textbox.removeAttribute('name');
-                select.setAttribute('name', 'realisasi_tujuan_kegiatan');
+                select.setAttribute('name', 'realoutkegiatan');
             }
         }
     </script>
