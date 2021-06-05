@@ -281,4 +281,59 @@ class Bidang extends CI_Controller
         $cek = $this->db->update('tb_idev', $data);
         echo json_encode($cek);
     }
+
+    public function realisasirtp()
+    {
+        $id = $this->session->userdata('id');
+        $data['title'] = 'Input Realisasi';
+        $data['js'] = 'inputrealisasirtp.js';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('bidang/realisasirtp');
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function get_all_rtp()
+    {
+        $id_user = $this->session->userdata('id');
+        $data['data'] = $this->ModelBidang->get_all_rtp($id_user);
+        echo json_encode($data);
+    }
+
+    public function add_realisasi_rtp()
+    {
+        $id_rtp = $this->input->post('id_rtp');
+        $data = [
+            'realisasi_uraian' => $this->input->post('realisasi_uraian_rtp'),
+            'realisasi_target_waktu' => $this->input->post('realisasi_target_waktu'),
+            'realisasi_pj' => $this->input->post('realisasi_pj'),
+            'is_realisasi' => 1
+        ];
+
+        $this->db->where('id_rtp', $id_rtp);
+        $cek = $this->db->update('tb_rtp', $data);
+        redirect('bidang/realisasirtp');
+    }
+
+    public function get_all_realisasi_rtp()
+    {
+        $id_user = $this->session->userdata('id');
+        $data['data'] = $this->ModelBidang->get_all_realisasi_rtp($id_user);
+        echo json_encode($data);
+    }
+
+    public function delete_realisasi_rtp()
+    {
+        $id_rtp = $this->input->post('id_rtp');
+        $data = [
+            'realisasi_uraian' => null,
+            'realisasi_target_waktu' => null,
+            'realisasi_pj' => null,
+            'is_realisasi' => null
+        ];
+        $this->db->where('id_rtp', $id_rtp);
+        $cek = $this->db->update('tb_rtp', $data);
+        echo json_encode($cek);
+    }
 }
