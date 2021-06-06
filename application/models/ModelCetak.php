@@ -77,4 +77,10 @@ class ModelCetak extends CI_Model
 
     //---
 
+    //realisasi
+    public function get_realisasi_bidang()
+    {
+    }
+    //---
+
 }

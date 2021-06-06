@@ -14,12 +14,17 @@ class Exportrealisasiexcel extends CI_Controller
         $this->load->model('ModelCetak', 'cetak');
     }
 
-    public function cetakidevbyid($id)
+    public function cetak_realisasi_bidang($id)
     {
-        $data = $this->cetak->getidevbyid($id);
+        // $data['realisasi_kegiatan'] = $this->db->get_where('tb_');
 
         $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
+        $spreadsheet->createSheet(0);
+        $spreadsheet->createSheet(1);
+        $sheet = $spreadsheet->getSheet(0)->setTitle('Realisasi Program');
+        $sheet1 = $spreadsheet->getSheet(1)->setTitle('Realisasi RTP');
+        $spreadsheet->setActiveSheetIndex(0);
+
         $sheet->setCellValue('A1', 'IDENTIFIKASI & ANALIS RISIKO');
         $sheet->setCellValue('A3', 'PEMERINTAH KOTA MANADO');
         $sheet->setCellValue('A4', $this->session->name);
@@ -41,20 +46,20 @@ class Exportrealisasiexcel extends CI_Controller
         $no = 1;
         $x = 8;
 
-        foreach ($data as $d) {
-            # code...
-            $sheet->setCellValue('A' . $x, $no++);
-            $sheet->setCellValue('B' . $x, $d['program']);
-            $sheet->setCellValue('C' . $x, $d['kegiatan']);
-            $sheet->setCellValue('D' . $x, $d['name']);
-            $sheet->setCellValue('E' . $x, $d['resiko']);
-            $sheet->setCellValue('F' . $x, $d['sebab']);
-            $sheet->setCellValue('G' . $x, $d['dampak']);
-            $sheet->setCellValue('H' . $x, $d['n_kemungkinan']);
-            $sheet->setCellValue('I' . $x, $d['n_dampak']);
-            $sheet->setCellValue('J' . $x, $d['n_resiko']);
-            $x++;
-        }
+        // foreach ($data as $d) {
+        //     # code...
+        //     $sheet->setCellValue('A' . $x, $no++);
+        //     $sheet->setCellValue('B' . $x, $d['program']);
+        //     $sheet->setCellValue('C' . $x, $d['kegiatan']);
+        //     $sheet->setCellValue('D' . $x, $d['name']);
+        //     $sheet->setCellValue('E' . $x, $d['resiko']);
+        //     $sheet->setCellValue('F' . $x, $d['sebab']);
+        //     $sheet->setCellValue('G' . $x, $d['dampak']);
+        //     $sheet->setCellValue('H' . $x, $d['n_kemungkinan']);
+        //     $sheet->setCellValue('I' . $x, $d['n_dampak']);
+        //     $sheet->setCellValue('J' . $x, $d['n_resiko']);
+        //     $x++;
+        // }
 
         $styleArray = [
             'borders' => [

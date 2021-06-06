@@ -58,7 +58,7 @@
                                     <a class="dropdown-item" href="<?= base_url('exportexcel/cetaktkbykodeunor/') . $this->session->userdata('id'); ?>">Cetak Program Kegiatan (excel)</a>
                                     <a class="dropdown-item" href="<?= base_url('exportexcelrtp/cetakrtpbykodeunor/') . $this->session->userdata('id'); ?>">Cetak RTP (excel)</a>
                                     <a class="dropdown-item" href="<?= base_url('exportidev/cetakidevbyunor/') . $this->session->userdata('id'); ?>">Cetak Identifikasi dan Analis Risiko (Excel)</a>
-                                    <a class="dropdown-item" href="#">Cetak Realisasi (Excel)</a>
+                                    <a class="dropdown-item" href="<?= base_url('exportrealisasiexcel/cetak_realisasi_bidang/') . $this->session->userdata('id'); ?>">Cetak Realisasi (Excel)</a>
 
 
                                 <?php elseif ($role_id == 2) : ?>
