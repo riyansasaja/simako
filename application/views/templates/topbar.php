@@ -72,7 +72,7 @@
                                     <a class="dropdown-item" href="<?= base_url('exportexcel/cetaktkall/') ?>">Cetak Program Kegiatan (excel)</a>
                                     <a class="dropdown-item" href="<?= base_url('exportexcelrtp/cetakrtpall/') ?>">Cetak RTP (excel)</a>
                                     <a class="dropdown-item" href="<?= base_url('exportexcelhistoris/cetakhistorisall/') . $this->session->userdata('id'); ?>">Cetak Data Historis Risiko (Excel)</a>
-                                    <a class="dropdown-item" href="#">Cetak Realisasi (Excel)</a>
+                                    <a class="dropdown-item" href="<?= base_url('exportrealisasiexcel/cetak_realisasi_all/') ?>">Cetak Realisasi (Excel)</a>
 
                                 <?php endif; ?>
                             </div>
