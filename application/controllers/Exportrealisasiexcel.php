@@ -496,7 +496,7 @@ class Exportrealisasiexcel extends CI_Controller
         $x = $a - 1;
         $y = $b - 1;
         $z = $c - 1;
-        $sheet->getStyle('A5:F' . $x)->applyFromArray($styleArray);
+        $sheet->getStyle('A5:G' . $x)->applyFromArray($styleArray);
         $sheet1->getStyle('A5:I' . $y)->applyFromArray($styleArray);
         $sheet2->getStyle('A5:I' . $z)->applyFromArray($styleArray);
 
