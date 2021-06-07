@@ -78,8 +78,22 @@ class ModelCetak extends CI_Model
     //---
 
     //realisasi
-    public function get_realisasi_bidang()
+    public function get_realisasi_risiko($id)
     {
+        $this->db->select('*');
+        $this->db->from('tb_idev');
+        $this->db->where('tb_idev.id_user', $id);
+        $this->db->join('tb_tujuan_kegiatan', 'tb_idev.id_tk = tb_tujuan_kegiatan.id_tk');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_realisasi_rtp($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_idev');
+        $this->db->where('tb_idev.id_user', $id);
+        $this->db->join('tb_rtp', 'tb_idev.id_idev = tb_rtp.id_idev');
+        return $this->db->get()->result_array();
     }
     //---
 
