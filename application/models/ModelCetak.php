@@ -95,6 +95,35 @@ class ModelCetak extends CI_Model
         $this->db->join('tb_rtp', 'tb_idev.id_idev = tb_rtp.id_idev');
         return $this->db->get()->result_array();
     }
+
+    public function get_realisasi_kegiatan_opd($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_tujuan_kegiatan');
+        $this->db->where('tb_tujuan_kegiatan.id_user', $id);
+        $this->db->join('user', 'tb_tujuan_kegiatan.kode_unor = user.id');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_realisasi_risiko_opd($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_idev');
+        $this->db->where('tb_idev.id_atasan', $id);
+        $this->db->join('tb_tujuan_kegiatan', 'tb_idev.id_tk = tb_tujuan_kegiatan.id_tk');
+        $this->db->join('user', 'tb_idev.id_user = user.id');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_realisasi_rtp_opd($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_idev');
+        $this->db->where('tb_idev.id_atasan', $id);
+        $this->db->join('tb_rtp', 'tb_idev.id_idev = tb_rtp.id_idev');
+        $this->db->join('user', 'tb_idev.id_user = user.id');
+        return $this->db->get()->result_array();
+    }
     //---
 
 }
