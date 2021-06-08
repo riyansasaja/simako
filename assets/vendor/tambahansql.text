@@ -1,0 +1,5 @@
+===07-06-2021===
+INSERT INTO `user_menu` (`id`, `menu`, `urutan`) VALUES (NULL, 'MONITORING', '1');
+INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES (NULL, '1', '9'), (NULL, '4', '9');
+INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES (NULL, '9', 'Monitoring', 'dashboard/monitoring', 'fab fa-fw fa-watchman-monitoring', '1');
+====
