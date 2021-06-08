@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller
         is_logged_in();
     }
 
+    //dashboard
     public function index()
     {
 
@@ -51,4 +52,47 @@ class Dashboard extends CI_Controller
 
         echo json_encode($json);
     }
+    //--- dashboard end
+
+    //monitoring
+    public function monitoring()
+    {
+        $data['title'] = 'Monitoring';
+        $data['js'] = 'monitoring.js';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('dashboard/monitoring');
+        $this->load->view('templates/footer', $data);
+    }
+
+    //Monitoring
+    public function get_monitoring_inputan_program()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_tujuan_kegiatan');
+        $this->db->join('user', 'tb_tujuan_kegiatan.id_user = user.id');
+        $data['data'] =  $this->db->get()->result();
+        echo json_encode($data);
+    }
+    public function get_monitoring_inputan_risiko()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_idev');
+        $this->db->join('tb_tujuan_kegiatan', 'tb_idev.id_tk = tb_tujuan_kegiatan.id_tk');
+        $this->db->join('user', 'tb_idev.id_atasan = user.id');
+        $data['data'] =  $this->db->get()->result();
+        echo json_encode($data);
+    }
+    public function get_monitoring_inputan_rtp()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_idev');
+        $this->db->join('tb_rtp', 'tb_idev.id_idev = tb_rtp.id_idev');
+        $this->db->join('user', 'tb_idev.id_atasan = user.id');
+        $data['data'] =  $this->db->get()->result();
+        echo json_encode($data);
+    }
+    //----
 }
