@@ -97,6 +97,7 @@ class Dashboard extends CI_Controller
     {
         $this->db->select('*');
         $this->db->from('tb_idev');
+        $this->db->join('tb_tujuan_kegiatan', 'tb_idev.id_tk = tb_tujuan_kegiatan.id_tk');
         $this->db->join('tb_rtp', 'tb_idev.id_idev = tb_rtp.id_idev');
         $this->db->join('user', 'tb_idev.id_atasan = user.id');
         $data['data'] =  $this->db->get()->result();

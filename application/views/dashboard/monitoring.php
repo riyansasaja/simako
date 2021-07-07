@@ -40,6 +40,7 @@
                             <th scope="col">#</th>
                             <th scope="col">OPD</th>
                             <th scope="col">Program</th>
+                            <th scope="col">Kegiatan</th>
                             <th scope="col">Risiko</th>
                             <th scope="col">Sebab</th>
                             <th scope="col">Dampak</th>
@@ -66,6 +67,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">OPD</th>
+                            <th scope="col">kegiatan</th>
                             <th scope="col">Risiko</th>
                             <th scope="col">Uraian RTP</th>
                             <th scope="col">Target Waktu</th>

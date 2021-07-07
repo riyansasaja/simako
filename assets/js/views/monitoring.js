@@ -33,6 +33,7 @@ $(document).ready(function () {
             },
             { "data": "name" },
             { "data": "program" },
+            { "data": "kegiatan" },
             { "data": "resiko" },
             { "data": "sebab" },
             { "data": "dampak" }
@@ -49,6 +50,7 @@ $(document).ready(function () {
                 }
             },
             { "data": "name" },
+            { "data": "kegiatan" },
             { "data": "resiko" },
             { "data": "uraian_rtp" },
             { "data": "target_waktu" },
