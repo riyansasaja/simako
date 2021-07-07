@@ -33,19 +33,27 @@ class Dashboard extends CI_Controller
         if ($role_id == 3) {
             # jika Usernya Bidang
             $data = $this->dashboard->getDataById($id);
-            $highrisk = $this->dashboard->countRiskById($id);
+            $lowrisk = $this->dashboard->countRiskById_low($id);
+            $midlerisk = $this->dashboard->countRiskById_midle($id);
+            $highrisk = $this->dashboard->countRiskById_high($id);
         } else if ($role_id == 2) {
             # Jika User OPD
             $data = $this->dashboard->getDataByAtasan($id);
-            $highrisk = $this->dashboard->countRiskByAtasan($id);
+            $lowrisk = $this->dashboard->countRiskByAtasan_low($id);
+            $midlerisk = $this->dashboard->countRiskByAtasan_midle($id);
+            $highrisk = $this->dashboard->countRiskByAtasan_high($id);
         } else {
             #jika user asda atau Inspektorat
             $data = $this->db->get('v_totalskor')->result();
-            $highrisk = $this->dashboard->countRiskAll();
+            $lowrisk = $this->dashboard->countRiskAll_low();
+            $midlerisk = $this->dashboard->countRiskAll_midle();
+            $highrisk = $this->dashboard->countRiskAll_high();
         }
 
         $json = [
             'data' => $data,
+            'lowrisk' => $lowrisk,
+            'midlerisk' => $midlerisk,
             'highrisk' => $highrisk,
             'totalrisk' => count($data)
         ];
