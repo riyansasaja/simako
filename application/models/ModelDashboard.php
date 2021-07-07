@@ -21,12 +21,12 @@ class ModelDashboard extends CI_Model
     }
     public function countRiskById_midle($id)
     {
-        $query = "SELECT * FROM v_totalskor WHERE id_user = $id AND nilai_reskeg > 3 AND nilai_reskeg < 9";
+        $query = "SELECT * FROM v_totalskor WHERE id_user = $id AND nilai_reskeg > 3 AND nilai_reskeg < 8";
         return $this->db->query($query)->num_rows();
     }
     public function countRiskById_high($id)
     {
-        $query = "SELECT * FROM v_totalskor WHERE id_user = $id AND nilai_reskeg > 9";
+        $query = "SELECT * FROM v_totalskor WHERE id_user = $id AND nilai_reskeg > 8";
         return $this->db->query($query)->num_rows();
     }
 
@@ -37,12 +37,12 @@ class ModelDashboard extends CI_Model
     }
     public function countRiskByAtasan_midle($id)
     {
-        $query = "SELECT * FROM v_totalskor WHERE id_atasan = $id AND nilai_reskeg > 3 AND nilai_reskeg < 9";
+        $query = "SELECT * FROM v_totalskor WHERE id_atasan = $id AND nilai_reskeg > 3 AND nilai_reskeg < 8";
         return $this->db->query($query)->num_rows();
     }
     public function countRiskByAtasan_high($id)
     {
-        $query = "SELECT * FROM v_totalskor WHERE id_atasan = $id AND nilai_reskeg > 9";
+        $query = "SELECT * FROM v_totalskor WHERE id_atasan = $id AND nilai_reskeg > 8";
         return $this->db->query($query)->num_rows();
     }
     public function countRiskAll_low()
@@ -52,12 +52,12 @@ class ModelDashboard extends CI_Model
     }
     public function countRiskAll_midle()
     {
-        $query = "SELECT * FROM v_totalskor WHERE nilai_reskeg > 3 AND nilai_reskeg <9 ";
+        $query = "SELECT * FROM v_totalskor WHERE nilai_reskeg > 3 AND nilai_reskeg <8 ";
         return $this->db->query($query)->num_rows();
     }
     public function countRiskAll_high()
     {
-        $query = "SELECT * FROM v_totalskor WHERE nilai_reskeg >9 ";
+        $query = "SELECT * FROM v_totalskor WHERE nilai_reskeg >8 ";
         return $this->db->query($query)->num_rows();
     }
 }
