@@ -21,7 +21,7 @@ $(document).ready(function () {
             if (data.nilai_reskeg > 3) {
                 $('td', row).addClass('bg-warning text-white')
             }
-            if (data.nilai_reskeg > 9) {
+            if (data.nilai_reskeg > 8) {
                 $('td', row).addClass('bg-danger text-white')
             } else {
                 $('td', row).addClass('bg-success text-white')
@@ -29,20 +29,7 @@ $(document).ready(function () {
         }
     });
     // ------
-    $('table tbody tr').attr("class", 'bg-primary');
 
-    //membuat warna
-    let data = table_dashboard.row($(this).parents('tr')).data();
-    if (data > 9) {
-        //di sinin mo taruh yang kurang dari tiga 
-        $('table tbody tr').attr("class", 'bg-primary');
-    } else if (data > 3) {
-        //di sini mo taruh yang kurang dari tiga
-    } else {
-        //di sini yang di atas 9
-    }
-
-    //-------
 
     // ambil get data
 
