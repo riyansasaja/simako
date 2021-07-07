@@ -14,6 +14,7 @@
                             <th scope="col">Program</th>
                             <th scope="col">Outcome</th>
                             <th scope="col">Kegiatan</th>
+                            <th scope="col">Output</th>
                             <th scope="col">Tujuan</th>
                         </tr>
                     </thead>
