@@ -43,7 +43,7 @@ $(document).ready(function () {
             var myChart = new Chart(ctx, {
                 type: 'polarArea',
                 data: {
-                    labels: ['Resiko Rendah (1-3)', 'Resiko Rendah (3-9)', 'Resiko Tinggi (9-16)'],
+                    labels: ['Risiko Rendah (1-3)', 'Resiko Sedang (3<R<9)', 'Resiko Tinggi (9-16)'],
                     datasets: [{
                         // label: '# of Votes',
                         data: [response.lowrisk, response.midlerisk, response.highrisk],
