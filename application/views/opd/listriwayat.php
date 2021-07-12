@@ -22,7 +22,7 @@
                     <?php $i = 1; ?>
                     <?php foreach ($listriwayat as $list) : ?>
 
-                        <tr>
+                        <tr class="<?= $list['tindak_lanjut'] == 2 ? 'bg-danger text-white' : '' ?>">
                             <th scope="row"><?= $i ?></th>
                             <td><?= $list['kondisi']; ?></td>
                             <td><?= $list['kriteria']; ?></td>
