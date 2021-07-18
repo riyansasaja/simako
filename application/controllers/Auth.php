@@ -57,17 +57,17 @@ class Auth extends CI_Controller
                     redirect('dashboard/');
                 } else {
                     # jia password salah
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
+                    $this->session->set_flashdata('message', 'Maaf Pasword Salah!');
                     redirect('auth/');
                 }
             } else {
                 # jika email tidak aktif
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
+                $this->session->set_flashdata('message', 'Maaf email ini belum diaktifkan!');
                 redirect('auth/');
             }
         } else {
             # jika tidak ada user
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+            $this->session->set_flashdata('message', 'Maaf Email belum terdaftar!');
             redirect('auth/');
         }
     }
