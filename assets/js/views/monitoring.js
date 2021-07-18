@@ -1,11 +1,6 @@
 $(document).ready(function () {
 
-    //menampilkan row berdasarkan pilihan
-    $('select').on('change', function () {
-        $('.show').attr('class', 'd-none');
-        $(`#${this.value}`).attr('class', 'show');
-    });
-    //--end
+
 
     const prapath = window.location.origin;
     const path = `${prapath}/simako/dashboard/`;
@@ -68,5 +63,17 @@ $(document).ready(function () {
     //panggil ajax per 6detik
     setInterval(function () { monitoring_inputan_program.ajax.reload() }, 6000);
     setInterval(function () { monitoring_inputan_risiko.ajax.reload() }, 6000);
+
+
+    //menampilkan row berdasarkan pilihan
+
+    $('select').on('change', function () {
+        $('.show').attr('class', 'show d-none');
+        $(`#${this.value}`).attr('class', 'show');
+        if (this.value == 'all') {
+            $('.show').attr('class', 'show');
+        }
+    });
+    //--end
 
 });
