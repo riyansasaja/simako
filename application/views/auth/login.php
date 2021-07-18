@@ -35,7 +35,7 @@
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="flashData" data-flashData='<?= $this->session->flashdata('message'); ?>'></div>
+            <div class="flash-data" data-flashdata='<?= $this->session->flashdata('message'); ?>'></div>
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
@@ -114,12 +114,26 @@
 
 
     <script>
+        //script untuk tombol forgot password
         $('#forgotPassword').on('click', function(e) {
             e.preventDefault();
             Swal.fire('Hendak Reset Password ?',
                 'Silahkan Hubungi Admin Asda!!'
             );
         });
+
+        //script untuk tampilan flash data
+        const flashdata = $('.flash-data').data('flashdata');
+        //jika ada flash data
+        if (flashdata) {
+            //tampilkan swal
+            Swal.fire({
+                icon: 'warning',
+                title: flashdata,
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }
     </script>
 
 

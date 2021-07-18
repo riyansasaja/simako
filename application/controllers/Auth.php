@@ -67,7 +67,7 @@ class Auth extends CI_Controller
             }
         } else {
             # jika tidak ada user
-            $this->session->set_flashdata('message', 'Maaf Email belum terdaftar!');
+            $this->session->set_flashdata('message', 'Maaf Email tidak terdaftar!');
             redirect('auth/');
         }
     }
@@ -77,7 +77,7 @@ class Auth extends CI_Controller
 
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
+        $this->session->set_flashdata('message', 'Anda Telah Logout!');
         redirect('auth/');
     }
 
