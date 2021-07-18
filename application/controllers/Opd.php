@@ -19,11 +19,12 @@ class Opd extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             # code...
             $data['title'] = 'Input Riwayat Risiko';
+            $data['js'] = '';
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar');
             $this->load->view('opd/riwayat');
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data);
         } else {
 
             $cek =  $this->ModelOpd->tambahriwayat();
@@ -40,11 +41,12 @@ class Opd extends CI_Controller
         $id_user = $this->session->userdata('id');
         $data['title'] = 'List Riwayat Risiko';
         $data['listriwayat'] = $this->db->get_where('tb_riwayat_resiko', ['id_user' => $id_user])->result_array();
+        $data['js'] = 'inputlistriwayat.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
         $this->load->view('opd/listriwayat');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
 
 

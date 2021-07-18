@@ -2,8 +2,8 @@
 
     <div class="col">
 
-        <div class="table-responsive">
-            <table class="table table-hover">
+        <div class="table">
+            <table class="table table-responsive" id="table-listriwayat">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
