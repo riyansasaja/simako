@@ -36,11 +36,17 @@ class Opd extends CI_Controller
         }
     }
 
-    public function listriwayat()
+    public function get_listriwayat()
     {
         $id_user = $this->session->userdata('id');
+        $data['data'] = $this->db->get_where('tb_riwayat_resiko', ['id_user' => $id_user])->result_array();
+        echo json_encode($data);
+    }
+
+    public function listriwayat()
+    {
+
         $data['title'] = 'List Riwayat Risiko';
-        $data['listriwayat'] = $this->db->get_where('tb_riwayat_resiko', ['id_user' => $id_user])->result_array();
         $data['js'] = 'inputlistriwayat.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
