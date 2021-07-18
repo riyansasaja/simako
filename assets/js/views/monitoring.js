@@ -1,5 +1,12 @@
 $(document).ready(function () {
 
+    //menampilkan row berdasarkan pilihan
+    $('select').on('change', function () {
+        $('.show').attr('class', 'd-none');
+        $(`#${this.value}`).attr('class', 'show');
+    });
+    //--end
+
     const prapath = window.location.origin;
     const path = `${prapath}/simako/dashboard/`;
 
