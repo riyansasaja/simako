@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row d-none">
     <!-- Monitoring Input Program -->
     <div class="col">
         <div class="card shadow mb-4">
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row d-none">
     <!-- Monitoring Input Program -->
     <div class="col">
         <div class="card shadow mb-4">
@@ -54,7 +54,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row d-none">
     <!-- Monitoring Input Program -->
     <div class="col">
         <div class="card shadow mb-4">
