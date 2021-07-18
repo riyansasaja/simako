@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-6">
-        <div class="card">
+        <div class="card animate__animated animate__fadeIn animate_slow">
             <div class="card-header">
                 <h6><i class="far fa-fw fa-id-card"></i> Profile</h6>
             </div>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="col-6">
-        <div class="card">
+        <div class="card animate__animated animate__fadeIn animate_slower">
             <div class="card">
                 <div class="card-header">
                     <h6><i class="fas fa-key"></i> Ganti Password</h6>

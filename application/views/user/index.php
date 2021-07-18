@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-4">
-        <div class="card text-left">
+        <div class="card text-left animate__animated animate__fadeIn animate_slow">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tambah Pengguna</h6>
             </div>
@@ -33,7 +33,7 @@
 
     <div class="col-8">
 
-        <section class="table">
+        <section class="table animate__animated animate__fadeIn animate_slower">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
