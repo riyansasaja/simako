@@ -11,8 +11,9 @@
                     <option value="m_inputanprogram">Monitoring Inputan Program Kegiatan</option>
                     <option value="m_inputanrisiko">Monitoring Inputan Risiko</option>
                     <option value="m_inputanrtp">Monitoring Inputan RTP</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value="m_realisasiprogram">Monitoring Realisasi Program/Kegiatan</option>
+                    <option value="m_realisasiresiko">Monitoring Realisasi Risiko Program/Kegiatan</option>
+                    <option value="m_realisasirtp">Monitoring Realisasi RTP</option>
                 </select>
             </div>
         </div>
