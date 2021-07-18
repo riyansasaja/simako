@@ -23,6 +23,9 @@
 
     <link rel="shortcut icon" href="<?= base_url('assets/img/') ?>international.svg">
 
+    <!-- css animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
 </head>
 
 <body class="bg-gradient-secondary">
@@ -37,7 +40,7 @@
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        <div class="row">
+                        <div class="row animate__animated animate__fadeIn animate__slow">
                             <div class="col-lg-6 d-none d-lg-block text-right">
                                 <!-- gambar -->
                                 <img style="width: 110%;" src="<?= base_url('assets/img/') ?>simako-bg-4.png" alt="login pict">
@@ -79,11 +82,9 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="#!" id="forgotPassword">Forgot Password?</a>
                                     </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -105,6 +106,21 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url('assets/') ?>js/sb-admin-2.min.js"></script>
+
+    <!-- sweet alert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        $('#forgotPassword').on('click', function(e) {
+            e.preventDefault();
+            Swal.fire('Hendak Reset Password ?',
+                'Silahkan Hubungi Admin Asda!!'
+            );
+        });
+    </script>
+
+
 
 </body>
 
