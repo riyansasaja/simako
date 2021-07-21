@@ -25,10 +25,10 @@
 
 
 <div class="modal fade" id="listRiwayatDetailModal" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detail List Riwayat</h5>
+            <div class="modal-header bg-primary text-light">
+                <h5 class="modal-title" id="exampleModalLabel">Detail List Riwayat <i class="fas fa-clipboard-list"></i></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

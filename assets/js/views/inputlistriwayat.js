@@ -31,44 +31,46 @@ $(document).ready(function () {
 
     //--- end
 
+
+    //item view
     $('#table-listriwayat').on('click', '.item_view', function () {
         let data = listriwayat.row($(this).parents('tr')).data();
         $('#listRiwayatDetailModal').modal('show');
         let text = `<ul class="list-group">
         <li class="list-group-item">
-            <h6 class="text-primary">Kondisi</h6>
+            <h5 class="text-primary">Kondisi</h5>
             ${data.kondisi}
         </li>
         <li class="list-group-item">
-            <h6 class="text-primary">Kriteria</h6>
+            <h5 class="text-primary">Kriteria</h5>
             ${data.kriteria}
         </li>
         <li class="list-group-item">
-            <h6 class="text-primary">Sebab Uraian</h6>
+            <h5 class="text-primary">Sebab Uraian</h5>
             ${data.sebab_uraian}
         </li>
         <li class="list-group-item">
-            <h6 class="text-primary">Akibat</h6>
+            <h5 class="text-primary">Akibat</h5>
             ${data.akibat}
         </li>
         <li class="list-group-item">
-            <h6 class="text-primary">Saran</h6>
+            <h5 class="text-primary">Saran</h5>
             ${data.saran}
         </li>
         <li class="list-group-item">
-            <h6 class="text-primary">Sumber Data</h6>
+            <h5 class="text-primary">Sumber Data</h5>
             ${data.sumber_data}
         </li>
         <li class="list-group-item">
-            <h6 class="text-primary">Pernyataan Risiko</h6>
+            <h5 class="text-primary">Pernyataan Risiko</h5>
             ${data.pernyataan_resiko}
         </li>
         <li class="list-group-item">
-            <h6 class="text-primary">Sebab</h6>
+            <h5 class="text-primary">Sebab</h5>
             ${data.sebab}
         </li>
         <li class="list-group-item">
-            <h6 class="text-primary">Dampak</h6>
+            <h5 class="text-primary">Dampak</h5>
             ${data.dampak}
     </ul>`
 
@@ -77,5 +79,16 @@ $(document).ready(function () {
 
     });
 
+    //---end
+
+    //item edit
+
+    $('#table-listriwayat').on('click', '.item_edit', function () {
+        const data = listriwayat.row($(this).parents('tr')).data();
+        const id = data.id;
+        console.log(id);
+        window.location.href = `${url}editlistriwayat/${id}`;
+
+    });
 
 });
