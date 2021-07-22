@@ -3,7 +3,7 @@
 
         <div class="col-10">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-gradient-primary text-white">
                     <span class=""> Input Outcome Program dan Tujuan Kegiatan </span>
                 </div>
                 <div class="card-body">
@@ -35,8 +35,8 @@
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editModal">Edit Program</h5>
+            <div class="modal-header bg-gradient-primary text-light">
+                <h5 class="modal-title" id="editModal">Input Tujuan Kegiatan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
