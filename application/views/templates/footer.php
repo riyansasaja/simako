@@ -74,6 +74,9 @@
 <!-- chartjs -->
 <script src="<?= base_url('assets/') ?>vendor/chart.js/Chart.js"></script>
 
+<!-- sweet alert2 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <!-- custom js -->
 <?php if ($js) : ?>

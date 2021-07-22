@@ -1,3 +1,5 @@
+<div class="flash-data" data-flashdata='<?= $this->session->flashdata('message'); ?>'></div>
+
 <div class="row justify-content-start mb-3">
 
     <div class="col">

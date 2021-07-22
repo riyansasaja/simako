@@ -90,5 +90,57 @@ $(document).ready(function () {
         window.location.href = `${url}editlistriwayat/${id}`;
 
     });
+    //---end
+
+    //item delete
+    $('#table-listriwayat').on('click', '.item_delete', function () {
+        let data = listriwayat.row($(this).parents('tr')).data();
+        const id = data.id;
+        console.log(id);
+        Swal.fire({
+            title: 'Yakin Menghapus?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: `Hapus`,
+            denyButtonText: `Tidak`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    type: "POST",
+                    url: `${url}delete_listriwayat/`,
+                    data: {
+                        id: id
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });
+                Swal.fire('Data Dihapus!', '', 'success')
+                listriwayat.ajax.reload();
+            } else if (result.isDenied) {
+                Swal.fire('Data tidak dihapus', '', 'info')
+            }
+        })
+        return;
+
+
+    });
+    //---end
+
+    //script untuk tampilan flash data
+    const flashdata = $('.flash-data').data('flashdata');
+    //jika ada flash data
+    if (flashdata) {
+        //tampilkan swal
+        Swal.fire({
+            icon: 'success',
+            title: flashdata,
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
 
 });
