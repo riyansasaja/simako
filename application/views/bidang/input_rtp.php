@@ -89,8 +89,10 @@
                     </div>
                 </form>
             </div>
-            <div class="card-footer">
-                <button class="btn btn-primary btn-block btn-lg" type="submit" id="btn_tambah">Tambah</button>
+            <div class="card-footer text-center">
+                <button class="btn btn-primary" type="submit" id="btn_tambah" style="width: 40%;">Tambah Data</button>
+                <button class="btn btn-warning d-none" id="btn_edit" style="width: 40%;">Update Data</button>
+                <button class="btn btn-secondary d-none" id="btn_cancel" style="width: 40%;">Batal</button>
             </div>
         </div>
     </div>
