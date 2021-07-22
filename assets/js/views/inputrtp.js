@@ -53,7 +53,7 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (response) {
-                alert('Data Berhasil Ditambahkan');
+                Swal.fire('Data berhasil ditambahkan!', '', 'success');
                 $('[name="uraian_pengendalian"]').val("");
                 $('[name="hasil_evaluasi"]').val("");
                 $('[name="uraian_rtp"]').val("");
@@ -154,23 +154,35 @@ $(document).ready(function () {
 
     // -- Delete Data
     $('#table_rtp').on('click', '.item_delete', function () {
+        //ambil data dari table
         var data = table_rtp.row($(this).parents('tr')).data();
+        //ambil id_rtp
         let id_rtp = data['id_rtp'];
-        let hapus = confirm(`Yakin menghapus ???`);
-        if (hapus) {
-            //lakukan penghapusan
-            $.ajax({
-                type: "POST",
-                url: `${path}del_rtp`,
-                data: { id_rtp: id_rtp },
-                dataType: "JSON",
-                success: function (response) {
-                    console.log(response);
-                    alert('Data Terhapus!!');
-                    table_rtp.ajax.reload();
-                }
-            });
-        }//endif
+        //swal confirmasi hapus
+        Swal.fire({
+            title: 'Yakin Menghapus Data RTP?',
+            text: "Data yang sudah dihapus tidak dapat dikembalikan!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //jika klik hapus
+                $.ajax({
+                    type: "POST",
+                    url: `${path}del_rtp`,
+                    data: { id_rtp: id_rtp },
+                    dataType: "JSON",
+                    success: function (response) {
+                        //swal info data dihapus
+                        Swal.fire('Data Dihapus!', '', 'success')
+                        table_rtp.ajax.reload();
+                    }
+                });
+            }
+        });
 
     });
     // -----
