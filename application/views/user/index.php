@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-4">
         <div class="card text-left animate__animated animate__fadeIn animate_slow">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tambah Pengguna</h6>
+            <div class="card-header py-3 bg-gradient-primary text-light">
+                <h6 class="m-0 font-weight-bold">Tambah Pengguna</h6>
             </div>
             <div class="card-body">
                 <div id="show_alert"></div>
@@ -35,13 +35,13 @@
 
         <section class="table animate__animated animate__fadeIn animate_slower">
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
+                <div class="card-header py-3 bg-gradient-success text-light">
+                    <h6 class="m-0 font-weight-bold">Daftar Pengguna</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table" id="dataTable" cellspacing="0">
-                            <thead class="bg-primary text-white">
+                            <thead class="">
                                 <tr>
                                     <th>Nama</th>
                                     <th>Aksi</th>

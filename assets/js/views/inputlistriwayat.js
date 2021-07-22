@@ -99,6 +99,8 @@ $(document).ready(function () {
         console.log(id);
         Swal.fire({
             title: 'Yakin Menghapus?',
+            text: 'klik Tombol Hapus untuk menghapus data ini',
+            icon: 'warning',
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: `Hapus`,
@@ -120,8 +122,6 @@ $(document).ready(function () {
                 });
                 Swal.fire('Data Dihapus!', '', 'success')
                 listriwayat.ajax.reload();
-            } else if (result.isDenied) {
-                Swal.fire('Data tidak dihapus', '', 'info')
             }
         })
         return;
