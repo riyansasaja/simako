@@ -17,8 +17,9 @@ $(document).ready(function () {
             { "data": "kegiatan" },
             {
                 "data": null,
-                "defaultContent": `<a href="javascript:;" id='editkegiatan' class="text-danger item_edit"'><i class="fas fa-edit"></i></a>
-            <a href="javascript:;" id='deletekegiatan' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
+                "defaultContent": `<a href="javascript:;" id='editkegiatan' class="item_edit badge badge-warning d-block mb-2 text-light">  Edit</a>
+                <a href="javascript:;" id='editkegiatan' class="item_delete badge badge-danger d-block mb-2 text-light">Hapus</a>
+               `
             }
         ]
     });
@@ -39,8 +40,8 @@ $(document).ready(function () {
             { "data": "outcome_program" },
             {
                 "data": null,
-                "defaultContent": `<a href="javascript:;" class="text-danger item_edit"'><i class="fas fa-edit"></i></a>
-                <a href="javascript:;" id='deleteprogram' class="text-danger item_delete"'><i class="fas fa-trash"></i></a>`
+                "defaultContent": `<a href="javascript:;" class="badge badge-warning d-block mb-2 item_edit"'>Edit</a>
+                <a href="javascript:;" id='deleteprogram' class="badge badge-danger d-block item_delete px-2">Delete</a>`
             }
         ]
     });

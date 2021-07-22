@@ -1,11 +1,11 @@
 <div class="row justify-content-start mb-3">
     <div class="col">
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Input Program</h6>
+            <div class="card-header bg-gradient-secondary text-light py-3">
+                <h6 class="m-0 font-weight-bold">Input Program</h6>
             </div>
             <div class="card-body">
-                <button type="button" name="" id="" class="btn btn-block btn-user  bg-primary text-white mb-3" data-toggle="modal" data-target="#addprogramModal">Tambah Program</button>
+                <button type="button" name="" id="" class="btn btn-block btn-user bg-primary text-light mb-3" data-toggle="modal" data-target="#addprogramModal">Tambah Program</button>
                 <div class="table-responsive">
                     <table class="table" id="showprogram" cellspacing="0">
                         <thead>
@@ -35,8 +35,8 @@
 <div class="row justify-content-start mb-3">
     <div class="col">
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Input Kegiatan</h6>
+            <div class="card-header bg-gradient-secondary text-light py-3">
+                <h6 class="m-0 font-weight-bold">Input Kegiatan</h6>
             </div>
             <div class="card-body">
                 <button type="button" name="" id="" class="btn btn-block btn-user  bg-primary text-white mb-3" data-toggle="modal" data-target="#addkegiatanModal">Tambah Kegiatan</button>
