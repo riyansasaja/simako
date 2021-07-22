@@ -60,7 +60,7 @@
 <div class="row justify-content-start">
     <div class="col">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-gradient-primary text-light">
                 Tambah Analisis Risiko
             </div>
             <div class="card-body">
