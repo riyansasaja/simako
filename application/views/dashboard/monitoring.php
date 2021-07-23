@@ -12,7 +12,7 @@
                     <option value="m_inputanrisiko">Monitoring Inputan Risiko</option>
                     <option value="m_inputanrtp">Monitoring Inputan RTP</option>
                     <option value="m_realisasiprogram">Monitoring Realisasi Program/Kegiatan</option>
-                    <option value="m_realisasiresiko">Monitoring Realisasi Risiko Program/Kegiatan</option>
+                    <option value="m_realisasirisiko">Monitoring Realisasi Risiko</option>
                     <option value="m_realisasirtp">Monitoring Realisasi RTP</option>
                 </select>
             </div>
@@ -109,19 +109,102 @@
         </div>
     </div>
 </div>
-
-<div class="show" id="5">
+<!-- monitoring realisasi program/kegiatan -->
+<div class="show" id="m_realisasiprogram">
     <div class="row animate__animated animate__headShake">
         <!-- Monitoring Input Program -->
         <div class="col">
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Monitoring Inputan RTP</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Monitoring Inputan Realisasi Program</h6>
                 </div>
                 <div class="card-body">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia adipisci, culpa doloremque nihil ab exercitationem pariatur enim earum eius qui vitae placeat perspiciatis aliquam eos voluptas sed quis nisi. Minus?
+                    <table class="table table-responsive" id="m_realisasi_program">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">OPD</th>
+                                <th scope="col">Rencana Output</th>
+                                <th scope="col">Rencana Tujuan Kegiatan</th>
+                                <th scope="col">Realisasi Output</th>
+                                <th scope="col">Realisasi Tujuan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- end -->
+
+<!-- Monitoring realisasi risiko -->
+
+<div class="show" id="m_realisasirisiko">
+    <div class="row animate__animated animate__headShake">
+        <!-- Monitoring Input Program -->
+        <div class="col">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Monitoring Inputan Realisasi Risiko</h6>
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive" id="m_realisasi_risiko">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">OPD</th>
+                                <th scope="col">Kegiatan</th>
+                                <th scope="col">Identifikasi Risiko</th>
+                                <th scope="col">Identifikasi Sebab</th>
+                                <th scope="col">Identifikasi Dampak</th>
+                                <th scope="col">Realisasi Risiko</th>
+                                <th scope="col">Realisasi Sebab</th>
+                                <th scope="col">Realisasi dampak</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end -->
+
+
+<!-- Monitoring realisasi rtp -->
+<div class="show" id="m_realisasirtp">
+    <div class="row animate__animated animate__headShake">
+        <div class="col">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Monitoring Inputan Realisasi RTP</h6>
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive" id="m_realisasi_rtp">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">OPD</th>
+                                <th scope="col">Risiko</th>
+                                <th scope="col">Rencana RTP</th>
+                                <th scope="col">Rencana Target Waktu</th>
+                                <th scope="col">Rencana PJ</th>
+                                <th scope="col">Realisasi RTP</th>
+                                <th scope="col">Realisasi Target Waktu</th>
+                                <th scope="col">Realisasi PJ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end -->

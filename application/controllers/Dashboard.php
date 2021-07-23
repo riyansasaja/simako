@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('ModelDashboard', 'dashboard');
+        $this->load->model('ModelCetak', 'cetak');
         is_logged_in();
     }
 
@@ -104,4 +105,32 @@ class Dashboard extends CI_Controller
         echo json_encode($data);
     }
     //----
+
+    // m_realisasiprogram
+    public function get_monitoring_realisasi_program()
+    {
+        $id = $this->session->id;
+        $data['data'] =  $this->cetak->get_realisasi_kegiatan_all();
+        echo json_encode($data);
+    }
+    //end
+
+    // m_realisasirisiko
+    public function get_monitoring_realisasi_risiko()
+    {
+        $id = $this->session->id;
+        $data['data'] =  $this->cetak->get_realisasi_risiko_all();
+        echo json_encode($data);
+    }
+    //end
+
+
+    // m_realisasirisiko
+    public function get_monitoring_realisasi_rtp()
+    {
+        $id = $this->session->id;
+        $data['data'] =  $this->cetak->get_realisasi_rtp_all();
+        echo json_encode($data);
+    }
+    //end
 }
