@@ -19,15 +19,17 @@ class Opd extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             # code...
             $data['title'] = 'Input Riwayat Risiko';
+            $data['js'] = '';
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar');
             $this->load->view('opd/riwayat');
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer', $data);
         } else {
 
             $cek =  $this->ModelOpd->tambahriwayat();
             if ($cek) {
+                $this->session->set_flashdata('message', 'Data berhasil diinput!');
                 redirect('opd/listriwayat');
             } else {
                 redirect('opd/riwayat');
@@ -35,16 +37,23 @@ class Opd extends CI_Controller
         }
     }
 
-    public function listriwayat()
+    public function get_listriwayat()
     {
         $id_user = $this->session->userdata('id');
+        $data['data'] = $this->db->get_where('tb_riwayat_resiko', ['id_user' => $id_user])->result_array();
+        echo json_encode($data);
+    }
+
+    public function listriwayat()
+    {
+
         $data['title'] = 'List Riwayat Risiko';
-        $data['listriwayat'] = $this->db->get_where('tb_riwayat_resiko', ['id_user' => $id_user])->result_array();
+        $data['js'] = 'inputlistriwayat.js';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
         $this->load->view('opd/listriwayat');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
     }
 
 
@@ -182,5 +191,39 @@ class Opd extends CI_Controller
     {
         $data = $this->ModelOpd->update();
         echo json_encode($data);
+    }
+
+    //edit list riwayat
+    public function editlistriwayat($id)
+    {
+
+        $this->form_validation->set_rules('id', 'ID', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $data['title'] = 'Edit Riwayat Risiko';
+            $data['js'] = 'editlistriwayat.js';
+            $data['data'] = $this->db->get_where('tb_riwayat_resiko', ['id' => $id])->result_object();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar');
+            $this->load->view('opd/editriwayat');
+            $this->load->view('templates/footer', $data);
+        } else {
+            $cek =  $this->ModelOpd->updateriwayat($id);
+            if ($cek) {
+                $this->session->set_flashdata('message', 'Data berhasil diupdate!');
+                redirect('opd/listriwayat');
+            } else {
+                $this->session->set_flashdata('message', 'Maaf Silahkan diupdate lagi!');
+                redirect('opd/editlistriwayat/' . $id);
+            }
+        }
+    }
+
+
+    public function delete_listriwayat()
+    {
+        $id = $this->input->post('id');
+        $this->db->where('id', $id);
+        $this->db->delete('tb_riwayat_resiko');
     }
 }

@@ -1,41 +1,21 @@
+<div class="flash-data" data-flashdata='<?= $this->session->flashdata('message'); ?>'></div>
+
 <div class="row justify-content-start mb-3">
 
     <div class="col">
 
-        <div class="table-responsive">
-            <table class="table table-hover">
+        <div class="table">
+            <table class="table table-responsive" id="table-listriwayat">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Kondisi</th>
                         <th scope="col">Kriteria</th>
-                        <th scope="col">Sebab</th>
-                        <th scope="col">Akibat</th>
-                        <th scope="col">Saran</th>
-                        <th scope="col">Sumber Data</th>
-                        <th scope="col">Pernyataan Risiko</th>
-                        <th scope="col">Sebab</th>
-                        <th scope="col">Dampak</th>
+                        <th scope="col" style="width: 18%;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($listriwayat as $list) : ?>
 
-                        <tr class="<?= $list['tindak_lanjut'] == 2 ? 'bg-danger text-white' : '' ?>">
-                            <th scope="row"><?= $i ?></th>
-                            <td><?= $list['kondisi']; ?></td>
-                            <td><?= $list['kriteria']; ?></td>
-                            <td><?= $list['sebab_uraian']; ?></td>
-                            <td><?= $list['akibat']; ?></td>
-                            <td><?= $list['saran']; ?></td>
-                            <td><?= $list['sumber_data']; ?></td>
-                            <td><?= $list['pernyataan_resiko']; ?></td>
-                            <td><?= $list['sebab']; ?></td>
-                            <td><?= $list['dampak']; ?></td>
-                        </tr>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -43,4 +23,25 @@
 
     </div>
 
+</div>
+
+
+<div class="modal fade" id="listRiwayatDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-light">
+                <h5 class="modal-title" id="exampleModalLabel">Detail List Riwayat <i class="fas fa-clipboard-list"></i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-isi">
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

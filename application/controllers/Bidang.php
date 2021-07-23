@@ -111,11 +111,18 @@ class Bidang extends CI_Controller
         echo json_encode($data);
     }
 
+    public function edit_rtp()
+    {
+        $data = $this->ModelBidang->m_editrtp();
+        echo json_encode($data);
+    }
+
     public function getinputrtp($id_idev)
     {
         $data['data'] = $this->db->get_where('tb_rtp', ['id_idev' => $id_idev])->result_array();
         echo json_encode($data);
     }
+
     public function del_rtp()
     {
         $id_rtp = $this->input->post('id_rtp');

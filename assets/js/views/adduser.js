@@ -1,6 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    
+
     $('#dataTable').DataTable();
     const path = window.location.href;
     console.log(path);
@@ -14,15 +14,15 @@ $(document).ready(function() {
             url: `${path}/getUserByAtasan/`,
             async: true,
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 let html = '';
 
-                $.each(data, function(i, d) {
+                $.each(data, function (i, d) {
                     // console.log(d);
                     html += `<tr>
                                 <td>${d.name}</td>
                                 <td class="text-right">
-                                <a href="javascript:;" class="badge badge-pill badge-success item_edit" data="${d.id}">Edit</a>
+                                <a href="javascript:;" class="badge badge-pill badge-warning item_edit" data="${d.id}">Edit</a>
                                 <a href="javascript:;" class="badge badge-pill badge-secondary item_reset" data="${d.id}">Reset</a>
                                 <a href="javascript:;" class="badge badge-pill badge-danger item_delete" data="${d.id}">Delete</a>
                                 </td>
@@ -34,7 +34,7 @@ $(document).ready(function() {
     }//------
 
     //--- Add data
-    $('#btn_save').on('click', function() {
+    $('#btn_save').on('click', function () {
         // console.log('tombolditekan');
         let name = $('#name').val();
         let email = $('#email').val();
@@ -49,7 +49,7 @@ $(document).ready(function() {
                 // password: password
             },
             dataType: "JSON",
-            success: function(response) {
+            success: function (response) {
                 // console.log(response);
                 if (response.status == 'unsuccess') {
                     $('#show_alert').html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -59,6 +59,12 @@ $(document).ready(function() {
                         </button>
                         </div>`);
                 } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'User ditambahkan',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     $('[name="name"]').val("");
                     $('[name="email"]').val("");
                     $('[name="password"]').val("");
@@ -76,83 +82,112 @@ $(document).ready(function() {
     //------
 
     //---cancel on click
-    $('#btn_cancel').on('click', function(){
-        console.log('btn-cancel clikc');    
+    $('#btn_cancel').on('click', function () {
+        console.log('btn-cancel clikc');
         $('#name').val("");
         $('#email').val("");
         $('#password').val("");
-    }); 
+    });
     //------
 
     //--- Delete data
-    $('#showdata').on('click','.item_delete', function(){
+    $('#showdata').on('click', '.item_delete', function () {
+        //ambil data id
         let id = $(this).attr('data');
-        let tes = confirm('Yakin Menghapus data?');
-        if (tes) {
-            
-            $.ajax({
-                type: "POST",
-                url: `${path}/deleteuser`,
-                data: {id:id},
-                dataType: "JSON",
-                success: function (response) {
-                    console.log(response);
-                    alert('Data Terhapus!!');
-                    tampil_data();
-                    
-                }
-            });
-            return false;
-        }
-        
+        //jalankan swal untuk konfirmasi
+        Swal.fire({
+            title: 'Yakin menghapus user?',
+            text: "Seluruh data terkait user akan ikut terhapus!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus !'
+        }).then((result) => {
+            //jika terkonfirmasi
+            if (result.isConfirmed) {
+
+                //jalankan ajax
+                $.ajax({
+                    type: "POST",
+                    url: `${path}/deleteuser`,
+                    data: { id: id },
+                    dataType: "JSON",
+                    success: function (response) {
+                        tampil_data();
+
+                    }
+                });
+                //--ajax end
+                //swal pemberitahun success
+                Swal.fire(
+                    'Berhasil!',
+                    'User berhasil dihapus.',
+                    'success'
+                );
+            }
+        });
+
     });
     //------
 
     //--- Reset password
-    $('#showdata').on('click','.item_reset', function(){
+    $('#showdata').on('click', '.item_reset', function () {
         let id = $(this).attr('data');
-        let check = confirm('Yakin Mereset Password?');
-        if (check) {
-            
-            $.ajax({
-                type: "POST",
-                url: `${path}/resetuser`,
-                data: {id:id},
-                dataType: "JSON",
-                success: function (response) {
-                    console.log(response);
-                    alert('Data Berhasil direset!!');
-                    tampil_data();
-                    
-                }
-            });
-            return false;
-        }
-        
+
+        Swal.fire({
+            title: 'Yakin Mereset Password?',
+            text: "password akan direset ke password asal!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Reset!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    type: "POST",
+                    url: `${path}/resetuser`,
+                    data: { id: id },
+                    dataType: "JSON",
+                    success: function (response) {
+                        tampil_data();
+
+                    }
+                });
+                Swal.fire(
+                    'Berhasil!',
+                    'Password anda berhasil direset.',
+                    'success'
+                );
+            }
+        });
+
     });
     //------
-    
+
     // --Get edit
-    $('#showdata').on('click', '.item_edit', function () {  
+    $('#showdata').on('click', '.item_edit', function () {
         let id = $(this).attr('data');
         $.ajax({
             type: "POST",
             url: `${path}/getuserbyid`,
-            data: {id:id},
+            data: { id: id },
             dataType: "JSON",
             success: function (response) {
-               $.each(response, function (i, val) { 
+                $.each(response, function (i, val) {
                     $('#modalEdit').modal('show');
                     $('[name="id_edit"]').val(val.id);
                     $('[name="name_edit"]').val(val.name);
-                     $('[name="email_edit"]').val(val.email);
+                    $('[name="email_edit"]').val(val.email);
                     //  $('[name="password_edit"]').val(val.password);
-               }); 
+                });
             }
         });
         return false
     });
-     // -------
+    // -------
 
     //--- Update Data
     $('#btn_update').on('click', function () {
@@ -164,12 +199,12 @@ $(document).ready(function() {
             type: "POST",
             url: `${path}/updateuser`,
             data: {
-                id_edit :id_edit,
+                id_edit: id_edit,
                 name_edit: name_edit,
                 email_edit: email_edit,
             },
             dataType: "JSON",
-            success: function(response) {
+            success: function (response) {
                 // console.log(response);
                 if (response.status == 'unsuccess') {
                     $('#show_alert_edit').html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -179,6 +214,12 @@ $(document).ready(function() {
                         </button>
                         </div>`);
                 } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'User diupdate',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     $('[name="name_edit"]').val("");
                     $('[name="email_edit"]').val("");
                     $('#show_alert').empty();

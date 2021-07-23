@@ -2,7 +2,7 @@
     <div class="col-6">
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-gradient-primary text-light">
                 <h5>Daftar Program</h5>
             </div>
             <div class="card-body">
@@ -29,7 +29,7 @@
     <div class="col-6">
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-gradient-success text-light">
                 <h5>Daftar Realisasi outcome</h5>
             </div>
             <div class="card-body">

@@ -96,6 +96,25 @@ class ModelOpd extends CI_Model
         ];
         return $this->db->insert('tb_riwayat_resiko', $data);
     }
+
+    public function updateriwayat($id)
+    {
+        $data = [
+            'id_user' => $this->session->userdata('id'),
+            'kondisi' => $this->input->post('kondisi', true),
+            'kriteria' => $this->input->post('kriteria', true),
+            'sebab_uraian' => $this->input->post('sebab_uraian', true),
+            'akibat' => $this->input->post('akibat', true),
+            'saran' => $this->input->post('saran', true),
+            'sumber_data' => $this->input->post('sumber_data', true),
+            'pernyataan_resiko' => $this->input->post('pernyataan_resiko', true),
+            'sebab' => $this->input->post('sebab', true),
+            'dampak' => $this->input->post('dampak', true),
+            'tindak_lanjut' => $this->input->post('tindak_lanjut', true)
+        ];
+        $this->db->where('id', $id);
+        return $this->db->update('tb_riwayat_resiko', $data);
+    }
     public function get_realprogram($id)
     {
         $this->db->select('*');

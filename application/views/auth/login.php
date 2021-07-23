@@ -50,7 +50,7 @@
                             <div class="col-lg-6 bg-abu2">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-kedua judul">Welcome Back</h1>
+                                        <h1 class="h4 text-kedua judul">Selamat Datang</h1>
                                         <p class="mb-4 small">Silahkan Login untuk mengakses SIMAKO </p>
                                     </div>
                                     <form method="POST" action="" class="user">
@@ -76,15 +76,14 @@
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">Ingat Saya</label>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-block btn-user bg-kedua text-white">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="#!" id="forgotPassword">Forgot Password?</a>
+                                        <a class="small" href="#!" id="forgotPassword">Lupa Password?</a>
                                     </div>
 
                                 </div>
